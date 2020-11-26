@@ -1,0 +1,130 @@
+/* common styles */
+*{
+    margin:0;
+    padding:0px;
+    font-family: "Josefin Sans",sans-serif;
+    box-sizing: border-box;
+}
+html{
+    font-size:62.5%;
+}
+body{
+    background-color: #FFFFFF;
+}
+a{
+    text-decoration: none;
+}
+/* end of  common styles */
+/* Main page */
+.main-page{
+    width:100%;
+    height:100vh;
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows: 1fr min-content;
+}
+/* left */
+.left{
+    grid-column:1/2;
+    grid-row:1/2;
+    background-color: #1DA1F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left-content div{
+    display: flex;
+    align-items: center;
+    margin: 4rem;
+    color:#fff;
+}
+.left-content i{
+    font-size: 3rem;
+    margin-right: 2rem;
+}
+.left-content-heading{
+    font-size: 2rem;
+}
+/* end of left */
+/* right */
+.right{
+    grid-column: 2/-1;
+    grid-row: 1/2;
+    position: relative;
+}
+.middle-content{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    /* width:40%; */
+}
+.middle-content i{
+    font-size: 4rem;
+    color:#1DA1F2;
+    margin-bottom: 2rem;
+}
+.middle-content h1{
+    font-size:2.8rem;
+    margin-bottom: 4rem;
+    line-height: 4rem;
+}
+.middle-content h4{
+    font-size: 2rem;
+    margin-bottom:1rem;
+}
+.middle-content a{
+    margin:0.8rem 0;
+    padding: 0.9rem;
+    display:inline-block;
+    border:.1rem solid #1aa1f5;
+    border-radius: 4rem;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+.sign-up{
+    background-color: #1DA1F2;
+    color:#fff;
+}
+.sign-up:hover{
+    background-color: #1A91DA;
+}
+.log-in{
+    background-color: #fff;
+    color: rgba(29,161,242,1.00);
+    font-weight: 700;
+}
+.log-in:hover{
+    background-color: #E8F5FE;
+}
+/* end of right */
+/* Footer */
+footer{
+    grid-column: 1/-1;
+    grid-row: 2/-1;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-top: .1rem solid #ddd;
+}
+footer ul{
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+li {
+    padding: 1rem 1.5rem;
+}
+footer a{
+    font-size: 1.6rem;
+   color: rgb(91, 112, 131);;
+}
+footer a:hover{
+    text-decoration: underline;
+}
+/* End of Footer */
+/* End of Main page */
