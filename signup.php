@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-    <title>Sign up for Twitter / Twitter</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/signup.css">
-</head>
-<body>
+<?php $page_title="Sign up for Twitter / Twitter"; ?>
+<?php require_once 'backend/shared/header.php'; ?>
     <section class="login-page">
-       <nav class="login-page-nav">
-         <ul>
-           <li class="brand"><a href="#"><i class="fab fa-twitter"></i> Home</a></li>
-           <li><a href="#">About</a></li>
-           <li><a href="#">Language:English</a></li>
-         </ul>
-       </nav>
+       <?php require_once 'backend/shared/loginHeader.php'; ?>
        <div class="login">
          <div class="login-content">
           <div class="header-container">
@@ -66,7 +42,7 @@
            </form>
          </div>
          <footer class="login-footer">
-           <p>Already have  an account? <a href="login.php">Login now</a></p>
+           <p>Already have  an account? <a href="<?php echo url_for('login.php'); ?>">Login now</a></p>
          </footer>
        </div>
     </section>
