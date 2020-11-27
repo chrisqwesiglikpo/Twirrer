@@ -103,12 +103,27 @@ a{
     padding-left: 1rem;
     font-size: 1.5rem;
     transition: background-color 0.3s;
+    display:block;
+}
+.error {
+    color: red;
+    margin-bottom: 0.2rem;
+    font-size: 2rem;
+}
+.spacing{
+    margin-top:1rem;
 }
 .login-form input:focus{
     background-color: #d9ebf7;
 }
-.login-form div{
+.login-form .form-group{
     margin-top: 2rem;
+}
+.login-form .form-group label {
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    padding-bottom: 0.3rem;
 }
 .login-form button{
     padding: 1rem 1.5rem;
@@ -149,6 +164,22 @@ a{
 .login-footer a{
     color:#1aa1f5;
 }
+.border-red{
+    border:.1rem solid red !important;
+    color:red !important;
+}
+.border-green{
+    border:.1rem solid green!important;
+    color:green !important;
+}
+.fa.fa-spinner{
+    font-size: 2rem;
+    color:#7047d7;
+}
+.text-success{
+   color: green!important;
+}
+
 /* End of Login page */
 /* Responsive */
 @media (max-width:1100px){

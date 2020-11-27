@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-    <title>Signup on Twitter / Twitter</title>
+    <title>Login on Twitter / Twitter</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
@@ -14,7 +14,8 @@
       href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
     <section class="login-page">
@@ -27,15 +28,18 @@
        </nav>
        <div class="login">
          <div class="login-content">
-           <h2>Signup to Twitter</h2>
+           <div class="header-content">
+            <h2>Log in to Twitter</h2>
+           </div>
            <form  class="login-form">
-             <input type="text" placeholder="First name">
-             <input type="text" placeholder="Last name">
-             <input type="email" placeholder="Email">
-             <input type="password" placeholder="Password">
-             <input type="password" placeholder="Confirm Password">
+            <div class="form-group">
+                 <input type="text" placeholder="Phone,email or username" id="username">
+             </div>
+             <div class="form-group">
+                <input type="password" placeholder="Password" id="password">
+             </div>
              <div>
-               <button type="button" class="login-form-btn">Signup</button>
+               <button type="button" class="login-form-btn" id="login">Log In</button>
                <input type="checkbox" class="login-form-checkbox" id="check">
                <label for="check">Remember me</label>
                <a href="#">Forgot Password?</a>
@@ -43,7 +47,7 @@
            </form>
          </div>
          <footer class="login-footer">
-           <p>Already have  an account? <a href="#">Login now</a></p>
+           <p>New to Twitter? <a href="signup.php">Sign up for Twitter</a></p>
          </footer>
        </div>
     </section>

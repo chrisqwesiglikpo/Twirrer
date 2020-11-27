@@ -43,8 +43,8 @@
                  <i class="fab fa-twitter"></i>
                  <h1>See what’s happening in the world right now</h1>
                  <h4>Join Twirrer today</h4>
-                 <a href="#" class="sign-up btn">Sign Up</a>
-                 <a href="#" class="log-in btn">Log in</a>
+                 <a href="signup.php" class="sign-up btn">Sign Up</a>
+                 <a href="login.php" class="log-in btn">Log in</a>
              </div>
          </div>
          <!-- end of right -->
