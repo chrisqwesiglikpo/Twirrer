@@ -1,8 +1,6 @@
 <?php
  include 'backend/init.php';
 
- $db=Database::instance();
- $db->prepare("Select * from users");
 
 ?>
 <!DOCTYPE html>
