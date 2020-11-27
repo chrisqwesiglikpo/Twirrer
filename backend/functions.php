@@ -14,7 +14,7 @@ function u($string=""){
 function raw_u($string=""){
     return rawurlencode($string);
 }
-
+// session_regenerate_id()
 function h($string=""){
     return htmlspecialchars($string);
 }
