@@ -1,3 +1,10 @@
+<?php
+ include 'backend/init.php';
+
+ $db=Database::instance();
+ $db->prepare("Select * from users");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +21,7 @@
       href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="frontend/assets/css/style.css">
 </head>
 <body>
     <!-- main page -->

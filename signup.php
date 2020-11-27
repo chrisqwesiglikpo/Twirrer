@@ -58,7 +58,7 @@
                  <input type="password" placeholder="Confirm Password" id="cpassword" required>
              </div>
              <div class="spacing">
-               <button type="button" class="login-form-btn" id="signup">Signup</button>
+               <button type="button" class="login-form-btn" id="submit">Signup</button>
                <input type="checkbox" class="login-form-checkbox" id="check">
                <label for="check">Remember me</label>
                <a href="#">Forgot Password?</a>
