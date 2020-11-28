@@ -23,6 +23,15 @@ function redirect_to($location){
     header("Location: ".$location);
     exit;
 }
+function lyn_copyright($startYear){
+   $currentYear=date('Y');
+   if($startYear < $currentYear){
+       $currentYear=date('y');
+       return "&copy; $startYear&ndash;$currentYear";
+   }else{
+    return "&copy; $startYear";
+   }
+}
 
 function is_post_request(){
     return $_SERVER['REQUEST_METHOD']=='POST';

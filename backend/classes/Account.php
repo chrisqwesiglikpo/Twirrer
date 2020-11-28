@@ -9,9 +9,10 @@ class Account{
       $this->con = Database::instance();
     }
     public function login($un,$pw){
-        $password_hash=$this->getHashPasswordByUsername($un);
-        $stmt=$this->con->prepare("SELECT * FROM users WHERE username=:un AND password=:pwd");
+        $password_hash=$this->getHashPasswordByName($un);
+        $stmt=$this->con->prepare("SELECT * FROM `users` WHERE (`username`=:un AND `password`=:pwd) OR (`email`=:em AND `password`=:pwd)");
         $stmt->bindParam(":un",$un,PDO::PARAM_STR);
+        $stmt->bindParam(":em",$un,PDO::PARAM_STR);
         $stmt->bindParam(":pwd",$password_hash,PDO::PARAM_STR);
         $stmt->execute();
         
@@ -37,9 +38,10 @@ class Account{
         return password_verify($password,$this->hashed_password);
     }
 
-    private function getHashPasswordByUsername($un){
-        $stmt=$this->con->prepare("SELECT password FROM users WHERE username=:un");
+    private function getHashPasswordByName($un){
+        $stmt=$this->con->prepare("SELECT password FROM `users` WHERE `username`=:un OR `email`=:em");
         $stmt->bindParam(":un",$un,PDO::PARAM_STR);
+        $stmt->bindParam(":em",$un,PDO::PARAM_STR);
         $stmt->execute();
         $user=$stmt->fetch(PDO::FETCH_OBJ);
         $count=$stmt->rowCount();

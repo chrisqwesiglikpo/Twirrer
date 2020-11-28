@@ -135,27 +135,28 @@ footer a:hover{
     }
 }
 @media(max-width:970px){
-    .main-page{
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(2,1fr) min-content;
-    }
-    .right{
-        grid-column: 1/2;
-        grid-row: 2/3;   
-    }
-    .left{
-        grid-column: 1/2;
-        grid-row: 1/2;
-    }
+    
     .left-content h3{
         line-height: 3rem;
     }
     
+    
+}
+@media (max-width:800px){
+    .main-page{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr min-content;
+    }
+    .right{
+        grid-column: 1/2;  
+        grid-row: 1/2;
+    }
+    .left{
+        display: none;
+    }
     footer {
         grid-row: 3/4;
     }
-}
-@media (max-width:800px){
     .right{
         width:80%;
         margin: auto;

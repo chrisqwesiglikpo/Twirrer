@@ -17,7 +17,7 @@
                     <li><a href="#">Developers</a></li>
                     <li><a href="#">Directory</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="#">&copy;<?php echo date('Y'); ?> Twitter,Inc</a></li>
+                    <li><a href="#"><?php echo lyn_copyright(2010); ?> Twitter,Inc</a></li>
                 </ul>  
          </footer>
          <!-- End of Footer -->

@@ -21,10 +21,8 @@ if(!isset($page_title)){
       rel="stylesheet"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="frontend/assets/css/login.css">
-    <link rel="stylesheet" href="frontend/assets/css/signup.css">
-    <link rel="stylesheet" href="frontend/assets/css/style.css">
+    <script src="frontend/assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="frontend/assets/css/master.css">
 
 </head>
 <body>

@@ -1,5 +1,8 @@
 <?php
  include 'backend/init.php';
+ if(isset($_SESSION['userLoggedIn'])){
+    redirect_to(url_for("home.php"));
+}
  $page_title="Twitter.It's what's happening / Twitter";
 ?>
  <?php require_once 'backend/shared/header.php'; ?>

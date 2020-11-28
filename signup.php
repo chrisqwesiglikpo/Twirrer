@@ -74,6 +74,6 @@ if(is_post_request()){
        </div>
     </section>
 
-    <script src="assets/js/signup.js"></script>
+  
 </body>
 </html>
