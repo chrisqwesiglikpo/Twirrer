@@ -1,18 +1,23 @@
 <?php
 
+ob_start();
+date_default_timezone_set("Africa/Accra");
 
 session_start();
-ob_start();
+
+
 
 spl_autoload_register(function($class){
-    require 'classes/'.$class.'.php';
+    include 'classes/'.$class.'.php';
 });
 
-define("DB_HOST","localhost");
-define("DB_NAME","twitter");
-define("DB_USER","root");
-define("DB_PASS","");
-define("BASE_URL","http://localhost/twirrer");
+define("DB_HOST", "localhost");
+define("DB_NAME", "twitter");
+define("DB_USER", "root");
+define("DB_PASS", "");
+define("BASE_URL", "http://localhost/twirrer");
+
+$account=new Account;
 
 require_once('functions.php');
 

@@ -1,11 +1,16 @@
 <?php 
 	
 	class Database{
-		protected $pdo;
+		protected $con;
 		protected static $instance;
 
 		protected function __construct(){
-			$this->pdo = new PDO("mysql:host=".DB_HOST."; dbname=".DB_NAME, DB_USER, DB_PASS);
+			try{
+				$this->con = new PDO("mysql:host=".DB_HOST."; dbname=".DB_NAME, DB_USER, DB_PASS);
+				$this->con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
+			}catch(PDOException $e){
+				echo "Connection failed: ".$e->getMessage();
+			}
 		}
 
 		public static function instance(){
@@ -16,6 +21,6 @@
 		}
 
 		public function __call($method, $args){
-			return call_user_func_array(array($this->pdo, $method), $args);
+			return call_user_func_array(array($this->con, $method), $args);
 		}
 	}

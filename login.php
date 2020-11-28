@@ -1,4 +1,26 @@
-<?php $page_title="Login on Twitter / Twitter"; ?>
+<?php
+include 'backend/init.php';
+$page_title="Login on Twitter / Twitter";
+if(is_post_request()){
+  if(isset($_POST['LoginButton'])){
+      $username=FormSanitizer::sanitizeFormUsername($_POST['username']);
+      $password=FormSanitizer::sanitizeFormPassword($_POST['password']);
+
+      $wasSuccessful=$account->login($username,$password);
+       
+      if($wasSuccessful){
+        session_regenerate_id();
+        $_SESSION["userLoggedIn"]=$username;
+        redirect_to(url_for("home.php"));
+      }
+  
+  }
+
+}
+
+
+
+?>
 <?php require_once 'backend/shared/header.php'; ?>
     <section class="login-page">
       <?php require_once 'backend/shared/loginHeader.php'; ?>
@@ -7,15 +29,19 @@
            <div class="header-content">
             <h2>Log in to Twitter</h2>
            </div>
-           <form  class="login-form">
+           <form  class="login-form" action="<?php echo h($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="form-group">
-                 <input type="text" placeholder="Phone,email or username" id="username">
+             <?php echo $account->getError(Constants::$loginUsernameFailed); ?>
+                <label for="username">Username or Email</label>
+                 <input type="text" placeholder="Email or username" value="<?php getInputValue('username'); ?>" name="username" id="username" autofocus>
              </div>
              <div class="form-group">
-                <input type="password" placeholder="Password" id="password">
+               <?php echo $account->getError(Constants::$loginPasswordFailed); ?>
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" name="password" id="password">
              </div>
              <div>
-               <button type="button" class="login-form-btn" id="login">Log In</button>
+               <button type="submit" class="login-form-btn" name="LoginButton">Log In</button>
                <input type="checkbox" class="login-form-checkbox" id="check">
                <label for="check">Remember me</label>
                <a href="#">Forgot Password?</a>

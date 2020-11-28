@@ -1,4 +1,5 @@
 <?php
+ include 'backend/init.php';
  $page_title="Twitter.It's what's happening / Twitter";
 ?>
  <?php require_once 'backend/shared/header.php'; ?>

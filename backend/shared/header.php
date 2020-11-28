@@ -1,5 +1,5 @@
 <?php
-include_once 'backend/init.php';
+
 if(!isset($page_title)){
     $page_title="Home / Twitter";
 }
