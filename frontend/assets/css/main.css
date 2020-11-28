@@ -1,0 +1,92 @@
+/***********************************************************
+1. Universal styles (typography etc.)
+2. Header & Nav styles
+3. Main Body Content
+4. Sidebar content
+5. Footer
+************************************************************/
+
+/***********************************************************
+             Default Values
+Fonts: 'Roboto', sans-serif;
+Colors:
+1.
+
+
+/****************************************************
+*****************************************************
+1. Universal Styles
+****************************************************
+****************************************************/
+*{ margin:0; padding:0px;box-sizing: border-box; }
+html{font-size: 62.5%;}
+
+html,body{
+    width:100%;
+    height: 100%;
+}
+body{font-family: 'Roboto', sans-serif;}
+
+li{ list-style: none;}
+
+a{ text-decoration: none;}
+
+.wrapper{
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        height: 100vh;
+        background-color: #fff;
+}
+/****************************************************
+*****************************************************
+2. Header & Nav styles
+****************************************************
+****************************************************/
+.wrapper header{padding: 1rem 2rem;}
+.wrapper > header >nav{ display: flex;flex-direction: column;}
+svg{
+    width:2rem;
+    height: 2rem;
+}
+nav a {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+nav a h3 {
+    color: rgb(15,20,25);
+    font-size: 2rem;
+    font-weight: 600;
+}
+a:hover{
+    color:inherit;
+}
+nav a:hover,nav a:hover h3{
+    color:#1DA1F2; 
+    fill:#1DA1F2; 
+}
+nav a:hover:not(.btn){
+    background-color: rgba(29,161,242,0.1);
+    border-radius: 9999px;
+}
+svg.home-link {
+    margin-right: 2rem;
+}
+.site-logo {
+    width: 59px;
+    height: 40px;
+    padding-left: 2rem;
+}
+.site-logo:hover{
+  background-color: rgba(29,161,242,0.1);
+  border-radius: 50%;
+}
+
+/****************************************************
+*****************************************************
+3. Main Body Content
+****************************************************
+****************************************************/
+main{
+    border-left:0.1rem solid #ddd;
+}

@@ -1,5 +1,5 @@
-<footer class="main-page-footer">
-                <ul>
+<footer class="main-page-footer" role="contentinfo">
+                <ul aria-label="Footer">
                     <li><a href="#">About</a></li>
                     <li><a href="#">Help Center</a></li>
                     <li><a href="#">Terms of Service</a></li>
@@ -17,7 +17,7 @@
                     <li><a href="#">Developers</a></li>
                     <li><a href="#">Directory</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="#"><?php echo lyn_copyright(2010); ?> Twitter,Inc</a></li>
+                    <li><a href="#"><small><?php echo lyn_copyright(2010); ?> Twitter,Inc</small></a></li>
                 </ul>  
          </footer>
          <!-- End of Footer -->

@@ -22,6 +22,7 @@ if(!isset($page_title)){
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="frontend/assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="frontend/assets/css/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="frontend/assets/css/master.css">
 
 </head>
