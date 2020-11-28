@@ -16,7 +16,8 @@ if(is_post_request()){
      $wasSuccessful=$account->register($firstName,$lastName,$username,$email,$password,$password2);
       if($wasSuccessful){
         session_regenerate_id();
-        $_SESSION["userLoggedIn"]=$username;
+        $user_id=$account->getUserId($email);
+        $_SESSION["userLoggedIn"]=$user_id;
         redirect_to(url_for("home.php"));
       }
   

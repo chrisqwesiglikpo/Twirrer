@@ -4,7 +4,7 @@ include 'backend/init.php';
 if(!isset($_SESSION['userLoggedIn'])){
     redirect_to(url_for("index.php"));
 }else{
-  $username=$_SESSION['userLoggedIn'];
+  $user_id=$_SESSION['userLoggedIn'];
 }
 
 ?>

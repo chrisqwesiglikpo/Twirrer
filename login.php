@@ -10,7 +10,8 @@ if(is_post_request()){
        
       if($wasSuccessful){
         session_regenerate_id();
-        $_SESSION["userLoggedIn"]=$username;
+        $user_id=$account->getUserId($username);
+        $_SESSION["userLoggedIn"]=$user_id;
         redirect_to(url_for("home.php"));
       }
   

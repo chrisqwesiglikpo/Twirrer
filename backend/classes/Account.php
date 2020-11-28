@@ -136,7 +136,19 @@ class Account{
           return false;
       }
     }
-
+    public function getUserId($name){
+        $stmt=$this->con->prepare("SELECT `id` FROM `users` WHERE `email`=:em OR `username`=:un");
+        $stmt->bindParam(":em",$name,PDO::PARAM_STR);
+        $stmt->bindParam(":un",$name,PDO::PARAM_STR);
+        $stmt->execute();
+        $user=$stmt->fetch(PDO::FETCH_OBJ);
+        $count=$stmt->rowCount();
+        if($count != 0){
+            return $user->id;
+        }else{
+            return false;
+        }
+    }
     public function generateUsername($fn,$ln){
         if(!empty($fn) && !empty($ln)){
             if(!in_array(Constants::$firstNameCharacters,$this->errorArray) && !in_array(Constants::$lastNameCharacters,$this->errorArray)){
