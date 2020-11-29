@@ -12,15 +12,15 @@
          <div class="left">
              <div class="left-content">
                  <div>
-                     <i class="fas fa-search"></i>
+                     <i class="fa fa-search"></i>
                      <h3 class="left-content-heading">Find your interests</h3>
                  </div>
                  <div>
-                    <i class="fas fa-user-friends"></i>
+                    <i class="fa fa-user"></i>
                     <h3 class="left-content-heading">Explore what people are talking about</h3>
                 </div>
                 <div>
-                    <i class="fas fa-comment"></i>
+                    <i class="fa fa-comment"></i>
                     <h3 class="left-content-heading">Join the people</h3>
                 </div>
              </div>
@@ -29,7 +29,7 @@
          <!-- right -->
          <div class="right">
              <div class="middle-content">
-                 <i class="fab fa-twitter"></i>
+                 <i class="fa fa-twitter"></i>
                  <h1>See what’s happening in the world right now</h1>
                  <h4>Join Twirrer today</h4>
                  <a href="<?php echo url_for('signup.php'); ?>" class="sign-up btn">Sign Up</a>

@@ -6,6 +6,8 @@ if(!isset($_SESSION['userLoggedIn'])){
 }else{
   $user_id=$_SESSION['userLoggedIn'];
 }
+$user=$userObj->userData($user_id);
+
 
 ?>
 <?php require_once 'backend/shared/header.php'; ?>
@@ -42,11 +44,11 @@ if(!isset($_SESSION['userLoggedIn'])){
         </nav>
         <div class="header-footer" role="button" tabindex="0" data-focusable="true" id="modalButton">
             <div class="image-wrapper">
-                <img src="frontend/assets/images/defaultProfilePic.png" alt="User Profile Pic">
+                <img src="<?php echo $user->profilePic; ?>" alt="User Profile Pic">
             </div>
             <div class="user-name">
-                <span class="user-fullname">Christopher Glikpo</span>
-                <span class="user-screenName">@cglikpo</span>
+                <span class="user-fullname"><?php echo $user->firstName." ".$user->lastName; ?></span>
+                <span class="user-screenName">@<?php echo $user->username; ?></span>
             </div>
             <img src="frontend/assets/images/down.svg" alt="" width="20px" height="20px">
         </div>
@@ -55,17 +57,17 @@ if(!isset($_SESSION['userLoggedIn'])){
             <!-- Modal content -->
             <div class="modal-body">
                 <div class="modal-header" role="button" tabindex="0" data-focusable="true">
-                    <div class="image-wrapper">
-                        <img src="frontend/assets/images/defaultProfilePic.png" alt="User Profile Pic">
+                    <div class="wrapper-image">
+                        <img src="<?php echo $user->profilePic; ?>" alt="User Profile Pic">
                     </div>
                     <div class="user-name">
-                        <span class="user-fullname">Christopher Glikpo</span>
-                        <span class="user-screenName">@cglikpo</span>
+                        <span class="user-fullname"><?php echo $user->firstName." ".$user->lastName; ?></span>
+                        <span class="user-screenName">@<?php echo $user->username; ?></span>
                     </div>
                     <img src="frontend/assets/images/check.svg" alt="" width="20px" height="20px">
                 </div>
                 <div class="modal-footer">
-                    <a href="<?php echo url_for("logout.php"); ?>">Log out @cglikpo</a>
+                    <a href="<?php echo url_for("logout.php"); ?>">Log out @<?php echo $user->username; ?></a>
                 </div>   
             </div>
       

@@ -67,7 +67,12 @@ class Account{
     }
     public function insertUserDetails($fn,$ln,$un,$em,$pw){
         $pw=password_hash($pw,PASSWORD_BCRYPT,['cost'=>10]);
-        $profilePic="frontend/assets/images/profilePic.jpeg";
+        $rand=rand(0,1);
+        if($rand==0){
+            $profilePic="frontend/assets/images/profilePic.jpeg";
+        }else if($rand==1){
+            $profilePic="frontend/assets/images/defaultProfilePic.png";
+        }
         $query=$this->con->prepare("INSERT INTO users (firstName,lastName,email,password,profilePic,username,screenName)
                                  VALUES(:fn,:ln,:em,:pw,:pic,:un,:screenName)");
         $query->bindParam(":fn",$fn,PDO::PARAM_STR);

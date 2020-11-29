@@ -34,7 +34,7 @@ a{
 }
 .left-content div{
     display: flex;
-    align-items: center;
+    align-items:flex-end;
     margin: 4rem;
     color:#fff;
 }
