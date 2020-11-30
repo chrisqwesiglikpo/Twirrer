@@ -1,4 +1,8 @@
 /* common styles */
+:root{
+    --white:#fff;
+    --lightBlue:#1aa1f5;
+}
 *{
     margin:0;
     padding:0px;
@@ -27,7 +31,7 @@ a{
 .login-page-nav{
     grid-column: 1/-1;
     grid-row: 1 /2;
-    background-color: #fff;
+    background-color:var(--white);
     padding: 2.5rem 0;
     box-shadow: 0 0 .7rem rgba(0,0,0,0.3);
 }
@@ -49,7 +53,7 @@ a{
     content: "";
     width:100%;
     height: .4rem;
-    background-color: #1aa1f5;
+    background-color:var(--lightBlue);
     position: absolute;
     bottom: -2.5rem;
     left:0;
@@ -65,17 +69,17 @@ a{
     transition: color 0.3s;
 }
 .login-page-nav a:hover{
-    color: #1aa1f5;
+    color:var(--lightBlue);
 }
 .login-page-nav i{
-    color:#1aa1f5;
+    color:var(--lightBlue);
     font-size:2rem;
 }
 .login{
     grid-column: 2/3;
     grid-row: 2/3;
     width:100rem;
-    background-color: #fff;
+    background-color:var(--white);
     display: grid;
     grid-template-columns: 10rem 8fr;
     grid-template-rows: 2fr 1fr;
@@ -112,14 +116,18 @@ a{
 }
 .login-form button{
     padding: 1rem 1.5rem;
-    background-color: #1aa1f5;
-    color:#fff;
+    background-color:var(--lightBlue);
+    color:var(--white);
     border-radius: 4rem;
-    border:.1rem solid #1aa1f5;
+    border:.1rem solid var(--lightBlue);
     cursor: pointer;
     font-size: 1.5rem;
     font-weight: bold;
     margin-right: 1rem;
+    transition: background-color 0.3s;
+}
+.login-form button:hover{
+    background-color: #1A91DA;
 }
 .login-form label{
     font-size: 1.6rem;
@@ -128,7 +136,7 @@ a{
 }
 .login-form a{
     font-size: 1.6rem;
-    color:#1aa1f5;
+    color:var(--lightBlue);
 }
 .login-footer{
     grid-column: 1/-1;
@@ -146,7 +154,7 @@ a{
     margin:.5rem 0;
 }
 .login-footer a{
-    color:#1aa1f5;
+    color:var(--lightBlue);
 }
 /* End of Login page */
 /* Responsive */

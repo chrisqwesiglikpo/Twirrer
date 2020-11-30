@@ -142,14 +142,14 @@ class Account{
       }
     }
     public function getUserId($name){
-        $stmt=$this->con->prepare("SELECT `id` FROM `users` WHERE `email`=:em OR `username`=:un");
+        $stmt=$this->con->prepare("SELECT `user_id` FROM `users` WHERE `email`=:em OR `username`=:un");
         $stmt->bindParam(":em",$name,PDO::PARAM_STR);
         $stmt->bindParam(":un",$name,PDO::PARAM_STR);
         $stmt->execute();
         $user=$stmt->fetch(PDO::FETCH_OBJ);
         $count=$stmt->rowCount();
         if($count != 0){
-            return $user->id;
+            return $user->user_id;
         }else{
             return false;
         }

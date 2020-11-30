@@ -7,12 +7,21 @@ if(is_post_request()){
       $password=FormSanitizer::sanitizeFormPassword($_POST['password']);
 
       $wasSuccessful=$account->login($username,$password);
-       
+     
       if($wasSuccessful){
-        session_regenerate_id();
         $user_id=$account->getUserId($username);
-        $_SESSION["userLoggedIn"]=$user_id;
-        redirect_to(url_for("home.php"));
+        if(isset($_POST['check'])){
+              $check=$_POST['check'];
+              if($check==1){
+                $tstrong = true;
+                $token = bin2hex(openssl_random_pseudo_bytes(64, $tstrong));
+                $loadFromUser->create('token', array('token'=>sha1($token), 'user_id'=>$user_id));
+                setcookie('FBID', $token, time()+60*60*24*7, '/', NULL, NULL, true);
+              }  
+              session_regenerate_id();
+              $_SESSION["userLoggedIn"]=$user_id;
+              redirect_to(url_for("home.php"));
+        }  
       }
   
   }
@@ -43,7 +52,8 @@ if(is_post_request()){
              </div>
              <div>
                <button type="submit" class="login-form-btn" name="LoginButton">Log In</button>
-               <input type="checkbox" class="login-form-checkbox" id="check">
+               <input type="hidden" class="login-form-checkbox" name="check" value="0">
+               <input type="checkbox" class="login-form-checkbox" name="check" value="1" id="check">
                <label for="check">Remember me</label>
                <a href="#">Forgot Password?</a>
              </div>

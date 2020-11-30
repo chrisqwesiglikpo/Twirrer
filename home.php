@@ -1,12 +1,13 @@
 <?php
 include 'backend/init.php';
-// unset($_SESSION['userLoggedIn']);
-if(!isset($_SESSION['userLoggedIn'])){
-    redirect_to(url_for("index.php"));
+
+if(Login::isLoggedIn()){
+    $user_id=$_SESSION['userLoggedIn'];
 }else{
-  $user_id=$_SESSION['userLoggedIn'];
+    redirect_to(url_for("index.php"));
 }
-$user=$userObj->userData($user_id);
+$user=$loadFromUser->userData($user_id);
+
 
 
 ?>
@@ -67,7 +68,9 @@ $user=$userObj->userData($user_id);
                     <img src="frontend/assets/images/check.svg" alt="" width="20px" height="20px">
                 </div>
                 <div class="modal-footer">
-                    <a href="<?php echo url_for("logout.php"); ?>">Log out @<?php echo $user->username; ?></a>
+                    <a href="<?php echo url_for("logout.php"); ?>">
+                       <i class="fa fa-sign-out"></i>  Log out @<?php echo $user->username; ?>
+                   </a>
                 </div>   
             </div>
       

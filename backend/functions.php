@@ -32,6 +32,11 @@ function lyn_copyright($startYear){
     return "&copy; $startYear";
    }
 }
+function log_out_user(){
+    unset($_SESSION['userLoggedIn']);
+    session_destroy();
+    return true;
+}
 
 function is_post_request(){
     return $_SERVER['REQUEST_METHOD']=='POST';

@@ -18,7 +18,7 @@ define("DB_PASS", "");
 define("BASE_URL", "http://localhost/twirrer");
 
 $account=new Account;
-$userObj=new User;
+$loadFromUser=new User;
 
 require_once('functions.php');
 

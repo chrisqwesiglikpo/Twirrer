@@ -23,6 +23,7 @@ Colors:
   --lightBlue:rgba(29,161,242,0.1);
   --transitionAll:all 0.3s;
   --lightDark: rgb(15,20,25);
+  --grey:#ddd;
 }
 *{ margin:0; padding:0px;box-sizing: border-box; }
 html{font-size: 62.5%;}
@@ -88,7 +89,7 @@ span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 4
 /* Modal Content */
 .modal-body {
   background-color: #fefefe;
-  width: 24%;
+  width: 26%;
   height: 12rem;
   position: absolute;
   bottom: 8.25rem;
@@ -123,12 +124,24 @@ div.modal-header {
 .modal-footer a:hover{
   text-decoration: underline;
 }
+/* .header-footer .user-name {
+  width: 100px;
+} */
 /****************************************************
 *****************************************************
 3. Main Body Content
 ****************************************************
 ****************************************************/
-main{
-    border-left:0.1rem solid #ddd;
-    grid-column: 2/-1;
+main {
+  border-left: 0.1rem solid var(--grey);
+  grid-column: 2/-1;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+section.mainSectionContainer {
+  grid-column: 1/2;
+  border-right: 0.1rem solid var(--grey);
+}
+main aside{
+  grid-column: 2/-1;
 }

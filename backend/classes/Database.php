@@ -23,4 +23,5 @@
 		public function __call($method, $args){
 			return call_user_func_array(array($this->con, $method), $args);
 		}
+
 	}
