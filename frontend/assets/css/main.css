@@ -21,9 +21,14 @@ Colors:
 :root{
   --blue:#1DA1F2; 
   --lightBlue:rgba(29,161,242,0.1);
+  --deepBlue: #1FA2F1;
+  --deepblueLight: #9BD1F9;
   --transitionAll:all 0.3s;
   --lightDark: rgb(15,20,25);
-  --grey:#ddd;
+  --grey:rgb(230,236,240);
+  --greyText:rgb(101,119,134);
+  --spacing:15px;
+  --greyButtonText:rgba(0,0,0,0.34);
 }
 *{ margin:0; padding:0px;box-sizing: border-box; }
 html{font-size: 62.5%;}
@@ -67,7 +72,7 @@ svg.home-link { margin-right: 2rem;}
 .site-logo:hover{ background-color:var(--lightBlue);border-radius: 50%;transition:var(--transitionAll);}
 .header-footer { display: flex; align-items: center; cursor: pointer;padding: 1rem;transition:var(--transitionAll); }
 .image-wrapper {height: 5rem;width: 5rem;margin-right: 2rem;}
-.image-wrapper img { width: 100%;height: 100%;object-fit: cover; border-radius: 50%;}
+.image-wrapper img { width: 100%;height: 100%;object-fit: cover; border-radius: 50%;background-color: #fff;}
 span.user-fullname { font-weight: 700;  font-size: 1.5rem;}
 span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 400;}
 .header-footer:hover{background-color:var(--lightBlue) ;border-radius: 9999px;}
@@ -96,8 +101,8 @@ span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 4
   left: 1rem;
 }
 .wrapper-image {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 5rem;
+  height: 5rem;
   margin-right: 1rem;
 }
 .wrapper-image img{
@@ -105,6 +110,7 @@ span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 4
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  background-color: #fff;
 }
 div.modal-header {
   display: flex;
@@ -133,14 +139,131 @@ div.modal-header {
 ****************************************************
 ****************************************************/
 main {
-  border-left: 0.1rem solid var(--grey);
   grid-column: 2/-1;
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
 section.mainSectionContainer {
   grid-column: 1/2;
+  border-left: 0.1rem solid var(--grey);
   border-right: 0.1rem solid var(--grey);
+  display: flex;
+  flex-direction: column;
+}
+.mainSectionContainer .header-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:var(--spacing);
+    border-bottom: .1rem solid var(--grey);
+}
+.mainSectionContainer .header-top h4{
+  font-size: 19px;
+  font-weight: 800;
+  flex:1;
+  margin: 0;
+}
+.mainSectionContainer .header-top img{
+  width:40px;
+  height:40px;
+}
+.mainSectionContainer .header-post{
+  display:flex;
+  padding:var(--spacing);
+  border-bottom:1rem solid rgb(230,236,240);
+  flex-shrink:0;
+}
+.mainSectionContainer .userImageContainer{
+  width:5rem;
+  height:5rem;
+}
+.mainSectionContainer .userImageContainer img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  border-radius:50%;
+  background-color: #fff;
+}
+form.textareaContainer {
+  flex: 1;
+  padding-left: var(--spacing);
+}
+.textareaContainer textarea{
+  width:100%;
+  border:none;
+  resize: none;
+  font-size: 1.9rem;
+  padding:5px;
+  margin-bottom:10px;
+}
+#submitPostButton {
+  background: var(--deepBlue);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 7px 15px;
+  font-size: 2rem;
+}
+#submitPostButton:enabled{
+  cursor: pointer;
+}
+#submitPostButton:disabled{
+  background-color: var(--deepblueLight);
+}
+.postsContainer .post{
+  display:flex;
+  flex-direction:column;
+  padding:var(--spacing);
+  cursor:pointer;
+  border-bottom:.1rem solid var(--grey);
+}
+.postsContainer .mainContentContainer{
+  flex:1;
+  display:flex;
+  align-items:center;
+}
+.postsContainer .postContentContainer{
+  padding-left:var(--spacing);
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.postsContainer .username,
+.postsContainer .date{
+  color:var(--greyText);
+}
+a.displayName {
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: #000;
+}
+.post-footer {
+  display: flex;
+  align-items: center;
+}
+.post-footer .postButtonContainer{
+  flex:1;
+  display: flex;
+}
+.post-footer .postButtonContainer button{
+  padding:2px 5px;
+  background-color: transparent;
+  border:none;
+  color:var(--greyButtonText);
+  cursor: pointer;
+}
+.post-footer .postButtonContainer button:hover,.post-footer .postButtonContainer button svg:hover{
+  background-color:#d4edff;
+  color:var(--blue);
+  fill:var(--blue);
+  border-radius:50%;
+}
+.post-header a:hover{
+  text-decoration: underline;
+}
+.post-header a,
+.post-header span{
+  padding-right:5px;
 }
 main aside{
   grid-column: 2/-1;
