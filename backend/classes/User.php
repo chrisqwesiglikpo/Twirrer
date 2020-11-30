@@ -34,6 +34,22 @@ class User{
         }
     }
 
+    public function delete($table, $array){
+        $sql = "DELETE FROM `{$table}`";
+        $where = " WHERE ";
+        foreach($array as $name=>$value){
+            $sql .= "{$where} `{$name}` = :{$name}";
+            $where = " AND ";
+        }
+        if($stmt = $this->con->prepare($sql)){
+            foreach($array as $name=>$value){
+                $stmt->bindValue(':'.$name, $value);
+            }
+             $stmt->execute();
+        }
+
+    }
+
     
 }
 
