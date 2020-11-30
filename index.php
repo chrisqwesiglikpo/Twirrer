@@ -3,6 +3,8 @@
 
  if(Login::isLoggedIn()){
     redirect_to(url_for("home.php"));
+}else if(isset($_SESSION['userLoggedIn'])){
+    redirect_to(url_for("home.php"));
 }
  $page_title="Twitter.It's what's happening / Twitter";
 ?>

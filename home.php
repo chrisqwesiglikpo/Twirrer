@@ -2,6 +2,9 @@
 include 'backend/init.php';
 
 if(Login::isLoggedIn()){
+    $user_id=Login::isLoggedIn();
+
+}else if(isset($_SESSION['userLoggedIn'])){
     $user_id=$_SESSION['userLoggedIn'];
 }else{
     redirect_to(url_for("index.php"));
