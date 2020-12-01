@@ -59,7 +59,20 @@ class Post extends User{
         $stmt->bindValue(":hashtag",$hashtag.'%');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 
+    public function createTab($name,$href,$isSelected){
+        $className=$isSelected ? "tab active" : "tab";
+        return "<a href='$href' class='$className'> 
+                   <span>$name</span>
+                </a>";
+
+    }
+
+    public function createFollowButton($user,$isFollowing){
+        $text=$isFollowing ? "Following" :"Follow";
+        $buttonClass=$isFollowing ? "followButton follow" : "followButton";
+        return "<button class='$buttonClass' data-user='$user->user_id'>$text</button>";
     }
   
 }

@@ -23,6 +23,7 @@ Colors:
   --lightBlue:rgba(29,161,242,0.1);
   --deepBlue: #1FA2F1;
   --deepblueLight: #9BD1F9;
+  --blueBackground:rgba(212,237,255,0.6);
   --transitionAll:all 0.3s;
   --lightDark: rgb(15,20,25);
   --grey:rgb(230,236,240);
@@ -47,6 +48,9 @@ a{ text-decoration: none;}
   grid-template-columns: 1.9fr 4.5fr;
   height: 100vh;
   background-color: #fff;
+}
+a:hover{
+  text-decoration: none;
 }
 /****************************************************
 *****************************************************
@@ -78,7 +82,7 @@ nav a.active,nav a.active h3{
   color:rgba(29,161,242,1.00);
   fill:rgba(29,161,242,1.00);
 }
-nav a:hover:not(.btn){background-color:var(--lightBlue); border-radius: 9999px;}
+nav a:hover:not(.btn){background-color:var(--lightBlue); border-radius: 9999px;text-decoration:none;}
 svg.home-link { margin-right: 2rem;}
 .site-logo { width: 59px; height: 40px;padding-left: 2rem;}
 .site-logo:hover{ background-color:var(--lightBlue);border-radius: 50%;transition:var(--transitionAll);}
@@ -230,6 +234,9 @@ form.textareaContainer {
   padding:var(--spacing);
   cursor:pointer;
   border-bottom:.1rem solid var(--grey);
+}
+.post:hover{
+  background-color: rgba(0,0,0,0.03);
 }
 .postsContainer .mainContentContainer{
   flex:1;
@@ -403,4 +410,95 @@ main .follow-user{
 }
 .follow-footer a:hover{
   text-decoration: underline;
+}
+/* Profile Page Style */
+.profileHeaderContainer .coverPhotoContainer {
+  height: 180px;
+  background-color: var(--blue);
+  position: relative;
+}
+.profileHeaderContainer .userImageContainer{
+  height:132px;
+  width:132px;
+  margin-left:var(--spacing);
+  position:absolute;
+  bottom:-66px;
+}
+.profileHeaderContainer .userImageContainer img{
+  border:.4rem solid #fff;
+}
+.profileHeaderContainer .profileButtonsContainer{
+  text-align:right;
+  padding:var(--spacing);
+  min-height:6.6rem;
+}
+
+.profileButton,.followButton {
+   border:1px solid var(--blue);
+   color:var(--blue);
+   font-weight:bold;
+   padding:5px 15px;
+   border-radius:60px;
+   display:inline-block;
+   margin-left:var(--spacing);
+}
+.profileButton:hover,
+.followButton:hover{
+  background-color:var(--blueBackground);
+}
+.followButton.following{
+  background-color: var(--blue);
+  color:#fff;
+}
+.profileHeaderContainer .userDetailsContainer{
+  display:flex;
+  flex-direction:column;
+  padding:0 var(--spacing);
+}
+.profileHeaderContainer .displayName{
+  font-size:19px;
+  font-weight:bold;
+}
+.profileHeaderContainer .username{
+  font-size:17px;
+}
+.followersContainer .value{
+  font-weight:bold;
+  margin-right:5px;
+}
+.followersContainer span:not(.value){
+ color:var(--greyText);
+}
+.followersContainer a{
+  margin-right:15px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.followersContainer a:hover{
+  border-bottom:1px solid #000;
+}
+.tabsContainer {
+  display: flex;
+  flex-shrink: 0;
+  border-bottom: .1rem solid var(--grey);
+}
+.tab {
+  flex: 1;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--greyText);
+  font-weight: bold;
+}
+.tabsContainer .tab span{
+  font-size: 2rem;
+}
+.tab.active{
+  color:var(--blue);
+  border-bottom: 2px solid var(--blue);
+}
+.tab:hover{
+  color:var(--blue);
+  background-color: var(--blueBackground);
 }
