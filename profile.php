@@ -54,5 +54,7 @@ $notUserProfile=1;
                     <?php echo $loadFromPost->createTab("Posts",url_for('profile/'.$user->username),true); ?>
                     <?php echo $loadFromPost->createTab("Replies", url_for('profile/'.$user->username.'/replies'),false); ?>
                 </div>
+                <div class="postsContainer">
+                </div>
 </section>
 <?php require_once 'backend/shared/mainFooter.php'; ?>

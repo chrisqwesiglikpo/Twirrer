@@ -5,4 +5,6 @@
   	 $limit=(int)trim($_POST['fetchPosts']);
      $loadFromPost->posts($userId,$limit);
   }
+
+  
 ?>
