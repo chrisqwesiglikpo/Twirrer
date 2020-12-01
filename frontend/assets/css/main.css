@@ -27,7 +27,7 @@ Colors:
   --lightDark: rgb(15,20,25);
   --grey:rgb(230,236,240);
   --greyText:rgb(101,119,134);
-  --spacing:15px;
+  --spacing:1.5rem;
   --greyButtonText:rgba(0,0,0,0.34);
 }
 *{ margin:0; padding:0px;box-sizing: border-box; }
@@ -95,18 +95,19 @@ span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 4
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
+  background-color: rgb(255,255,255); /* Fallback color */
+  background-color: rgba(255,255,255,0.1); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-body {
   background-color: #fefefe;
-  width: 26%;
+  width: 28%;
   height: 12rem;
   position: absolute;
   bottom: 8.25rem;
-  left: 1rem;
+  left: 2rem;
+  box-shadow: 0px 0px 10px 0px #cacaca;
 }
 .wrapper-image {
   width: 5rem;
@@ -320,6 +321,75 @@ a.displayName {
 	color: #716868;
 
 }
-main aside{
-  grid-column: 2/-1;
+main .follow {
+  width: 318px;
+  grid-column: 2/3;
+  left: 77%;
+  top: 0;
+  position: fixed;
+  background: #fff;
+}
+main .follow-user-img{
+  width:6rem;
+  height:6rem;
+  margin-right:2rem;
+}
+.follow-user-img img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit: cover;
+}
+main .follow-heading{
+  padding:var(--spacing);
+  border-bottom:.1rem solid var(--grey);
+  font-size:1.8rem;
+}
+main .follow-user{
+  display:flex;
+  align-items: center;
+  padding:var(--spacing);
+  border-bottom:.1rem solid var(--grey);
+}
+.follow-user-info h4,.follow-user-info p{
+  font-size:1.6rem;
+  margin-bottom:0.5rem;
+}
+.follow-btn{
+  margin-left: auto;
+  width:9rem;
+  background-color: #fff;
+  color:var(--blue);
+  padding:0.7rem .5rem;
+  border:.1rem solid var(--blue);
+  border-radius: 2rem;
+  font-size:1.6rem;
+  cursor:pointer;
+}
+.follow-link{
+  margin:2rem 1rem;
+}
+.follow-link a{
+  text-decoration: none;
+  color:var(--blue);
+  font-size:1.5rem;
+}
+.follow-link a:hover{
+  text-decoration: underline;
+}
+.follow-footer{
+  background-color:#f0f8fd;
+}
+.follow-footer ul{
+  display:flex;
+  padding:2rem 0;
+  flex-wrap:wrap;
+}
+.follow-footer a{
+  color: #868383;
+  font-size: 1.5rem;
+  margin:0 .7rem;
+}
+.follow-footer a:hover{
+  text-decoration: underline;
 }

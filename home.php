@@ -107,7 +107,31 @@ $userId=$loadFromUser->userIdByUsername($username);
                    <?php $loadFromPost->posts($userId,10); ?>
                 </div>
         </section>
-        <aside role="complementary">Aside</aside>
+        <aside role="complementary" class="follow">
+            <h3 class="follow-heading">Who to follow</h3>
+            <div class="follow-user">
+                <div class="follow-user-img">
+                    <img src="frontend/assets/images/defaultProfilePic.png" alt="">
+                </div>
+                <div class="follow-user-info">
+                    <h4>Ann Smith</h4>
+                    <p>@annsmith</p>
+                </div>
+                <button type="button" class="follow-btn">Follow</button>
+            </div>
+            <div class="follow-link">
+                <a href="#">Show more</a>
+            </div>
+            <footer class="follow-footer">
+                <ul>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">More</a></li>
+                </ul>
+            </footer>
+        </aside>
     </main>
 </section>
 <script src="frontend/assets/js/modal.js"></script>
