@@ -50,6 +50,41 @@ class User{
 
     }
 
+    public function userIdByUsername($username){
+        $stmt=$this->con->prepare("SELECT `user_id` FROM `users` WHERE `username`=:username");
+        $stmt->bindParam(":username",$username,PDO::PARAM_STR);
+        $stmt->execute();
+        $user=$stmt->fetch(PDO::FETCH_OBJ);
+        return $user->user_id;
+    }
+
+    public function timeAgo($datetime){
+        $time = strtotime($datetime);
+               $current = time();
+               $seconds = $current-$time;
+               $minutes = round($seconds/60);
+               $hours = round($seconds/3600);
+               $months = round($seconds/2600640);
+       
+               if($seconds <= 60){
+                   if($seconds == 0){
+                       return '0s';
+       
+                   }else{
+                       return ''.$seconds.'s';
+                   }
+       
+               }else if($minutes <= 60){
+                   return ''.$minutes.'m';
+               }else if($hours <= 24){
+                   return ''.$hours.'h';
+               }else if($months <= 24){
+                   return ''.date('M j', $time);
+               }else{
+                   return ''.date('j M Y', $time);
+               }
+           }
+
     
 }
 

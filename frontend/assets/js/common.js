@@ -20,6 +20,7 @@ $("#submitPostButton").click(e=>{
   let userid=u_id;
 
   $.post('http://localhost/twirrer/backend/ajax/post.php',{userid:u_id,onlyStatusText:textbox},function(data){
+    $('.postsContainer').html(data);
     $("#postTextarea").val("");
       button.prop("disabled",true);
   });
