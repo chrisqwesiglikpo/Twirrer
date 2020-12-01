@@ -74,6 +74,10 @@ nav a:hover,nav a:hover h3{
     color:var(--blue);
     fill:var(--blue);
 }
+nav a.active,nav a.active h3{
+  color:rgba(29,161,242,1.00);
+  fill:rgba(29,161,242,1.00);
+}
 nav a:hover:not(.btn){background-color:var(--lightBlue); border-radius: 9999px;}
 svg.home-link { margin-right: 2rem;}
 .site-logo { width: 59px; height: 40px;padding-left: 2rem;}
@@ -350,6 +354,10 @@ main .follow-user{
   align-items: center;
   padding:var(--spacing);
   border-bottom:.1rem solid var(--grey);
+  cursor:pointer;
+}
+.follow-user:hover{
+  background-color:rgba(0,0,0,0.03);
 }
 .follow-user-info h4,.follow-user-info p{
   font-size:1.6rem;
@@ -365,6 +373,9 @@ main .follow-user{
   border-radius: 2rem;
   font-size:1.6rem;
   cursor:pointer;
+}
+.follow-btn:hover{
+  background-color: var(--lightBlue);
 }
 .follow-link{
   margin:2rem 1rem;

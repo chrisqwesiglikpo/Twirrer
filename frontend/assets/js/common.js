@@ -1,4 +1,12 @@
 var u_id = $('.u_p_id').data('uid');
+$(function() {
+  var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+  $('#nav a').each(function() {
+   if (this.href === path) {
+    $(this).addClass('active');
+   }
+  });
+ });
 $("#postTextarea").keyup(e=>{
   let textbox=$(e.target);
   let value=textbox.val().trim();
