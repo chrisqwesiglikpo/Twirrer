@@ -55,11 +55,19 @@ class Post extends User{
     }
 
     public function getTrendByHash($hashtag){
-        $stmt=$this->con->prepare("SELECT * FROM `trends` WHERE `hashtag` LIKE :hashtag");
-        $stmt->bindValue(":hashtag",$hashtag.'%');
+        $stmt=$this->con->prepare("SELECT * FROM `trends` WHERE `hashtag` LIKE :hashtag  LIMIT 5");
+        $stmt->bindValue(':hashtag',$hashtag.'%');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
-    }
+     }
+
+     public function getMention($mention){
+		$stmt=$this->con->prepare("SELECT `user_id`,`username`,`screenName`,`profilePic` FROM `users` WHERE `username` LIKE :mention OR `screenName` LIKE :mention LIMIT 5");
+		$stmt->bindValue(':mention',$mention.'%');
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
+	}
+ 
 
     public function createTab($name,$href,$isSelected){
         $className=$isSelected ? "tab active" : "tab";
@@ -68,6 +76,19 @@ class Post extends User{
                 </a>";
 
     }
+
+    public function addTrend($hashtag){
+		preg_match_all("/#+([a-zA-Z0-9_]+)/i",$hashtag,$matches);
+		if($matches){
+			$result=array_values($matches[1]);
+		}
+		$sql ="INSERT INTO `trends` (`hashtag`,`createdOn`) VALUES(:hashtag,CURRENT_TIMESTAMP)";
+		foreach ($result as $trend) {
+			if($stmt=$this->con->prepare($sql)){
+				$stmt->execute(array(':hashtag'=>$trend));
+			}
+		}
+	}
 
     public function createFollowButton($user,$isFollowing){
         $text=$isFollowing ? "Following" :"Follow";

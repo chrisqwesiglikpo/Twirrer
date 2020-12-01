@@ -411,6 +411,37 @@ main .follow-user{
 .follow-footer a:hover{
   text-decoration: underline;
 }
+.nav-right-down-inner {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.nav-right-down-wrap ul{
+  float: none !important;
+}
+.nav-right-down-left{
+  float: left;
+  margin: 0px 5px 0px 0px;
+}
+
+.nav-right-down-left img{
+  width: 35px !important;
+  height: 35px;
+  border-radius: 4px;
+}
+.nav-right-down-right-body{
+  line-height: 7px;
+}
+.nav-right-down-right-headline a{
+  font-weight: bold;
+  padding: 0px 2px;
+  font-size: 14px;
+}
+.nav-right-down-right-headline span{
+  color: #A1A1A1;
+}
 /* Profile Page Style */
 .profileHeaderContainer .coverPhotoContainer {
   height: 180px;
@@ -423,6 +454,9 @@ main .follow-user{
   margin-left:var(--spacing);
   position:absolute;
   bottom:-66px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 .profileHeaderContainer .userImageContainer img{
   border:.4rem solid #fff;
@@ -501,4 +535,10 @@ main .follow-user{
 .tab:hover{
   color:var(--blue);
   background-color: var(--blueBackground);
+}
+.profilePictureButton {
+  position: absolute;
+  font-size: 50px;
+  color: rgba(0,0,0,0.6);
+  border: none;
 }

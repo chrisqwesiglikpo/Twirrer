@@ -141,6 +141,13 @@ class Account{
           return false;
       }
     }
+    public function formSanitizer($data){
+		$data=htmlspecialchars($data);
+		$data=trim($data);
+		$data=stripcslashes($data);
+		return $data;
+
+	}
     public function getUserId($name){
         $stmt=$this->con->prepare("SELECT `user_id` FROM `users` WHERE `email`=:em OR `username`=:un");
         $stmt->bindParam(":em",$name,PDO::PARAM_STR);
