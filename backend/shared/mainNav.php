@@ -40,10 +40,10 @@
                 <img src="frontend/assets/images/down.svg" alt="" width="20px" height="20px">
             </div>
                     <!-- The Modal -->
-            <div id="myModal" class="modal">
+            <div id="myLogoutModal" class="logout-modal">
                 <!-- Modal content -->
-                <div class="modal-body">
-                    <div class="modal-header" role="button" tabindex="0" data-focusable="true">
+                <div class="logout-modal-body">
+                    <div class="logout-modal-header" role="button" tabindex="0" data-focusable="true">
                         <div class="wrapper-image">
                             <img src="<?php echo $user->profilePic; ?>" alt="User Profile Pic">
                         </div>
@@ -53,7 +53,7 @@
                         </div>
                         <img src="frontend/assets/images/check.svg" alt="" width="20px" height="20px">
                     </div>
-                    <div class="modal-footer">
+                    <div class="logout-modal-footer">
                         <a href="<?php echo url_for("logout.php"); ?>">
                         <i class="fa fa-sign-out"></i>  Log out @<?php echo $user->username; ?>
                     </a>

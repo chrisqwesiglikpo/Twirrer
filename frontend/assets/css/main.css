@@ -94,7 +94,7 @@ span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 4
 .header-footer:hover{background-color:var(--lightBlue) ;border-radius: 9999px;}
 
 
-.modal {
+.logout-modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -108,7 +108,7 @@ span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 4
 }
 
 /* Modal Content */
-.modal-body {
+.logout-modal-body {
   background-color: #fefefe;
   width: 28%;
   height: 12rem;
@@ -129,22 +129,22 @@ span.user-screenName {font-size: 1.5rem;color: rgb(91, 112, 131); font-weight: 4
   object-fit: cover;
   background-color: #fff;
 }
-div.modal-header {
+div.logout-modal-header {
   display: flex;
   align-items: center;
   padding: 1rem;
   border-bottom: .1rem solid #ddd;
 }
-.modal-footer {
+.logout-modal-footer {
   font-size: 2rem;
   margin-left: 0.5rem;
   margin-top: 1rem;
   overflow: hidden;
 }
-.modal-footer a{
+.logout-modal-footer a{
   color:var(--lightDark);
 }
-.modal-footer a:hover{
+.logout-modal-footer a:hover{
   text-decoration: underline;
 }
 /* .header-footer .user-name {
@@ -297,7 +297,7 @@ a.displayName {
  }
  .hash-box {
   position: absolute;
-  top: 5rem;
+  top: 6.6rem;
   right: 0px;
   background: white;
   background-color: white;

@@ -23,7 +23,7 @@ class Post extends User{
                             </div>
                             <div class="postContentContainer">
                                 <div class="post-header">
-                                    <a href="'.url_for($post->username).' ?>" class="displayName">'.$post->firstName.' '.$post->lastName.'</a>
+                                    <a href="'.url_for($post->username).'" class="displayName">'.$post->firstName.' '.$post->lastName.'</a>
                                     <span class="username">@'.$post->username.'</span>
                                     <span class="date">'.$this->timeAgo($post->postedOn).'</span>
                                 </div>
@@ -32,7 +32,7 @@ class Post extends User{
                                 </div>
                                 <div class="post-footer">
                                     <div class="postButtonContainer">
-                                        <button>
+                                        <button data-toggle="modal" data-target="#exampleModal">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M14.046 2.242l-4.148-.01h-.002c-4.374 0-7.8 3.427-7.8 7.802 0 4.098 3.186 7.206 7.465 7.37v3.828c0 .108.044.286.12.403.142.225.384.347.632.347.138 0 .277-.038.402-.118.264-.168 6.473-4.14 8.088-5.506 1.902-1.61 3.04-3.97 3.043-6.312v-.017c-.006-4.367-3.43-7.787-7.8-7.788zm3.787 12.972c-1.134.96-4.862 3.405-6.772 4.643V16.67c0-.414-.335-.75-.75-.75h-.396c-3.66 0-6.318-2.476-6.318-5.886 0-3.534 2.768-6.302 6.3-6.302l4.147.01h.002c3.532 0 6.3 2.766 6.302 6.296-.003 1.91-.942 3.844-2.514 5.176z"/></g></svg>
                                         </button>
                                     </div>
@@ -90,10 +90,11 @@ class Post extends User{
 		$sql ="INSERT INTO `trends` (`hashtag`,`createdOn`) VALUES(:hashtag,CURRENT_TIMESTAMP)";
 		foreach ($result as $trend) {
 			if($stmt=$this->con->prepare($sql)){
-				$stmt->execute(array(':hashtag'=>$trend));
+				$stmt->execute([':hashtag'=>$trend]);
 			}
 		}
 	}
+
     
     public function getTweetLinks($tweet){
         $tweet=preg_replace("/(https?:\/\/)([\w]+.)([\w\.]+)/","<a href='$0' target='_blank'>$0</a>",$tweet);
