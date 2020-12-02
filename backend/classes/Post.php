@@ -14,20 +14,21 @@ class Post extends User{
         $stmt->execute();
         $posts=$stmt->fetchAll(PDO::FETCH_OBJ);
         foreach($posts as $post){
-            ?>
-            <div class="post">
+        $likes=$this->likes($user_id,$post->post_id);
+            
+          echo  '<div class="post">
                        <div class="mainContentContainer">
                             <div class="userImageContainer">
-                                <img src="<?php echo $post->profilePic; ?>" alt="User Profile Pic">
+                                <img src="'.url_for($post->profilePic).'" alt="User Profile Pic">
                             </div>
                             <div class="postContentContainer">
                                 <div class="post-header">
-                                    <a href="<?php echo $post->username; ?>" class="displayName"><?php echo $post->firstName." ".$post->lastName; ?></a>
-                                    <span class="username">@<?php echo $post->username; ?></span>
-                                    <span class="date"><?php echo $this->timeAgo($post->postedOn); ?></span>
+                                    <a href="'.url_for($post->username).' ?>" class="displayName">'.$post->firstName.' '.$post->lastName.'</a>
+                                    <span class="username">@'.$post->username.'</span>
+                                    <span class="date">'.$this->timeAgo($post->postedOn).'</span>
                                 </div>
                                 <div class="post-body">
-                                      <div><?php echo $post->post; ?></div>
+                                      <div>'.$this->getTweetLinks($post->post).'</div>
                                 </div>
                                 <div class="post-footer">
                                     <div class="postButtonContainer">
@@ -41,16 +42,20 @@ class Post extends User{
                                         </button>
                                     </div>
                                     <div class="postButtonContainer">
-                                        <button>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"/></g></svg>
-                                        </button>
+                                    '.((!empty($likes['likeOn'])===$post->post_id) ? '<button class="unlike-btn" data-post="<?php echo $post->post_id; ?>" data-user="<?php echo $post->postBy; ?>">
+                                    <i class="fa fa-heart"></i>
+                                    <span class="likesCounter">'.$post->likesCount.'</span>
+                                    </button>' : '<button class="like-btn" data-post="'.$post->post_id.'" data-user="'.$post->postBy.'">
+                                    '.((!empty($likes['likeOn'])===$post->post_id && $likes['likeBy']===$post->user_id ) ? '<i class="fa fa-heart"></i>' :'<i class="fa fa-heart-o"></i>' ).'
+                                    <span class="likesCounter">'.(($post->likesCount > 0) ? $post->likesCount : '').'</span>
+                                    </button>').'
                                     </div>
                                 </div>
                             </div>
                        </div>
-            </div>
+            </div>';
        
-            <?php
+            
         }
     }
 
@@ -89,12 +94,81 @@ class Post extends User{
 			}
 		}
 	}
-
+    
+    public function getTweetLinks($tweet){
+        $tweet=preg_replace("/(https?:\/\/)([\w]+.)([\w\.]+)/","<a href='$0' target='_blank'>$0</a>",$tweet);
+        $tweet=preg_replace("/#([\w]+)/","<a href='".url_for('hashtag/$1')."'>$0</a>",$tweet);
+        $tweet=preg_replace("/@([\w]+)/","<a href='".url_for('$1')."'>$0</a>",$tweet);
+        return $tweet;
+   }
     public function createFollowButton($user,$isFollowing){
         $text=$isFollowing ? "Following" :"Follow";
         $buttonClass=$isFollowing ? "followButton follow" : "followButton";
         return "<button class='$buttonClass' data-user='$user->user_id'>$text</button>";
     }
+
+    public function addLike($user_id,$tweet_id,$get_id){
+		$stmt=$this->con->prepare("UPDATE `post` SET `likesCount` =likesCount+1 WHERE `post_id`=:tweet_id");
+		$stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+        $stmt->execute();
+
+        $stmt=$this->con->prepare("SELECT * FROM `likes` WHERE `likeBy`=:user_id AND `likeOn`=:tweet_id");
+        $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+        $stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+
+        $stmt->execute();
+        if($stmt->rowCount() >0){
+            $stmt=$this->con->prepare("UPDATE `post` SET `likesCount` =`likesCount` -1 WHERE `post_id`=:tweet_id");
+		    $stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+		    $stmt->execute();
+            $this->delete('likes',array('likeBy'=>$user_id,'likeOn'=>$tweet_id));
+        }else{
+            $this->create('likes',array('likeBy'=>$user_id,'likeOn'=>$tweet_id));
+        }
+		
+	}
+    
+    public function unlike($user_id,$tweet_id,$get_id){
+        $stmt=$this->con->prepare("SELECT * FROM `likes` WHERE `likeBy`=:user_id AND `likeOn`=:tweet_id");
+        $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+        $stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+
+        $stmt->execute();
+        if($stmt->rowCount() >0){
+		$stmt=$this->con->prepare("UPDATE `post` SET `likesCount` =likesCount -1 WHERE `post_id`=:tweet_id");
+		$stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+        $stmt->execute();
+        }
+		$stmt=$this->con->prepare("DELETE FROM `likes` WHERE `likeBy` =:user_id AND `likeOn`=:tweet_id");
+		$stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+		$stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+		$stmt->execute();
+	}
+    public function delete($table,$array){
+    	$sql="DELETE FROM `{$table}`";
+    	$where=" WHERE ";
+    	foreach ($array as $name => $value) {
+    		$sql .="{$where} `{$name}` = :{$name}";
+    		$where = " AND ";
+    	}
+    	if($stmt=$this->con->prepare($sql)){
+    		foreach ($array as $name => $value) {
+    		$stmt->bindValue(':'.$name,$value);
+    		}
+    		$stmt->execute();
+    	}
+    }
+	public function likes($user_id,$tweet_id){
+		 $stmt=$this->con->prepare("SELECT * FROM `likes` WHERE `likeBy`=:user_id AND `likeOn`=:tweet_id");
+		 $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+		 $stmt->bindParam(":tweet_id",$tweet_id,PDO::PARAM_INT);
+
+         $stmt->execute();
+         if($stmt->rowCount() > 0){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+         }
+		 
+	}
   
 }
 ?>

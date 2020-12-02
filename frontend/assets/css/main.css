@@ -268,17 +268,21 @@ a.displayName {
   display: flex;
 }
 .post-footer .postButtonContainer button{
-  padding:2px 5px;
+  padding:5px;
   background-color: transparent;
   border:none;
   color:var(--greyButtonText);
+  font-size:2rem;
   cursor: pointer;
 }
 .post-footer .postButtonContainer button:hover,.post-footer .postButtonContainer button svg:hover{
   background-color:#d4edff;
   color:var(--blue);
   fill:var(--blue);
-  border-radius:50%;
+  border-radius:9999px;
+}
+.fa-heart{
+	color:red;
 }
 .post-header a:hover{
   text-decoration: underline;
@@ -417,7 +421,12 @@ main .follow-user{
   align-items: center;
   justify-content: flex-start;
 }
-
+/* .like-btn svg{
+  fill: red;
+} */
+.unlike-btn svg{
+  fill: red;
+}
 .nav-right-down-wrap ul{
   float: none !important;
 }
@@ -441,6 +450,9 @@ main .follow-user{
 }
 .nav-right-down-right-headline span{
   color: #A1A1A1;
+}
+.likesCounter{
+  color:red;
 }
 /* Profile Page Style */
 .profileHeaderContainer .coverPhotoContainer {
