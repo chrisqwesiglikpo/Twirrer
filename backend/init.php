@@ -20,6 +20,7 @@ define("BASE_URL", "http://localhost/twirrer");
 $account=new Account;
 $loadFromUser=new User;
 $loadFromPost=new Post;
+$loadFromFollow=new Follow;
 
 require_once('functions.php');
 

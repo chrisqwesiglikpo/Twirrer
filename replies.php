@@ -19,7 +19,6 @@ else{
 
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
-$followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
 ?>
@@ -29,8 +28,8 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
 <section class="mainSectionContainer">
                 <?php require_once 'backend/shared/profileContainer.php'; ?>
                 <div class="tabsContainer">
-                    <?php echo $loadFromPost->createTab("Posts",url_for($profileData->username),true); ?>
-                    <?php echo $loadFromPost->createTab("Replies", url_for($profileData->username.'/replies'),false); ?>
+                    <?php echo $loadFromPost->createTab("Posts",url_for($profileData->username),false); ?>
+                    <?php echo $loadFromPost->createTab("Replies", url_for($profileData->username.'/replies'),true); ?>
                 </div>
                 <div class="postsContainer">
                    <?php $loadFromPost->posts($profileId,10); ?>
@@ -38,5 +37,4 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
 </section>
 </main>
 </section>
-<script src="<?php echo url_for('frontend/assets/js/profile.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>

@@ -7,6 +7,7 @@ $(function() {
    }
   });
  });
+//  ,#replyTextarea
 $("#postTextarea").keyup(e=>{
   let textbox=$(e.target);
   let value=textbox.val().trim();
@@ -21,6 +22,7 @@ $("#postTextarea").keyup(e=>{
   submitButton.prop("disabled",false);
 });
 
+
 $("#submitPostButton").click(e=>{
   e.preventDefault();
   let button=$(e.target);
@@ -32,4 +34,20 @@ $("#submitPostButton").click(e=>{
     $("#postTextarea").val("");
       button.prop("disabled",true);
   });
+});
+
+$(function(){
+ var span = document.getElementsByClassName("close")[0];
+
+  $(document).on('click','#replyModal',function(e){
+    document.getElementById("myModal").style.display="block";
+  });
+  span.onclick = function() {
+    document.getElementById("myModal").style.display = "none";
+  }
+});
+
+$(document).on('click','#replyModal',function(e){
+  let postid=$(this).data('post');
+  console.log(postid);
 });

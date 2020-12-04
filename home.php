@@ -9,13 +9,19 @@ if(Login::isLoggedIn()){
 }else{
     redirect_to(url_for("index.php"));
 }
+if(isset($_GET['username']) == true && empty($_GET['username']) === false){
+    $username =h($_GET['username']);
+    $profileId = $loadFromUser->userIdByUsername($username);
+}
+else{
+$profileId =$user_id;
+}
 $user=$loadFromUser->userData($user_id);
-$username=$user->username;
-$userId=$loadFromUser->userIdByUsername($username);
+$userId=$user->user_id;
 
 ?>
 <?php require_once 'backend/shared/header.php'; ?>
-<div class="u_p_id" data-uid="<?php echo $user->user_id; ?>"></div>
+<div class="u_p_id" data-uid="<?php echo $user_id; ?>"  data-pid="<?php echo $profileId ?>"></div>
    <?php require_once 'backend/shared/mainNav.php'; ?>
         <section class="mainSectionContainer">
                 <div class="header-top">
@@ -39,48 +45,27 @@ $userId=$loadFromUser->userIdByUsername($username);
                 <div class="postsContainer">
                    <?php $loadFromPost->posts($userId,10); ?>
                 </div>
-                <div class="modal" tabindex="-1" id="exampleModal">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                <div id="myModal" class="modal">
+                   
+                    <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
+                        <span class="close">&times;</span>
+                        <h2>Modal Header</h2>
                         </div>
                         <div class="modal-body">
-                            <p>Modal body text goes here.</p>
+                        <p>Some text in the Modal Body</p>
+                        <p>Some other text...</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                        <h3>Modal Footer</h3>
                         </div>
                     </div>
-                    </div>
+                </div> 
+                
         </section>
         <aside role="complementary" class="follow">
             <h3 class="follow-heading">Who to follow</h3>
-                <div class="follow-user">
-                    <div class="follow-user-img">
-                        <img src="frontend/assets/images/defaultProfilePic.png" alt="">
-                    </div>
-                    <div class="follow-user-info">
-                        <h4>Ann Smith</h4>
-                        <p>@annsmith</p>
-                    </div>
-                    <button type="button" class="follow-btn">Follow</button>
-                </div>
-                <div class="follow-user">
-                    <div class="follow-user-img">
-                        <img src="frontend/assets/images/ProfilePic.jpeg" alt="">
-                    </div>
-                    <div class="follow-user-info">
-                        <h4>Jmaes Black</h4>
-                        <p>@annsmith</p>
-                    </div>
-                    <button type="button" class="follow-btn">Follow</button>
-                </div>
+               <?php $loadFromFollow->whoToFollow($user_id,$profileId); ?>
             <div class="follow-link">
                 <a href="#">Show more</a>
             </div>
@@ -94,4 +79,8 @@ $userId=$loadFromUser->userIdByUsername($username);
                 </ul>
             </footer>
         </aside>
+        </main>
+</section>
+<script src="<?php echo url_for('frontend/assets/js/fetch.js'); ?>"></script>
+<script src="<?php echo url_for('frontend/assets/js/common.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>
