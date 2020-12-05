@@ -21,6 +21,13 @@ class User{
             return false;
         }
     }
+    public function search($search){
+        $stmt=$this->con->prepare("SELECT * FROM `users` WHERE `username` LIKE ? OR `firstName` LIKE ? ");
+        $stmt->bindValue(1,$search.'%',PDO::PARAM_STR);
+        $stmt->bindValue(2,$search.'%',PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+     }
     public function create($tableName,$fields=array()){
         $columns=implode(',',array_keys($fields));
         $values=':'.implode(', :',array_keys($fields));

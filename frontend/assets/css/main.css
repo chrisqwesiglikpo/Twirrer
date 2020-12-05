@@ -426,7 +426,6 @@ ul#suggestion {
   overflow: auto;
   list-style: none;
   z-index: 99999999;
-  display:none;
 }
 ul#suggestion a {
   display: flex;
@@ -447,6 +446,11 @@ ul#suggestion li:hover{
   font-weight: 400;
   color: rgb(91, 112, 131);
   font-size: 1.7rem;
+}
+.no-result {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 3rem;
 }
 /* End of Auto-suggest styles */
 /* End of search area */
