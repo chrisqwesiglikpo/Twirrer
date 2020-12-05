@@ -64,28 +64,33 @@ class Follow extends User{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_OBJ);
      }
+     
 
      public function whoToFollow($user_id,$profileID){
         $stmt=$this->con->prepare("SELECT * FROM `users` WHERE `user_id` !=:user_id AND `user_id` NOT IN (SELECT `receiver` FROM `follow` WHERE `sender` =:user_id) ORDER BY rand() LIMIT 3");
         $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
         $stmt->execute();
         $data=$stmt->fetchAll(PDO::FETCH_OBJ);
-
+        $userData=$this->checkFollow($profileID,$user_id);
      
          foreach ($data as $user) {
-         	echo '<div class="follow-user">
+         	echo'<div class="follow-user">
                 <div class="follow-user-img">
                  <img src="'.url_for($user->profilePic).'" alt="">
-             </div>
+                </div>
              <div class="follow-user-info">
                  <h4><a href="'.url_for($user->username).'">'.$user->firstName." ".$user->lastName.'</a></h4>
                  <p>@'.$user->username.'</p>
              </div>
-             <button type="button" class="follow-btn">Follow</button>
+             '.((!empty($userData['receiver'])==$user->user_id)? '<button class="follow-btn unfollow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Following</button>' : '<button class="follow-btn follow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Follow</button>').'
+          
+             
          </div>';
          }
        
-	}
+    }
+   
+
 }
 
 
