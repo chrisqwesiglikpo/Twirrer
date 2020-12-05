@@ -18,10 +18,37 @@ $(function(){
             data=JSON.parse(data);
             $button.addClass('follow-home');
             $button.removeClass('unfollow-home');
+            $button.removeClass('unfollow-btn');
             $button.text('Follow');
         
           });
      }
   });
+
+//   $('.follow-btn').hover(function(){
+//     $button=$(this);
+//     if($button.hasClass('unfollow-home')){
+//        $button.addClass('unfollow-home');
+//        $button.text('Unfollow');
+//     }
+// },function(){
+//   if($button.hasClass('follow-home')){
+//     $button.removeClass('unfollow-home');
+//     $button.text('Following');
+//  }
+// });
+
+$('.follow-btn').hover(function(){
+  $button=$(this);
+  if($button.hasClass('unfollow-home')){
+     $button.addClass('unfollow-btn');
+     $button.text('Unfollow');
+  }
+}, function(){
+if($button.hasClass('unfollow-home')){
+     $button.removeClass('unfollow-btn');
+     $button.text('Following');
+  }
+});
 
 });
