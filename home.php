@@ -135,6 +135,7 @@ $userId=$user->user_id;
         </aside>
         </main>
 </section>
+<script src="<?php echo url_for('frontend/assets/js/liveSearch.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/fetch.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/common.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/toggleFollow.js'); ?>"></script>

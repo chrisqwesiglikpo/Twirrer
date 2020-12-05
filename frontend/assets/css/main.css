@@ -426,6 +426,7 @@ ul#suggestion {
   overflow: auto;
   list-style: none;
   z-index: 99999999;
+  display:none;
 }
 ul#suggestion a {
   display: flex;
