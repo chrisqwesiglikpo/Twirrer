@@ -341,11 +341,45 @@ a.displayName {
 	color: #716868;
 
 }
+aside {
+  grid-column: 2/3;
+}
+/* Search Area */
+form#search-form {
+  padding: 1rem 2rem;
+  margin: auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+input#main-search {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 9999px;
+  padding-left: 3rem;
+  font-size: 2rem;
+  color: rgb(15, 20, 25);
+  border: 1px solid rgba(0,0,0,0);
+  background-color: rgb(235, 238, 240);
+}
+::placeholder{
+ color:rgb(91, 112, 131);
+}
+input#main-search:focus{
+  border-color:#1A91DA !important;
+}
+svg.search-icon {
+  position: absolute;
+  left: 25px;
+  top: 20px;
+  fill:rgb(91, 112, 131) ;
+}
+input#main-search:focus + svg.search-icon{
+  fill:#1A91DA !important;
+}
 main .follow {
   width: 321px;
-  grid-column: 2/3;
   left: 77%;
-  top: 0;
+  top: 22rem;
   position: fixed;
   background: #fff;
 }
