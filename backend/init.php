@@ -17,10 +17,14 @@ define("DB_USER", "root");
 define("DB_PASS", "");
 define("BASE_URL", "http://localhost/twirrer");
 
+
 $account=new Account;
 $loadFromUser=new User;
+$postControls=new PostControls;
 $loadFromPost=new Post;
 $loadFromFollow=new Follow;
+
+
 
 require_once('functions.php');
 
