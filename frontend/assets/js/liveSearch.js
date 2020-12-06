@@ -23,7 +23,8 @@ inputBox.addEventListener("keyup",function(e){
           $('.search-result').html(data);
         });
     }else{
-        searchResult.style.display="block";
+       $('.search-result').empty();
+      
     }
     
 })

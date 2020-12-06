@@ -392,6 +392,7 @@ input#main-search:focus + svg.search-icon{
   border-radius: 4px;
   width: 95%;
   right: 0;
+  z-index:999999999999;
 }
 .search-header h3 {
   color: rgb(91,112,131);
@@ -457,7 +458,7 @@ ul#suggestion li:hover{
 main .follow {
   width: 321px;
   left: 77%;
-  top: 22rem;
+  top: 6rem;
   position: fixed;
   background: #fff;
 }
