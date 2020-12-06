@@ -313,9 +313,9 @@ a.displayName {
   display: block;
 }
 
-.hash-box ul{
+/* .hash-box ul{
 	 
-}	
+}	 */
 
 .hash-box ul li {
   padding-top: 1rem;
@@ -525,6 +525,10 @@ main .follow-user {
   color:#fff !important;
   background-color: #CA2055 !important;
 }
+.unfollowing:hover{
+  color:#fff !important;
+  background-color: #CA2055 !important;
+}
 .follow-footer{
   background-color:#f0f8fd;
 }
@@ -691,6 +695,10 @@ main .follow-user {
 .followButton.following{
   background-color: var(--blue);
   color:#fff;
+}
+.following:hover{
+  color: #fff !important;
+  background-color: #CA2055 !important;
 }
 .profileHeaderContainer .userDetailsContainer{
   display:flex;

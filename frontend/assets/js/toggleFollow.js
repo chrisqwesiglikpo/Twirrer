@@ -38,6 +38,7 @@ $(function(){
 //  }
 // });
 
+
 $('.follow-btn').hover(function(){
   $button=$(this);
   if($button.hasClass('unfollow-home')){
