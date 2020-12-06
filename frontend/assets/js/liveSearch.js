@@ -16,7 +16,7 @@ inputBox.addEventListener("mouseenter",function(e){
 inputBox.addEventListener("keyup",function(e){
     const inputBoxContainer=(e.target);
     const text=inputBoxContainer.value.trim();
-   
+
     if(text != ""){
         searchResult.style.display="none";
         $.post('http://localhost/twirrer/backend/ajax/search.php',{search:text},function(data){

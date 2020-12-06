@@ -19,6 +19,7 @@ else{
 
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
+$followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
 ?>
@@ -32,7 +33,7 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                     <?php echo $loadFromPost->createTab("Replies", url_for($profileData->username.'/replies'),true); ?>
                 </div>
                 <div class="postsContainer">
-                   <?php $loadFromPost->posts($profileId,10); ?>
+                   
                 </div>
 </section>
 </main>
