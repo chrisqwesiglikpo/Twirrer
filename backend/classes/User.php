@@ -22,7 +22,7 @@ class User{
         }
     }
     public function search($search){
-        $stmt=$this->con->prepare("SELECT * FROM `users` WHERE `username` LIKE ? OR `firstName` LIKE ? ");
+        $stmt=$this->con->prepare("SELECT * FROM `users` WHERE `username` LIKE ? OR `firstName` LIKE ? LIMIT 4");
         $stmt->bindValue(1,$search.'%',PDO::PARAM_STR);
         $stmt->bindValue(2,$search.'%',PDO::PARAM_STR);
         $stmt->execute();
