@@ -51,3 +51,9 @@ $(document).on('click','#replyModal',function(e){
   let postid=$(this).data('post');
   console.log(postid);
 });
+
+$(document).on('click', '.profileEdit', function () {
+
+  window.location.href = "profileEdit.php";
+
+})

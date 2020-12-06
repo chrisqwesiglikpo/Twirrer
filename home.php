@@ -103,6 +103,5 @@ $userId=$user->user_id;
 
 <script src="<?php echo url_for('frontend/assets/js/liveSearch.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/fetch.js'); ?>"></script>
-<script src="<?php echo url_for('frontend/assets/js/common.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/toggleFollow.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>

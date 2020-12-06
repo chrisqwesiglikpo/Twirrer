@@ -29,7 +29,7 @@ class Follow extends User{
              }
         }else{
             //edit button
-            echo "<button class='followButton' onclick=location.href='profileEdit.php'>Edit Profile</button>";
+            echo "<button class='followButton profileEdit'>Edit Profile</button>";
         }
     }
 
