@@ -82,6 +82,14 @@ class Post extends User{
         $tweet=preg_replace("/@([\w]+)/","<a href='".url_for('$1')."'>$0</a>",$tweet);
         return $tweet;
    }
+
+   public function getModalPost($post_id,$postedby){
+       $stmt=$this->pdo->prepare("SELECT * FROM `post` LEFT JOIN `users` ON users.user_id=post.userId WHERE post_id=:post_id AND `postBy`=:postedBy");
+       $stmt->bindParam(":post_id",$post_id,PDO::PARAM_INT);
+       $stmt->bindParam(":postedBy",$postedby,PDO::PARAM_INT);
+       $stmt->execute();
+       return $stmt->fetch(PDO::FETCH_OBJ);
+   }
     public function createFollowButton($user,$isFollowing){
         $text=$isFollowing ? "Following" :"Follow";
         $buttonClass=$isFollowing ? "followButton follow" : "followButton";
