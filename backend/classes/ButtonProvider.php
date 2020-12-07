@@ -8,7 +8,7 @@ class ButtonProvider{
     }
 
     public static function createPostButton($text,$imageSrc,$class,$countClassName,$postId,$postedBy,$user_id){
-        return '<button class="'.$class.'" data-post="'.$postId.'" data-postedby="'.$postedBy.'" data-user="'.$user_id.'">
+        return '<button class="'.$class.'"  data-post="'.$postId.'" data-postedby="'.$postedBy.'" data-user="'.$user_id.'">
         '.$imageSrc.'
         <span class="'.$countClassName.'">'.$text.'</span>
         </button>';

@@ -748,6 +748,13 @@ div#retweet-btn {
   cursor: pointer;
   min-height: 39px;
 }
+svg.retweeted {
+  fill:skyblue;
+}
+
+span.retweetsCount {
+  color:skyblue;
+}
 div#retweet-btn:hover{
   background-color: rgb(26,145,218);
 }

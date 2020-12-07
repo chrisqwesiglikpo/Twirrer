@@ -99,9 +99,47 @@ class Post extends User{
         return "<button class='$buttonClass' data-user='$user->user_id'>$text</button>";
     }
 
-    
+    public function retweet($tweet_id,$user_id,$postedBy,$comment) {
+
+    }  
  
-   
+    public function getRetweet($postId){
+        $stmt=$this->con->prepare("SELECT count(*) as 'count' FROM `retweet` WHERE `retweetFrom`=:postId");
+        $stmt->bindParam(":postId",$postId,PDO::PARAM_INT);
+        $stmt->execute();
+
+        $data=$stmt->fetch(PDO::FETCH_ASSOC);
+       if($data["count"] > 0){
+           return $data["count"];
+       }
+
+        
+    }
+    public function retweetCount($user_id,$postId){
+        
+        if($this->wasRetweetBy($user_id,$postId)){
+            //User has already like
+            $this->delete('retweet',['retweetBy'=>$user_id,'retweetFrom'=>$postId]);
+            $result=array("retweet"=>-1);
+            return json_encode($result);
+        }else{
+            //User has not like
+            $this->create('retweet',array('retweetBy'=>$user_id,'retweetFrom'=>$postId));
+            $result=array("retweet"=>1);
+            return json_encode($result);
+            
+        }
+   }
+
+   public function wasRetweetBy($user_id,$postId){
+    $stmt=$this->con->prepare("SELECT * FROM retweet WHERE retweetBy=:user_id AND retweetFrom=:postId");
+    $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+    $stmt->bindParam(":postId",$postId,PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->rowCount() > 0;  
+
+}
     public function delete($table, $array){
         $sql = "DELETE FROM `{$table}`";
         $where = " WHERE ";
@@ -153,9 +191,7 @@ class Post extends User{
         $stmt->bindParam(":postId",$postId,PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->rowCount() > 0;
-
-        
+        return $stmt->rowCount() > 0;  
 
     }
   

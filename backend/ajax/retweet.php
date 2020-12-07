@@ -50,4 +50,14 @@
      <?php
   }
 
+   
+  if(isset($_POST['retweet']) && !empty($_POST['retweet'])){
+    $tweet_id=$_POST['retweet'];
+    $user_id=$_POST['user_id'];
+    $postedBy=$_POST['postedBy'];
+    // $comment=h($_POST['comment']);
+    // $loadFromPost->retweet($tweet_id,$user_id,$postedBy,$comment);
+    echo $loadFromPost->retweetCount($user_id,$tweet_id);
+  }
+
 ?>
