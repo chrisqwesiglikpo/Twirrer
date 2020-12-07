@@ -609,6 +609,7 @@ main .follow-user {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);/* Black w/ opacity */
+    display:none;
 }
 .retweet-modal-container .modal-content {
   position: absolute;
@@ -660,7 +661,13 @@ main .follow-user {
   line-height: 1.3125;
   border: none;
 }
-
+.retweet-modal-container .modal-header .close{
+  padding:1rem;
+}
+.retweet-modal-container .modal-header .close:hover{
+  background-color:rgba(29,161,242,0.1);
+  border-radius: 99999px;
+}
 svg.close-icon {
   fill: rgba(29,161,242,1.00);
   width: 2.5rem;

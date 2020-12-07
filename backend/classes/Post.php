@@ -84,7 +84,7 @@ class Post extends User{
    }
 
    public function getModalPost($post_id,$postedby){
-       $stmt=$this->pdo->prepare("SELECT * FROM `post` LEFT JOIN `users` ON users.user_id=post.userId WHERE post_id=:post_id AND `postBy`=:postedBy");
+       $stmt=$this->con->prepare("SELECT * FROM `post` LEFT JOIN `users` ON users.user_id=post.userId WHERE post_id=:post_id AND `postBy`=:postedBy");
        $stmt->bindParam(":post_id",$post_id,PDO::PARAM_INT);
        $stmt->bindParam(":postedBy",$postedby,PDO::PARAM_INT);
        $stmt->execute();
