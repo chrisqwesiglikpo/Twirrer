@@ -34,7 +34,7 @@ class Follow extends User{
     }
 
     public function follow($followID,$user_id,$profileID){
-        $this->create('follow', array('sender'=> $user_id ,'receiver' => $followID));
+        $this->create('follow', array('sender'=> $user_id ,'receiver' => $followID,"followStatus"=>1));
         $this->addFollowCount($followID,$user_id);
         $stmt=$this->con->prepare('SELECT `user_id`,`following`,`followers` FROM `users` LEFT JOIN `follow` ON `sender`=:user_id AND CASE WHEN `receiver`=:user_id THEN `sender` =`user_id` END WHERE `user_id` =:profileID');
         $stmt->execute(array("user_id"=>$user_id,"profileID"=>$profileID));

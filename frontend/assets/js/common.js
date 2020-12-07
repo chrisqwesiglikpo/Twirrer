@@ -36,21 +36,9 @@ $("#submitPostButton").click(e=>{
   });
 });
 
-$(function(){
- var span = document.getElementsByClassName("close")[0];
 
-  $(document).on('click','#replyModal',function(e){
-    document.getElementById("myModal").style.display="block";
-  });
-  span.onclick = function() {
-    document.getElementById("myModal").style.display = "none";
-  }
-});
 
-$(document).on('click','#replyModal',function(e){
-  let postid=$(this).data('post');
-  console.log(postid);
-});
+
 
 $(document).on('click', '.profileEdit', function () {
 

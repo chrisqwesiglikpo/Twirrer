@@ -3,7 +3,7 @@
 
       // When the user clicks on the button, open the modal
        $(document).on("click",".retweet",function(){
-           modal.style.display="block";
+          modal.style.display="block";
            let post_id=$(this).data('post');
            let user_id=$(this).data('user');
            let postedBy=$(this).data('postedby');
@@ -11,7 +11,7 @@
            $count=$counter.text();
            $button=$(this);
        $.post('http://localhost/twirrer/backend/ajax/retweet.php',{showPopup:post_id,postedBy:postedBy,user_id:user_id},function(data){
-              console.log(data);
+              $(".retweet-modal-container").html(data);
            });
         });
 
