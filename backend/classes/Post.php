@@ -28,6 +28,7 @@ class Post extends User{
                                     <a href="'.url_for($post->username).'" class="displayName">'.$post->firstName.' '.$post->lastName.'</a>
                                     <span class="username">@'.$post->username.'</span>
                                     <span class="date">'.$this->timeAgo($post->postedOn).'</span>
+                                   ' .(($post->postBy===$user_id) ? '<span class="dot">...</span>' : '' ).' 
                                 </div>
                                 <div class="post-body">
                                       <div>'.$this->getTweetLinks($post->post).'</div>

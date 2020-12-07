@@ -732,6 +732,11 @@ svg.close-icon {
   margin-right: 9rem;
   margin-top: 0.5rem;
 }
+span.dot {
+  padding-left: 13rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
 div#retweet-btn {
   background-color: rgb(29, 161, 242);
   padding: 1rem;

@@ -35,6 +35,9 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                 <div class="postsContainer">
                    <?php $loadFromPost->posts($profileId,10); ?>
                 </div>
+                <div id="popUpModal" class="retweet-modal-container">
+                   
+                </div> 
 </section>
 </main>
 </section>
