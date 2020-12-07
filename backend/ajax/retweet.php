@@ -60,4 +60,11 @@
     echo $loadFromPost->retweetCount($user_id,$tweet_id);
   }
 
+  if(isset($_POST['deretweet']) && !empty($_POST['deretweet'])){
+      $deretweet=$_POST['deretweet'];
+      $user_id=$_POST['user_id'];
+      $loadFromPost->delete('retweet',['retweetBy'=>$user_id,'retweetFrom'=>$deretweet]);
+     
+  }
+
 ?>

@@ -748,7 +748,7 @@ div#retweet-btn {
   cursor: pointer;
   min-height: 39px;
 }
-svg.retweeted {
+.retweeted svg{
   fill:skyblue;
 }
 

@@ -99,9 +99,9 @@ class Post extends User{
         return "<button class='$buttonClass' data-user='$user->user_id'>$text</button>";
     }
 
-    public function retweet($tweet_id,$user_id,$postedBy,$comment) {
+    // public function retweet($tweet_id,$user_id,$postedBy,$comment) {
 
-    }  
+    // }  
  
     public function getRetweet($postId){
         $stmt=$this->con->prepare("SELECT count(*) as 'count' FROM `retweet` WHERE `retweetFrom`=:postId");
@@ -130,6 +130,10 @@ class Post extends User{
             
         }
    }
+
+//    public function deleteRetweet($user_id,$postId){
+
+//    }
 
    public function wasRetweetBy($user_id,$postId){
     $stmt=$this->con->prepare("SELECT * FROM retweet WHERE retweetBy=:user_id AND retweetFrom=:postId");

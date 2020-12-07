@@ -35,7 +35,7 @@
 
         $(document).on("click",".retweet-btn",function(){
             let comment=$('.retweet-comment').val();
-           
+             
             $.post('http://localhost/twirrer/backend/ajax/retweet.php',{retweet:$post_id,user_id:$user_id,postedBy:$postedBy},function(data){
                 $('.retweet-modal-container').hide();
                 // let result=JSON.parse(data);
@@ -47,7 +47,11 @@
             
                 updateLikesValue($counter,result.retweet);
                 // $button.removeClass('retweet').addClass('retweeted');
-                
+                if(result.retweet <0){   
+                    $button.removeClass('retweeted').addClass('retweet');
+                } else{
+                     $button.removeClass('retweet').addClass('retweeted');
+                }
             
                 });
         
@@ -57,6 +61,17 @@
             let retweetCountVal=element.text() || "0";
             element.text(parseInt(retweetCountVal) + parseInt(num));;
          }
-      
+         
+         $(document).on("click",".retweeted",function(){
+            let post_id=$(this).data('post');
+            let user_id=$(this).data('user');
+            let button=$(this);
+
+            $.post('http://localhost/twirrer/backend/ajax/retweet.php',{deretweet:post_id,user_id:user_id},function(data){
+                button.removeClass('retweeted').addClass('retweet');
+                $(".retweetsCount").text("");
+            })
+         })
+       
  
    });
