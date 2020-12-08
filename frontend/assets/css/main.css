@@ -273,7 +273,7 @@ a.displayName {
   display: flex;
 }
 .post-footer .postButtonContainer button{
-  padding:5px;
+  padding:3px 5px;
   background-color: transparent;
   border:none;
   color:var(--greyButtonText);
@@ -281,10 +281,11 @@ a.displayName {
   cursor: pointer;
 }
 .post-footer .postButtonContainer button:hover,.post-footer .postButtonContainer button svg:hover{
-  background-color:#d4edff;
-  color:var(--blue);
-  fill:var(--blue);
-  border-radius:9999px;
+  border-radius: 9999px;
+}
+.post-footer .postButtonContainer button.like-btn:hover,.post-footer .postButtonContainer button.like-btn svg:hover{
+  background-color:rgba(224,36,94,0.1);
+  color:#E33B6F;
 }
 .fa-heart{
 	color:red;
@@ -582,7 +583,7 @@ main .follow-user {
   color: #A1A1A1;
 }
 .likesCounter{
-  color:red;
+  color: rgb(224, 36, 94);
 }
 /* The Modal (background) */
 /* .modal {
@@ -749,11 +750,25 @@ div#retweet-btn {
   min-height: 39px;
 }
 .retweeted svg{
-  fill:skyblue;
+  fill:rgb(23, 191, 99);
 }
 
 span.retweetsCount {
-  color:skyblue;
+  color: rgb(23, 191, 99);
+}
+.post-footer .postButtonContainer button.retweeted:hover,.post-footer .postButtonContainer button.retweeted svg:hover{
+  background-color:rgba(23,191,99,0.1);
+  border-radius:9999px;
+}
+.post-footer .postButtonContainer .retweet:hover,.post-footer .postButtonContainer .retweet svg:hover{
+  background-color: rgba(23,191,99,0.1);
+  fill:#17BF63;
+  color:#17BF63;
+}
+.post-footer .postButtonContainer .replyModal:hover,.post-footer .postButtonContainer .replyModal svg:hover{
+  background-color: rgba(29,161,242,0.1);
+  fill:#46B1F3;
+  color:#46B1F3;
 }
 div#retweet-btn:hover{
   background-color: rgb(26,145,218);
