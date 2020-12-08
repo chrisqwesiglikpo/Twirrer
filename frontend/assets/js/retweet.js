@@ -34,26 +34,28 @@
         });
 
         $(document).on("click",".retweet-btn",function(){
-            let comment=$('.retweet-comment').val();
-             
-            $.post('http://localhost/twirrer/backend/ajax/retweet.php',{retweet:$post_id,user_id:$user_id,postedBy:$postedBy},function(data){
-                $('.retweet-modal-container').hide();
-                // let result=JSON.parse(data);
-                // updateLikesValue($button.find(".retweetsCount"),result.likes);
-                // $count++;
-                // $counter.text($count);
-            
-                let result=JSON.parse(data);
-            
-                updateLikesValue($counter,result.retweet);
-                // $button.removeClass('retweet').addClass('retweeted');
-                if(result.retweet <0){   
-                    $button.removeClass('retweeted').addClass('retweet');
-                } else{
-                     $button.removeClass('retweet').addClass('retweeted');
-                }
-            
-                });
+            let comment=document.querySelector("#retweet-comment").value.trim();
+            let post_id=$button.data('post');
+            let user_id=$button.data('user');
+           
+          
+                $.post('http://localhost/twirrer/backend/ajax/retweet.php',{retweet:post_id,user_id:user_id,comment:comment},function(data){
+                    $('.retweet-modal-container').hide();
+                   
+                
+                    let result=JSON.parse(data);
+                
+                    updateLikesValue($counter,result.retweet);
+                    // $button.removeClass('retweet').addClass('retweeted');
+                    if(result.retweet <0){   
+                        $button.removeClass('retweeted').addClass('retweet');
+                    } else{
+                         $button.removeClass('retweet').addClass('retweeted');
+                    }
+                
+                    });
+           
+           
         
         });
       

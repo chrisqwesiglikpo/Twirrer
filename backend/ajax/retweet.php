@@ -52,12 +52,12 @@
 
    
   if(isset($_POST['retweet']) && !empty($_POST['retweet'])){
+    $comment=$_POST['comment'];
     $tweet_id=$_POST['retweet'];
     $user_id=$_POST['user_id'];
-    $postedBy=$_POST['postedBy'];
-    // $comment=h($_POST['comment']);
     // $loadFromPost->retweet($tweet_id,$user_id,$postedBy,$comment);
-    echo $loadFromPost->retweetCount($user_id,$tweet_id);
+    echo $loadFromPost->retweetCount($user_id,$tweet_id,$comment);
+
   }
 
   if(isset($_POST['deretweet']) && !empty($_POST['deretweet'])){

@@ -115,16 +115,17 @@ class Post extends User{
 
         
     }
-    public function retweetCount($user_id,$postId){
+    public function retweetCount($user_id,$postId,$comment){
         
         if($this->wasRetweetBy($user_id,$postId)){
             //User has already like
-            $this->delete('retweet',['retweetBy'=>$user_id,'retweetFrom'=>$postId]);
+            $this->delete('retweet',['retweetBy'=>$user_id,'retweetFrom'=>$postId,'status'=>$comment]);
             $result=array("retweet"=>-1);
             return json_encode($result);
         }else{
             //User has not like
-            $this->create('retweet',array('retweetBy'=>$user_id,'retweetFrom'=>$postId));
+            $this->create('retweet',array('retweetBy'=>$user_id,'retweetFrom'=>$postId,'status'=>$comment));
+           
             $result=array("retweet"=>1);
             return json_encode($result);
             
