@@ -18,6 +18,7 @@ $profileId =$user_id;
 }
 $user=$loadFromUser->userData($user_id);
 $userId=$user->user_id;
+$controls=$postControls->createControls(23,3,3);
 
 ?>
 <?php require_once 'backend/shared/header.php'; ?>
@@ -44,8 +45,45 @@ $userId=$user->user_id;
                    </form>
                 </div>
                 <div class="postsContainer">
-                
-                  <div class="post">
+                 <div class="retweet-content-container">
+                       <div class="retweet-content-head-container">
+                       <div class="image-content-wrapper">
+                           <img src="frontend/assets/images/profilePic.jpeg" alt="">
+                       </div>
+                       <div class="retweet-content-header">
+                          <div class="retweet-content-desc">
+                              <div class="retweet-content-fullName">Christopher Glikpo</div>
+                              <div class="retweet-content-username">@cglikpo</div>
+                              <div class="retweet-date"><span class="dot-retweet-content">.</span>12h</div>
+                          </div>
+                          <div class="retweet-content-text">
+                            Yeah
+                          </div>
+                       </div>
+                       </div>
+                       <div class="retweet-content-body">
+                          <div class="retweet-content-body-header">
+                                <div class="retweet-content-header-img-wrapper">
+                                    <img src="frontend/assets/images/profilePic.jpeg" alt="">
+                                </div>
+                                <div class="retweet-content-body-header-fullName">
+                                   Adrian Twarog
+                                </div>
+                                <div class="retweet-content-body-header-username">
+                                   @adrian_twarog
+                                </div>
+                                <div class="retweet-content-body-header-date">
+                                  <span class="dot-date-header">.</span>2h
+                                </div>
+                          </div>
+                          <div class="retweet-content-body-post">
+                           <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam neque quia magnam alias ipsam possimus iusto asperiores dolor aperiam voluptates officiis inventore mollitia amet quos perferendis, blanditiis vero cum labore.</div>
+                          </div>
+                          <?php echo $controls; ?>
+                       </div>  
+
+                  </div>
+                  <!-- <div class="post">
                   
                        <div class="mainContentContainer">
                        
@@ -69,14 +107,12 @@ $userId=$user->user_id;
                 </div>
                 <div id="popUpModal" class="retweet-modal-container">
                    
-                </div> 
+                </div>  -->
                 
         </section>
       
         </main>
 </section>
 
-<script src="<?php echo url_for('frontend/assets/js/liveSearch.js'); ?>"></script>
-<script src="<?php echo url_for('frontend/assets/js/fetch.js'); ?>"></script>
-<script src="<?php echo url_for('frontend/assets/js/toggleFollow.js'); ?>"></script>
+
 <?php require_once 'backend/shared/mainFooter.php'; ?>

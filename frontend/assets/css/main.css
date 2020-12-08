@@ -246,7 +246,6 @@ form.textareaContainer {
 .postsContainer .mainContentContainer{
   flex:1;
   display:flex;
-  align-items:center;
 }
 .postsContainer .postContentContainer{
   padding-left:var(--spacing);
@@ -293,8 +292,8 @@ a.displayName {
 .post-header a:hover{
   text-decoration: underline;
 }
-.post-header a,
-.post-header span{
+.post-header a
+{
   padding-right:5px;
 }
 .post-body div{
@@ -903,4 +902,43 @@ div#retweet-btn:hover{
 }
 .retweet-header a.retweet-link:hover{
   text-decoration:underline;
+}
+.dot-retweet{
+  font-size: 3rem;
+  padding-left:0.5rem;
+}
+.retweet-content-post-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  border: 1px solid rgb(196, 207, 214);
+  border-radius: 16px;
+  padding: 15px;
+}
+.retweet-content-body-header {
+  display: flex;
+}
+.retweet-content-header-img-wrapper {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+.retweet-content-header-img-wrapper img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:9999px;
+}
+.retweet-content-body-header-fullName {
+  margin-right: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.retweet-content-body-header-username {
+  margin-right: 1rem;
+}
+.retweet-content-body-header-date {
+  color: var(--greyText);
+  font-size: 1.6rem;
+  font-weight: 600;
 }

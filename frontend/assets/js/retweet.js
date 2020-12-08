@@ -50,6 +50,7 @@
                     // $button.removeClass('retweet').addClass('retweeted');
                     if($result.retweet <0){   
                         $button.removeClass('retweeted').addClass('retweet');
+                        $('.retweet-header').hide();
                     } else{
                          $button.removeClass('retweet').addClass('retweeted');
                     }
@@ -68,14 +69,15 @@
           
                 $.post('http://localhost/twirrer/backend/ajax/retweetPost.php',{retweet:post_id,user_id:user_id},function(data){
                     $('.retweet-modal-container').hide();
-                    updateLikesValue($counter,$result.retweet);
-                    if($result.retweet <0){   
-                        $button.removeClass('retweeted').addClass('retweet');
-                        $('.retweet-header').hide();
-                    } else{
-                         $button.removeClass('retweet').addClass('retweeted');
-                         $('.postsContainer').html(data);
-                    }
+                    $('.postsContainer').html(data);
+                    // updateLikesValue($counter,$result.retweet);
+                    // if($result.retweet <0){   
+                    //     $button.removeClass('retweeted').addClass('retweet');
+                    //     $('.retweet-header').hide();
+                    // } else{
+                    //      $button.removeClass('retweet').addClass('retweeted');
+                    //      $('.postsContainer').html(data);
+                    // }
                 
                     });      
         
