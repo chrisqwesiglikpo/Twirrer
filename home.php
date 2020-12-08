@@ -48,6 +48,8 @@ $userId=$user->user_id;
                 <div id="popUpModal" class="retweet-modal-container">
                    
                 </div> 
+                <div class="reply-wrapper">
+                </div>
                 
         </section>
         <aside role="complementary">

@@ -599,7 +599,7 @@ main .follow-user {
   /*background-color: rgba(0,0,0,0.4); Black w/ opacity 
 } */
 
-.retweet-modal-container{
+.retweet-modal-container,.reply-wrapper{
     width: 100%;
     position: fixed;
     z-index: 1;
@@ -611,7 +611,7 @@ main .follow-user {
     background-color: rgba(0,0,0,0.4);/* Black w/ opacity */
     display:none;
 }
-.retweet-modal-container .modal-content {
+.retweet-modal-container .modal-content,.reply-wrapper .reply-modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -623,14 +623,14 @@ main .follow-user {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-.retweet-modal-container > .modal-content > .modal-header{
+.retweet-modal-container > .modal-content > .modal-header,.reply-wrapper .modal-content{
     height: 53px;
     padding: 0 var(--spacing);
     border-bottom: 1px solid rgb(196, 207, 214);
     display: flex;
     align-items: center;
 }
-.retweet-modal-container .close{
+.retweet-modal-container .close,.reply-wrapper .close{
    font-size: 15px;
     font-weight: 700;
     cursor: pointer;
@@ -942,3 +942,121 @@ div#retweet-btn:hover{
   font-size: 1.6rem;
   font-weight: 600;
 }
+.reply-modal-header{
+  height: 53px;
+  padding: 0 var(--spacing);
+  border-bottom: 1px solid rgb(196, 207, 214);
+  display: flex;
+  align-items: center;
+}
+.reply-modal-header .close{
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1rem;
+  margin-left:1rem;
+}
+
+.reply-modal-header .close:hover{
+background-color:rgba(29,161,242,0.1);
+border-radius: 99999px;
+}
+svg.close-icon {
+fill: rgba(29,161,242,1.00);
+width: 2.5rem;
+height: 2.5rem;
+}
+.reply-modal-body {
+  padding: 10px 15px;
+  position:relative;
+  overflow:auto;
+}
+.reply-container {
+display: flex;
+margin-bottom:2rem;
+}
+.reply-wrapper-image {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
+  border: 1px solid rgba(0,0,0,0.4);
+  border-radius: 9999px;
+  width: 49px;
+  height: 49px;
+  margin-right: 1rem;
+}  
+.reply-wrapper-image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.vertical-pip {
+  width: 2px;
+  height: 2.8rem;
+  position: absolute;
+  background-color: rgb(196, 207, 214);
+  top: 64px;
+  left: 37px;
+}
+.reply-content-desc {
+  display: flex;
+  align-items: center;
+}
+.reply-user-fullName {
+  font-weight: 800;
+  margin-right: 0.5rem;
+}
+.reply-username {
+      color: #3A3E42;
+      font-weight: 400;
+      padding-right: 3px;
+}
+span.reply-date-time {
+      font-weight: 800;
+      font-size: 23px;
+  }
+  .reply-desc-text {
+      color: #0F1419;
+      font-size: 15px;
+      line-height: 1.3125;
+      font-weight: 400;
+      margin-bottom: 8px;
+  }
+ 
+  span.reply-to {
+      color: rgb(196, 207, 214);
+      font-size: 18px;
+      font-weight: 400;
+      padding-right: 6px;
+      cursor: pointer;
+  }
+  a.reply-username-link {
+      color: #5AB9F3;
+      text-decoration: none;
+      font-size: 20px;
+  }
+  .reply-user-msg {
+      display: flex;
+  }
+  textarea#reply-input {
+      flex: 1;
+      resize: none;
+      border: none;
+      font-size: 19px;
+      font-weight: 400;
+      color: #0F1419;
+  }
+  .reply-modal-footer{
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 2rem;
+  }
+  div#reply-btn {
+      background-color: rgb(29, 161, 242);
+      padding: 1rem;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 9999px;
+  }
+  div#reply-btn:hover{
+      background-color:rgb(26,145,218);
+  }
