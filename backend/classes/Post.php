@@ -99,9 +99,13 @@ class Post extends User{
         return "<button class='$buttonClass' data-user='$user->user_id'>$text</button>";
     }
 
-    // public function retweet($tweet_id,$user_id,$postedBy,$comment) {
-
-    // }  
+    public function checkRetweet($user_id,$post_id) {
+        $stmt=$this->con->prepare("SELECT * FROM `retweet` WHERE `retweetBy`=:user_id AND `retweetFrom`=:tweet_id");
+        $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+        $stmt->bindParam(":tweet_id",$post_id,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }  
  
     public function getRetweet($postId){
         $stmt=$this->con->prepare("SELECT count(*) as 'count' FROM `retweet` WHERE `retweetFrom`=:postId");
