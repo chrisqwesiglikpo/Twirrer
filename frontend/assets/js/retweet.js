@@ -43,11 +43,12 @@
                     $('.retweet-modal-container').hide();
                    
                 
-                    let result=JSON.parse(data);
-                
-                    updateLikesValue($counter,result.retweet);
+                    $result=JSON.parse(data);
+                    
+                    
+                    updateLikesValue($counter,$result.retweet);
                     // $button.removeClass('retweet').addClass('retweeted');
-                    if(result.retweet <0){   
+                    if($result.retweet <0){   
                         $button.removeClass('retweeted').addClass('retweet');
                     } else{
                          $button.removeClass('retweet').addClass('retweeted');
@@ -58,6 +59,29 @@
            
         
         });
+
+        $(document).on("click","#retweet-btn",function(){
+            // let comment=document.querySelector("#retweet-comment").value.trim();
+            let post_id=$button.data('post');
+            let user_id=$button.data('user');
+           
+          
+                $.post('http://localhost/twirrer/backend/ajax/retweetPost.php',{retweet:post_id,user_id:user_id},function(data){
+                    $('.retweet-modal-container').hide();
+                    updateLikesValue($counter,$result.retweet);
+                    if($result.retweet <0){   
+                        $button.removeClass('retweeted').addClass('retweet');
+                        $('.retweet-header').hide();
+                    } else{
+                         $button.removeClass('retweet').addClass('retweeted');
+                         $('.postsContainer').html(data);
+                    }
+                
+                    });      
+        
+        });
+
+        
       
         function updateLikesValue(element,num){
             let retweetCountVal=element.text() || "0";
@@ -71,6 +95,7 @@
 
             $.post('http://localhost/twirrer/backend/ajax/retweet.php',{deretweet:post_id,user_id:user_id},function(data){
                 button.removeClass('retweeted').addClass('retweet');
+                $('.retweet-header').hide();
                 $(".retweetsCount").text("");
             })
          })

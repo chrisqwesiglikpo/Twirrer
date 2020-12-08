@@ -881,3 +881,26 @@ div#retweet-btn:hover{
 .follow-user-info a{
   color:#444;
 }
+/* Retweet */
+.post .retweet-header {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding-left: 3rem;
+}
+.post .retweet-image {
+  margin-right: 1rem;
+}
+.retweet-image svg{
+    fill: rgb(91,112,131);
+}
+.retweet-header .retweet-user-link {
+  line-height: calc(19.6875px);
+  font-weight: 700;
+}
+.retweet-header a.retweet-link {
+  color: rgb(91,112,131);
+}
+.retweet-header a.retweet-link:hover{
+  text-decoration:underline;
+}

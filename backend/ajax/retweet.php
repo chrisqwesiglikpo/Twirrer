@@ -57,6 +57,14 @@
     $user_id=$_POST['user_id'];
     // $loadFromPost->retweet($tweet_id,$user_id,$postedBy,$comment);
     echo $loadFromPost->retweetCount($user_id,$tweet_id,$comment);
+    $retweet=$loadFromPost->checkRetweet($user_id,$tweet_id);
+       
+        if(!empty($retweet)){
+            $retweetUserData=$loadFromPost->userData($retweet["retweetBy"]); 
+        }
+      
+     
+    
 
   }
 
