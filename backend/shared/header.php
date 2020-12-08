@@ -16,6 +16,9 @@ if(!isset($page_title)){
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="<?php echo url_for('frontend/assets/js/jquery.min.js'); ?>"></script>
+    <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/favicon.ico'); ?>">
+    <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/favicon-32x32.png'); ?>">
+    <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/favicon-16x16.png'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/font-awesome/css/font-awesome.css'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/master.css'); ?>">
 
