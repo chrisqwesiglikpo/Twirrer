@@ -8,8 +8,8 @@ class Constants{
     public static $passwordNotAlphanumeric="Your password can only contain letters and numbers";
     public static $passwordLength="Your password must be between 5 and 30 characters";
 
-    public static $loginUsernameFailed="Your username or password was incorrect";
-    public static $loginPasswordFailed="Your password was incorrect";
+    public static $loginUsernameFailed="Username and password are incorrect";
+    public static $loginPasswordFailed="Username and password are incorrect";
 }
 
 ?>
