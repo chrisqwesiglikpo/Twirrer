@@ -25,7 +25,7 @@ class Post extends User{
         }
         if((!empty($retweet['retweetBy']))==$user_id && $retweet['status'] != ""){
       echo '<div class="post">
-             <div class="mainContentContainer">
+             <div class="retweet-text-reply mainContentContainer">
                   <div class="userImageContainer">
                       <img src="'.url_for($retweetUserData->profilePic).'" alt="User Profile Pic">
                   </div>
@@ -36,7 +36,7 @@ class Post extends User{
                           <span class="date"><span class="dot-retweet">.</span>'.$this->timeAgo($retweet['tweetedOn']).'</span> 
                       </div>
                       <div class="post-body">
-                            <div class="retweet-text-content">Yeah</div>
+                            <div class="retweet-text-content">'.$this->getTweetLinks($retweet['status']).'</div>
                             <div class="retweet-content-post-container">
                                 <div class="retweet-content-body-header">
                                     <div class="retweet-content-header-img-wrapper">

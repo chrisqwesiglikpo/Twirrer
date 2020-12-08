@@ -51,6 +51,7 @@
                     if($result.retweet <0){   
                         $button.removeClass('retweeted').addClass('retweet');
                         $('.retweet-header').hide();
+                        $('.retweet-text-reply').hide();
                     } else{
                          $button.removeClass('retweet').addClass('retweeted');
                     }
@@ -98,6 +99,7 @@
             $.post('http://localhost/twirrer/backend/ajax/retweet.php',{deretweet:post_id,user_id:user_id},function(data){
                 button.removeClass('retweeted').addClass('retweet');
                 $('.retweet-header').hide();
+                $('.retweet-text-reply').hide();
                 $(".retweetsCount").text("");
             })
          })
