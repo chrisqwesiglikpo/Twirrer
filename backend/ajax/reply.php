@@ -63,4 +63,12 @@
      echo $loadFromPost->comment($commentBy,$commentOn,$comment);
   }
 
+  if(isset($_POST['deleteCommentOn']) && !empty($_POST['deleteCommentOn'])){
+    $deleteCommentBy=$_POST['deleteCommentBy'];
+    $deleteCommentOn=$_POST['deleteCommentOn'];
+
+    echo $loadFromPost->removeComment($deleteCommentBy,$deleteCommentOn);
+ }
+
+
   ?>

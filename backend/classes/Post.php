@@ -279,7 +279,14 @@ class Post extends User{
             
         }
    }
-
+   public function removeComment($deleteCommentBy,$deleteCommentOn){
+    if($this->wasCommentBy($deleteCommentBy,$deleteCommentOn)){
+        //User has already like
+        $this->delete('comment',['commentBy'=>$deleteCommentBy,'commentOn'=>$deleteCommentOn]);
+        $result=array("deletecomment"=>-1);
+        return json_encode($result);
+    }
+   }
    public function wasCommentBy($commentBy,$commentOn){
         $stmt=$this->con->prepare("SELECT * FROM comment WHERE commentBy=:user_id AND commentOn=:postId");
         $stmt->bindParam(":user_id",$commentBy,PDO::PARAM_INT);

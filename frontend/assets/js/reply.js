@@ -4,32 +4,51 @@ $(function(){
     
      // When the user clicks on the button, open the modal
      $(document).on("click",".replyModal,.commented",function(){
+        $post_id=$(this).data('post');
+        $user_id=u_id;
         let isModal=$(this).hasClass('commented');
         if(isModal){
-
+            $.post('http://localhost/twirrer/backend/ajax/reply.php',{deleteCommentOn:$post_id,deleteCommentBy:$user_id},function(data){
+                let result=JSON.parse(data);
+                let counter=$button.find('.replyCount');
+                updateCommentValue(counter,result.deletecomment);
+                // $button.removeClass('retweet').addClass('retweeted');
+                if(result.deletecomment <0){   
+                    // $button.removeClass('retweeted').addClass('retweet');
+                    $button.removeClass('commented').addClass('replyModal');
+                    $button.removeClass('replyCountColor');
+                    counter.removeClass('replyCountColor');
+                    // $('.retweet-header').hide();
+                    // $('.retweet-text-reply').hide();
+                    console.log(result.deletecomment);
+                }
+            
+            });
         }else{
             modal.style.display="block";
+            $postedBy=$(this).data('postedby');
+            $counter=$(this).find('.retweetsCount');
+            $count=$counter.text();
+            $button=$(this);
+        
+            $.post('http://localhost/twirrer/backend/ajax/reply.php',{showPopup:$post_id,postedBy:$postedBy,user_id:$user_id},function(data){
+                $(".reply-wrapper").html(data);
+            
+            });
         }
         
 
-        $post_id=$(this).data('post');
-        $user_id=u_id;
-        $postedBy=$(this).data('postedby');
-        $counter=$(this).find('.retweetsCount');
-        $count=$counter.text();
-        $button=$(this);
       
-       $.post('http://localhost/twirrer/backend/ajax/reply.php',{showPopup:$post_id,postedBy:$postedBy,user_id:$user_id},function(data){
-           $(".reply-wrapper").html(data);
         
-        });
        
     });
        
     $(document).on("click","#replyBtn",function(e){
+        
          let user_id=u_id;
          let post_id=$button.data('post');
          let counter=$button.find('.replyCount');
+        
     
          let textbox=$("#replyInput").val();
         
@@ -67,10 +86,6 @@ $(function(){
     
     });
 
-    $(document).on("click",".commented",function(e){
-        let isModal=$(this).hasClass('commented');
-        console.log(isModal);
-    });
 
 
     function updateCommentValue(element,num){
