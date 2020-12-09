@@ -3,18 +3,25 @@ $(function(){
     var modal = document.querySelector(".retweet-modal-container");
     
      // When the user clicks on the button, open the modal
-     $(document).on("click",".retweet",function(){
+     $(document).on("click",".retweet,.retweeted",function(){
               $post_id=$(this).data('post');
               $user_id=u_id;
-              modal.style.display="block";
-              $postedBy=$(this).data('postedby');
               $counter=$(this).find('.retweetsCount');
-              $count=$counter.text();
               $button=$(this);
-              $.post('http://localhost/twirrer/backend/ajax/retweet.php',{showPopup:$post_id,postedBy:$postedBy,user_id:$user_id},function(data){
-                $(".retweet-modal-container").html(data);
+              let isRetweeted=$button.hasClass('retweeted');
+              if(isRetweeted){
+                  console.log("Hi");
+              }else{
+                    modal.style.display="block";
+                    $postedBy=$(this).data('postedby');
+                    $.post('http://localhost/twirrer/backend/ajax/retweet.php',{showPopup:$post_id,postedBy:$postedBy,user_id:$user_id},function(data){
+                    $(".retweet-modal-container").html(data);
+                
+                });
+
+              }
+
             
-            });
      })
 
      $(document).on("click",".retweet-btn",function(){
