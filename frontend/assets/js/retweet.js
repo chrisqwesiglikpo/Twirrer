@@ -18,7 +18,7 @@ $(function(){
             
                     if(result.deleteretweet <0){   
                         $(".retweet-header").hide();
-                        $(".retweet-text-reply").hide();
+                        $(".retweet-text-reply.mainContentContainer").hide();
                         $button.removeClass('retweeted').addClass('retweet');
                   
                     }
