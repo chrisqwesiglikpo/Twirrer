@@ -11,7 +11,48 @@ $(function(){
               $counter=$(this).find('.retweetsCount');
               $count=$counter.text();
               $button=$(this);
+              $.post('http://localhost/twirrer/backend/ajax/retweet.php',{showPopup:$post_id,postedBy:$postedBy,user_id:$user_id},function(data){
+                $(".retweet-modal-container").html(data);
+            
+            });
      })
+
+     $(document).on("click",".retweet-btn",function(){
+        let post_id=$button.data('post');
+        $user_id=u_id;
+        let retweetComment=$("#retweet-comment").val().trim();
+       
+        $.post('http://localhost/twirrer/backend/ajax/retweet.php',{retweet:$post_id,comment:retweetComment,user_id:$user_id},function(data){
+                
+                $('.retweet-modal-container').hide();
+                
+                
+                let result=JSON.parse(data);
+                
+                
+                updateCommentValue($counter,result.retweet);
+               
+            
+                if(result.retweet <0){   
+                    
+                    // $button.removeClass('commented').addClass('replyModal');
+                    // $button.removeClass('replyCountColor');
+                    // counter.removeClass('replyCountColor');
+                    $button.removeClass('retweeted').addClass('retweet');
+                    
+                
+                } else{
+                    // $button.removeClass('replyModal').addClass('commented');
+                    $button.removeClass('retweet').addClass('retweeted');
+                    // counter.addClass('replyCountColor');
+                
+                    
+                }
+            
+               
+        });
+
+     });
     //  $(document).on("click",".replyModal,.commented",function(){
     //     $post_id=$(this).data('post');
     //     $user_id=u_id;
