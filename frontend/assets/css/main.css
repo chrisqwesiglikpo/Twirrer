@@ -991,11 +991,16 @@ margin-bottom:2rem;
 }
 .vertical-pip {
   width: 2px;
-  height: 2.8rem;
+  height: 4.8rem;
   position: absolute;
   background-color: rgb(196, 207, 214);
   top: 64px;
   left: 37px;
+}
+.reply-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
 }
 .reply-content-desc {
   display: flex;
@@ -1004,16 +1009,20 @@ margin-bottom:2rem;
 .reply-user-fullName {
   font-weight: 800;
   margin-right: 0.5rem;
+  font-size: 1.5rem;
 }
 .reply-username {
-      color: #3A3E42;
-      font-weight: 400;
-      padding-right: 3px;
+  color: #3A3E42;
+  font-weight: 400;
+  padding-right: 3px;
+  font-size: 1.5rem;
 }
 span.reply-date-time {
       font-weight: 800;
-      font-size: 23px;
   }
+  .reply-desc-date {
+    font-size: 1.75rem;
+}
   .reply-desc-text {
       color: #0F1419;
       font-size: 15px;
@@ -1037,7 +1046,7 @@ span.reply-date-time {
   .reply-user-msg {
       display: flex;
   }
-  textarea#reply-input {
+  textarea#replyInput {
       flex: 1;
       resize: none;
       border: none;
@@ -1050,13 +1059,28 @@ span.reply-date-time {
       justify-content: flex-end;
       margin-right: 2rem;
   }
-  div#reply-btn {
-      background-color: rgb(29, 161, 242);
-      padding: 1rem;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 9999px;
+  #replyBtn {
+    /* background-color: rgb(29, 161, 242); */
+    background-color: var(--deepBlue);
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 9999px;
+    border:none;
+}
+  /* div#reply-btn:hover{
+     
+  } */
+  #replyBtn:enabled{
+    cursor: pointer;
   }
-  div#reply-btn:hover{
-      background-color:rgb(26,145,218);
+  #replyBtn:enabled:hover{
+    background-color:rgb(26,145,218);
+  }
+  #replyBtn:disabled{
+    background-color: var(--deepblueLight);
+  }
+  .replyCountColor{
+    fill: #46B1F3;
+    color: #46B1F3;
   }

@@ -7,9 +7,9 @@ class Post extends User{
     }
     public function posts($user_id,$num){
         $userdata=$this->userData($user_id);
-        $stmt=$this->con->prepare("SELECT * FROM post p LEFT JOIN users u ON p.userId = u.user_id   WHERE  p.userId =:user_id
+        $stmt=$this->con->prepare("SELECT * FROM post p LEFT JOIN users u ON p.userId = u.user_id  WHERE  p.userId =:user_id
         UNION
-        SELECT * FROM post p LEFT JOIN users u ON p.userId = u.user_id  WHERE  p.userId IN (SELECT follow.receiver FROM follow WHERE follow.sender = :user_id ) ORDER BY postedOn DESC LIMIT :num");
+    SELECT * FROM post p LEFT JOIN users u ON p.userId = u.user_id  WHERE p.userId IN (SELECT follow.receiver FROM follow WHERE follow.sender =:user_id ) ORDER BY postedOn DESC LIMIT :num");
 
         $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
         $stmt->bindParam(":num",$num,PDO::PARAM_INT);
@@ -71,7 +71,7 @@ class Post extends User{
                             <span>'.$retweetUserData->firstName.' '.$retweetUserData->lastName.' Retweeted</span>
                </a>
             </div>
-    </div>' : ' ' ).'
+    </div>' : '' ).'
              <div class="mainContentContainer">
                   <div class="userImageContainer">
                       <img src="'.url_for($post->profilePic).'" alt="User Profile Pic">
@@ -263,6 +263,42 @@ class Post extends User{
         return $stmt->rowCount() > 0;  
 
     }
-  
+
+    public function comment($commentBy,$commentOn,$comment){
+        
+        if($this->wasCommentBy($commentBy,$commentOn)){
+            //User has already like
+            $this->delete('comment',['commentBy'=>$commentBy,'commentOn'=>$commentOn]);
+            $result=array("comment"=>-1);
+            return json_encode($result);
+        }else{
+            //User has not like
+            $this->create('comment',array('commentBy'=>$commentBy,'commentOn'=>$commentOn,'comment'=>$comment));
+            $result=array("comment"=>1);
+            return json_encode($result);
+            
+        }
+   }
+
+   public function wasCommentBy($commentBy,$commentOn){
+        $stmt=$this->con->prepare("SELECT * FROM comment WHERE commentBy=:user_id AND commentOn=:postId");
+        $stmt->bindParam(":user_id",$commentBy,PDO::PARAM_INT);
+        $stmt->bindParam(":postId",$commentOn,PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;  
+   }
+   public function getComments($postId){
+    $stmt=$this->con->prepare("SELECT count(*) as 'count' FROM `comment` WHERE `commentOn`=:postId");
+    $stmt->bindParam(":postId",$postId,PDO::PARAM_INT);
+    $stmt->execute();
+
+    $data=$stmt->fetch(PDO::FETCH_ASSOC);
+   if($data["count"] > 0){
+       return $data["count"];
+   }
+
+    
+}
 }
 ?>

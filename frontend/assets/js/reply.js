@@ -1,26 +1,82 @@
+var u_id = $('.u_p_id').data('uid');
 $(function(){
     var modal = document.querySelector(".reply-wrapper");
     
      // When the user clicks on the button, open the modal
-     $(document).on("click",".replyModal",function(){
-           
-        modal.style.display="block";
+     $(document).on("click",".replyModal,.commented",function(){
+        let isModal=$(this).hasClass('commented');
+        if(isModal){
+
+        }else{
+            modal.style.display="block";
+        }
+        
 
         $post_id=$(this).data('post');
-        $user_id=$(this).data('user');
+        $user_id=u_id;
         $postedBy=$(this).data('postedby');
         $counter=$(this).find('.retweetsCount');
         $count=$counter.text();
         $button=$(this);
       
        $.post('http://localhost/twirrer/backend/ajax/reply.php',{showPopup:$post_id,postedBy:$postedBy,user_id:$user_id},function(data){
-        //    $(".reply-wrapper").html(data);
-          alert(data);
+           $(".reply-wrapper").html(data);
+        
         });
        
     });
        
-   
+    $(document).on("click","#replyBtn",function(e){
+         let user_id=u_id;
+         let post_id=$button.data('post');
+         let counter=$button.find('.replyCount');
+    
+         let textbox=$("#replyInput").val();
+        
+        
+       
+      
+            $.post('http://localhost/twirrer/backend/ajax/reply.php',{commentBy:user_id,commentOn:post_id,comment:textbox},function(data){
+                $('.reply-wrapper').hide();
+               
+             
+                let result=JSON.parse(data);
+                
+                
+                updateCommentValue(counter,result.comment);
+                // $button.removeClass('retweet').addClass('retweeted');
+                if(result.comment <0){   
+                    // $button.removeClass('retweeted').addClass('retweet');
+                    $button.removeClass('commented').addClass('replyModal');
+                    $button.removeClass('replyCountColor');
+                    counter.removeClass('replyCountColor');
+                    // $('.retweet-header').hide();
+                    // $('.retweet-text-reply').hide();
+                    console.log(result.comment);
+                } else{
+                    $button.removeClass('replyModal').addClass('commented');
+                    $button.addClass('replyCountColor');
+                    counter.addClass('replyCountColor');
+                    //  $button.removeClass('retweet').addClass('retweeted');
+                    console.log(result.comment);
+                }
+            
+                });
+       
+       
+    
+    });
+
+    $(document).on("click",".commented",function(e){
+        let isModal=$(this).hasClass('commented');
+        console.log(isModal);
+    });
+
+
+    function updateCommentValue(element,num){
+        let commentCountVal=element.text() || "0";
+         element.text(parseInt(commentCountVal) + parseInt(num));
+     }
 
     // When the user clicks on <span> (x), close the modal
     $(document).on("click",".close",function(){

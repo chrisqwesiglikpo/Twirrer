@@ -7,20 +7,43 @@ $(function() {
    }
   });
  });
-//  ,#replyTextarea
-$("#postTextarea").keyup(e=>{
-  let textbox=$(e.target);
-  let value=textbox.val().trim();
+
+ $(document).on("keyup","#postTextarea, #replyInput",function(e){
+      let textbox=$(e.target);
+      let value=textbox.val().trim();
   
-  let submitButton=$("#submitPostButton");
-  if(submitButton.length ==0) return alert("No submit button not found");
+    
+      let isModal=textbox.parents(".reply-wrapper").length==1;
+      
+      
+      
+      let submitButton=isModal ? $("#replyBtn") : $("#submitPostButton") ;
+      if(submitButton.length ==0) return alert("No submit button not found");
+          
+      if(value ==""){
+          submitButton.prop("disabled",true);
+          return;
+        }
+        submitButton.prop("disabled",false);
+     
+})
+// //  ,#replyTextarea
+// $("#postTextarea").keyup(e=>{
+//   let textbox=$(e.target);
+//   let value=textbox.val().trim();
+
+ 
   
-  if(value ==""){
-    submitButton.prop("disabled",true);
-    return;
-  }
-  submitButton.prop("disabled",false);
-});
+//   let submitButton=$("#submitPostButton");
+//   if(submitButton.length ==0) return alert("No submit button not found");
+  
+//   if(value ==""){
+//     submitButton.prop("disabled",true);
+//     return;
+//   }
+//   submitButton.prop("disabled",false);
+//   // console.log( submitButton.prop("disabled",false));
+// });
 
 
 $("#submitPostButton").click(e=>{
