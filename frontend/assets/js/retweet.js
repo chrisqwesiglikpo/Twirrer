@@ -13,7 +13,7 @@ $(function(){
                 $.post('http://localhost/twirrer/backend/ajax/retweet.php',{deretweet:$post_id,user_id:$user_id},function(data){
                     let result=JSON.parse(data);
                     console.log(result);
-                    // let counter=$button.find('.replyCount');
+                    let counter=$button.find('.retweetsCount');
                     updateCommentValue(counter,result.deleteretweet);
                     // $button.removeClass('retweet').addClass('retweeted');
                     if(result.deleteretweet <0){   
