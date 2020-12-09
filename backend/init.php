@@ -23,7 +23,7 @@ $loadFromUser=new User;
 $postControls=new PostControls;
 $loadFromPost=new Post;
 $loadFromFollow=new Follow;
-$navigationProvider=new NavigationMenuProvider;
+// $navigationProvider=new NavigationMenuProvider;
 
 
 

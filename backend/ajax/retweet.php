@@ -61,13 +61,14 @@
 
   }
 
-  // if(isset($_POST['deretweet']) && !empty($_POST['deretweet'])){
-  //    $comment=$_POST['comment'];
-  //     $deretweet=$_POST['deretweet'];
-  //     $user_id=$_POST['user_id'];
-  //   //   $loadFromPost->delete('retweet',['retweetBy'=>$user_id,'retweetFrom'=>$deretweet]);
-  //   echo $loadFromPost->retweetCount($user_id,$deretweet_id,$comment);
+  if(isset($_POST['deretweet']) && !empty($_POST['deretweet'])){
+    //  $comment=$_POST['comment'];
+      $deretweet=$_POST['deretweet'];
+      $user_id=$_POST['user_id'];
+    //   $loadFromPost->delete('retweet',['retweetBy'=>$user_id,'retweetFrom'=>$deretweet]);
+    // echo $loadFromPost->retweetCount($user_id,$deretweet_id,$comment);
+    echo "It worked!";
      
-  // }
+  }
 
 ?>
