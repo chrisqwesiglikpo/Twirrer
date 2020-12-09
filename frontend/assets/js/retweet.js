@@ -12,30 +12,15 @@ $(function(){
               if(isRetweeted){
                 $.post('http://localhost/twirrer/backend/ajax/retweet.php',{deretweet:$post_id,user_id:$user_id},function(data){
                     let result=JSON.parse(data);
-                    console.log(result);
+                 
                     let counter=$button.find('.retweetsCount');
                     updateCommentValue(counter,result.deleteretweet);
-                    // $button.removeClass('retweet').addClass('retweeted');
+            
                     if(result.deleteretweet <0){   
-                        // $button.removeClass('retweeted').addClass('retweet');
+                        $(".retweet-header").hide();
                         $button.removeClass('retweeted').addClass('retweet');
                   
-                        // $('.retweet-header').hide();
-                        // $('.retweet-text-reply').hide();
-                        console.log(result.deleteretweet);
                     }
-                    // let counter=$button.find('.replyCount');
-                    // updateCommentValue(counter,result.deletecomment);
-                    // // $button.removeClass('retweet').addClass('retweeted');
-                    // if(result.deletecomment <0){   
-                    //     // $button.removeClass('retweeted').addClass('retweet');
-                    //     $button.removeClass('commented').addClass('replyModal');
-                    //     $button.removeClass('replyCountColor');
-                    //     counter.removeClass('replyCountColor');
-                    //     // $('.retweet-header').hide();
-                    //     // $('.retweet-text-reply').hide();
-                    //     console.log(result.deletecomment);
-                    // }
                 
                 });
               }else{
@@ -68,108 +53,54 @@ $(function(){
                
             
                 if(result.retweet <0){   
-                    
-                    // $button.removeClass('commented').addClass('replyModal');
-                    // $button.removeClass('replyCountColor');
-                    // counter.removeClass('replyCountColor');
+                    $(".retweet-header").hide();
                     $button.removeClass('retweeted').addClass('retweet');
                     
                 
                 } else{
-                    // $button.removeClass('replyModal').addClass('commented');
+                
                     $button.removeClass('retweet').addClass('retweeted');
-                    // counter.addClass('replyCountColor');
+                    
                 
                     
-                }
-            
+                } 
                
         });
 
      });
-    //  $(document).on("click",".replyModal,.commented",function(){
-    //     $post_id=$(this).data('post');
-    //     $user_id=u_id;
-    //     let isModal=$(this).hasClass('commented');
-    //     if(isModal){
-    //         $.post('http://localhost/twirrer/backend/ajax/reply.php',{deleteCommentOn:$post_id,deleteCommentBy:$user_id},function(data){
-    //             let result=JSON.parse(data);
-    //             let counter=$button.find('.replyCount');
-    //             updateCommentValue(counter,result.deletecomment);
-    //             // $button.removeClass('retweet').addClass('retweeted');
-    //             if(result.deletecomment <0){   
-    //                 // $button.removeClass('retweeted').addClass('retweet');
-    //                 $button.removeClass('commented').addClass('replyModal');
-    //                 $button.removeClass('replyCountColor');
-    //                 counter.removeClass('replyCountColor');
-    //                 // $('.retweet-header').hide();
-    //                 // $('.retweet-text-reply').hide();
-    //                 console.log(result.deletecomment);
-    //             }
-            
-    //         });
-    //     }else{
-    //         modal.style.display="block";
-    //         $postedBy=$(this).data('postedby');
-    //         $counter=$(this).find('.retweetsCount');
-    //         $count=$counter.text();
-    //         $button=$(this);
-        
-    //         $.post('http://localhost/twirrer/backend/ajax/reply.php',{showPopup:$post_id,postedBy:$postedBy,user_id:$user_id},function(data){
-    //             $(".reply-wrapper").html(data);
-            
-    //         });
-    //     }
-        
 
-      
-        
+     $(document).on("click",".retweet-btn",function(){
+        let post_id=$button.data('post');
+        $user_id=u_id;
        
-    // });
        
-    // $(document).on("click","#replyBtn",function(e){
-        
-    //      let user_id=u_id;
-    //      let post_id=$button.data('post');
-    //      let counter=$button.find('.replyCount');
-        
-    
-    //      let textbox=$("#replyInput").val();
-        
-        
-       
-      
-    //         $.post('http://localhost/twirrer/backend/ajax/reply.php',{commentBy:user_id,commentOn:post_id,comment:textbox},function(data){
-    //             $('.reply-wrapper').hide();
+        $.post('http://localhost/twirrer/backend/ajax/retweetPost.php',{retweet:$post_id,user_id:$user_id},function(data){
+                
+                $('.retweet-modal-container').hide();
+                $('.postsContainer').html(data);
+                // console.log(data);
+                // let result=JSON.parse(data);
+                
+                
+                // updateCommentValue($counter,result.retweet);
                
-             
-    //             let result=JSON.parse(data);
-                
-                
-    //             updateCommentValue(counter,result.comment);
-    //             // $button.removeClass('retweet').addClass('retweeted');
-    //             if(result.comment <0){   
-    //                 // $button.removeClass('retweeted').addClass('retweet');
-    //                 $button.removeClass('commented').addClass('replyModal');
-    //                 $button.removeClass('replyCountColor');
-    //                 counter.removeClass('replyCountColor');
-    //                 // $('.retweet-header').hide();
-    //                 // $('.retweet-text-reply').hide();
-    //                 console.log(result.comment);
-    //             } else{
-    //                 $button.removeClass('replyModal').addClass('commented');
-    //                 $button.addClass('replyCountColor');
-    //                 counter.addClass('replyCountColor');
-    //                 //  $button.removeClass('retweet').addClass('retweeted');
-    //                 console.log(result.comment);
-    //             }
             
-    //             });
-       
-       
-    
-    // });
+                // if(result.retweet <0){   
+                    
+                //     $button.removeClass('retweeted').addClass('retweet');
+                    
+                
+                // } else{
+                
+                //     $button.removeClass('retweet').addClass('retweeted');
+                    
+                
+                    
+                // } 
+               
+        });
 
+     });
 
 
     function updateCommentValue(element,num){
