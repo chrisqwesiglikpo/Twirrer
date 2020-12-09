@@ -876,6 +876,7 @@ div#retweet-btn:hover{
   font-size: 50px;
   color: rgba(0,0,0,0.6);
   border: none;
+  display:none;
 }
 .follow-user-info a{
   color:#444;
@@ -1084,3 +1085,24 @@ span.reply-date-time {
     fill: #46B1F3;
     color: #46B1F3;
   }
+  /* Profile Styles */
+  input.file-upload-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    font-size:1px;
+}
+svg.camera-img {
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  fill: rgba(0,0,0,0.6);
+}
+.userImageContainer:hover .profilePictureButton{
+  display: block;
+}
