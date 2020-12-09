@@ -24,7 +24,16 @@ $(function(){
         let fileType=fileData['type'].split('/').pop();
 
         let userId=u_id;
-        alert(fileSize);
+        let imgName='backend/user/'+userId+'/profilePic/'+name+'';
+        let formData=new FormData();
+
+        formData.append('file',fileData);
+
+        if(name != ""){
+            $.post('http://localhost/twirrer/backend/ajax/profile.php',{imgName:imgName,userId:userId},function(data){
+                
+            })
+        }
     })
 
 })
