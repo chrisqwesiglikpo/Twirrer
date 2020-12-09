@@ -6,6 +6,7 @@ $(function(){
      $(document).on("click",".replyModal,.commented",function(){
         $post_id=$(this).data('post');
         $user_id=u_id;
+        $button=$(this);
         let isModal=$(this).hasClass('commented');
         if(isModal){
             $.post('http://localhost/twirrer/backend/ajax/reply.php',{deleteCommentOn:$post_id,deleteCommentBy:$user_id},function(data){
@@ -27,7 +28,7 @@ $(function(){
         }else{
             modal.style.display="block";
             $postedBy=$(this).data('postedby');
-            $counter=$(this).find('.retweetsCount');
+            $counter=$(this).find('.replyCounts');
             $count=$counter.text();
             $button=$(this);
         
@@ -63,21 +64,20 @@ $(function(){
                 
                 
                 updateCommentValue(counter,result.comment);
-                // $button.removeClass('retweet').addClass('retweeted');
+               
                 if(result.comment <0){   
-                    // $button.removeClass('retweeted').addClass('retweet');
+                    
                     $button.removeClass('commented').addClass('replyModal');
                     $button.removeClass('replyCountColor');
                     counter.removeClass('replyCountColor');
-                    // $('.retweet-header').hide();
-                    // $('.retweet-text-reply').hide();
-                    console.log(result.comment);
+                    
+                   
                 } else{
                     $button.removeClass('replyModal').addClass('commented');
                     $button.addClass('replyCountColor');
                     counter.addClass('replyCountColor');
-                    //  $button.removeClass('retweet').addClass('retweeted');
-                    console.log(result.comment);
+                   
+                    
                 }
             
                 });
