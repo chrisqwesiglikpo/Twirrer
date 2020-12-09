@@ -11,8 +11,19 @@ $(function(){
               let isRetweeted=$button.hasClass('retweeted');
               if(isRetweeted){
                 $.post('http://localhost/twirrer/backend/ajax/retweet.php',{deretweet:$post_id,user_id:$user_id},function(data){
-                    // let result=JSON.parse(data);
-                    alert(data);
+                    let result=JSON.parse(data);
+                    console.log(result);
+                    // let counter=$button.find('.replyCount');
+                    updateCommentValue(counter,result.deleteretweet);
+                    // $button.removeClass('retweet').addClass('retweeted');
+                    if(result.deleteretweet <0){   
+                        // $button.removeClass('retweeted').addClass('retweet');
+                        $button.removeClass('retweeted').addClass('retweet');
+                  
+                        // $('.retweet-header').hide();
+                        // $('.retweet-text-reply').hide();
+                        console.log(result.deleteretweet);
+                    }
                     // let counter=$button.find('.replyCount');
                     // updateCommentValue(counter,result.deletecomment);
                     // // $button.removeClass('retweet').addClass('retweeted');

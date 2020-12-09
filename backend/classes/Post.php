@@ -279,6 +279,14 @@ class Post extends User{
             
         }
    }
+   public function removeRetweet($user_id,$deretweet){
+        if($this->wasRetweetBy($user_id,$deretweet)){
+            //User has already like
+            $this->delete('retweet',['retweetBy'=>$user_id,'retweetFrom'=>$deretweet]);
+            $result=array("deleteretweet"=>-1);
+            return json_encode($result);
+        }
+   }
    public function removeComment($deleteCommentBy,$deleteCommentOn){
     if($this->wasCommentBy($deleteCommentBy,$deleteCommentOn)){
         //User has already like
