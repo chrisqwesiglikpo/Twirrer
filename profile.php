@@ -38,6 +38,7 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                 <div id="popUpModal" class="retweet-modal-container">
                    
                 </div> 
+                <div class="reply-wrapper"></div>
 </section>
 </main>
 </section>
