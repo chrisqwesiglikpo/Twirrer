@@ -14,7 +14,9 @@ if(!isset($page_title)){
       href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.js"></script>
     <script src="<?php echo url_for('frontend/assets/js/jquery.min.js'); ?>"></script>
     <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/favicon.ico'); ?>">
     <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/favicon-32x32.png'); ?>">
