@@ -43,10 +43,7 @@ $(function(){
 					httpRequest.send(formData);
 				}
         }
-        // let name=$("#cover-upload").val().split("\\").pop();
-        // let fileData=$("#cover-upload").prop("files")[0];
-        // let fileSize=fileData['size'];
-        // let fileType=fileData['type'].split('/').pop();
+    
    })
    document.querySelector('#editProfile').addEventListener("change", function(event){
     var regex = /(\.jpg|\.jpeg|\.png|\.zip)$/i;
@@ -65,37 +62,6 @@ $(function(){
     }
 });
 
-
-//  })
-    // $(document).on("change","#cover-upload",function(){
-    //     let name=$("#cover-upload").val().split("\\").pop();
-    //     let fileData=$("#cover-upload").prop("files")[0];
-    //     let fileSize=fileData['size'];
-    //     let fileType=fileData['type'].split('/').pop();
-
-    //     $userId=u_id;
-    //     let imgName='frontend/assets/images/'+name;
-    //     let formData=new FormData();
-
-    //     formData.append('file',fileData);
-
-    //     if(name != ""){
-    //         $.post('http://localhost/twirrer/backend/ajax/profile.php',{imgName:imgName,userId:$userId},function(data){
-    //             // alert(data);
-    //         })
-    //     }
-    //     $.ajax({
-    //         url:'http://localhost/twirrer/backend/ajax/profile.php',
-    //         cache:false,
-    //         contentType:false,
-    //         processData:false,
-    //         data:formData,
-    //         type:'POST',
-    //         success:function(data){
-    //             $('.profile-pic-me').attr('src', " " + data + " ");
-    //         }
-    //     })
-    // })
 
 })
 
