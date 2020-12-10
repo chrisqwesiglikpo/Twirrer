@@ -1,4 +1,5 @@
 var u_id = $('.u_p_id').data('uid');
+var cropper;
 $(function(){
 
     $(document).ready(function(){
@@ -30,6 +31,28 @@ $(function(){
         if (e.target == modal) {
             modal.style.display = "none";
             }
+    });
+
+    $("#filePhoto").change(function(){
+        // let input=$(e.target);
+        if(this.files && this.files[0]){
+            let reader=new FileReader();
+            reader.onload=function(e){
+                var image=document.getElementById("imagePreview");
+                image.src=e.target.result;
+                // $("#imagePreview").attr("src",e.target.result);
+
+                if(cropper !==  undefined){
+                    cropper.destroy();
+                }
+
+                cropper=new Cropper(image,{
+                    aspectRatio:1/1,
+                    background:false
+                });
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
     })
 //    $(document).on("change","#editProfile",function(){
 //         // let file=document.querySelector("#editProfile").files[0];
