@@ -34,9 +34,9 @@ $(function(){
 					httpRequest.onreadystatechange = function(){
 						if(this.readyState === 4 && this.status === 200){
 							if(this.responseText.length != 0){
-                                document.querySelector(".profile-pic-me").src=this.responseText;
+                                // alert(this.responseText);
 							}
-							// location.reload(true);
+							location.reload(true);
 						}
 					}
 
