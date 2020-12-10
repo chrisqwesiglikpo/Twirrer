@@ -87,6 +87,50 @@ class User{
         $user=$stmt->fetch(PDO::FETCH_OBJ);
         return $user->user_id;
     }
+    public function uploadImage($file,$user_id){
+        $fileInfo     = getimagesize($file['tmp_name']);
+        $fileTmp      = $file['tmp_name'];
+        $fileName     = $file['name'];
+        $fileSize     = $file['size'];
+        $errors       = $file['error'];
+
+        //get extenion
+        $ext   = explode('.', $fileName);
+        $ext   = strtolower(end($ext));
+
+        //extenions types 
+        $allowed  = array('image/png', 'image/jpeg', 'image/jpg');
+
+        if(in_array($fileInfo['mime'], $allowed)){
+            // $folder = 'frontend/content/'.$user_id.'/profilePic/';
+            // if(!file_exists($folder)){
+            //      mkdir($folder, 0777, true);
+            // }
+            $path_directory = $_SERVER['DOCUMENT_ROOT']."/Twirrer/frontend/profileImage/".$user_id.'/';
+
+            if(!file_exists($path_directory) && !is_dir($path_directory)){
+                mkdir($path_directory, 0777, true);
+                // echo "Success";
+            }
+            // if(is_dir($folder) === false )
+            // {
+            //   mkdir($folder);
+              
+            // }
+         
+            // $file   = $path_directory.substr(md5(time().mt_rand()), 2,25).'.'.$ext;
+           $file=$path_directory.$fileName;
+            if($errors === 0){
+            
+                    move_uploaded_file($fileTmp,$file);
+                    return "frontend/profileImage/".$user_id.'/'.$fileName;
+                
+            }
+        }
+        //image-name.png
+    }
+ 
+     
 
     public function timeAgo($datetime){
         $time = strtotime($datetime);
