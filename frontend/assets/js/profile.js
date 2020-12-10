@@ -36,8 +36,13 @@ $(function(){
     $("#filePhoto").change(function(){
         // let input=$(e.target);
         if(this.files && this.files[0]){
+        let stepModal=document.querySelector(".upload-profilePic-modal-step");
+        let previewContainer=document.querySelector(".display-modal-preview-container");
+        stepModal.style.display="none";
+        previewContainer.style.display="block";
             let reader=new FileReader();
             reader.onload=function(e){
+
                 var image=document.getElementById("imagePreview");
                 image.src=e.target.result;
                 // $("#imagePreview").attr("src",e.target.result);
@@ -53,6 +58,14 @@ $(function(){
             }
             reader.readAsDataURL(this.files[0]);
         }
+    });
+
+    $(document).on("click",".profile-edit-back",function(e){
+        e.preventDefault();
+        let stepModal=document.querySelector(".upload-profilePic-modal-step");
+        let previewContainer=document.querySelector(".display-modal-preview-container");
+        stepModal.style.display="block";
+       previewContainer.style.display="none";
     })
 //    $(document).on("change","#editProfile",function(){
 //         // let file=document.querySelector("#editProfile").files[0];
