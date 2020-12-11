@@ -66,7 +66,73 @@ $(function(){
         let previewContainer=document.querySelector(".display-modal-preview-container");
         stepModal.style.display="block";
         previewContainer.style.display="none";
+    });
+     
+    $("#imageUploadButton").click(function(e){
+        var name = document.querySelector("#filePhoto").files[0];
+        let canvas=cropper.getCroppedCanvas();
+           if(canvas==null){
+               alert("Could not upload image.Make sure it is an image file.");
+               return;
+           }
+           canvas.toBlob((blob)=>{
+            let formData=new FormData();
+                formData.append("croppedImage",blob);
+                formData.append("userId",u_id);
+                $.ajax({
+                    url:"http://localhost/twirrer/backend/ajax/profilePhoto.php",
+                    type:"POST",
+                    cache:false,
+                    processData:false,
+                    data:formData,
+                    contentType:false,
+                    success:(data)=>{
+                        alert(data);
+                    //     var modal = document.getElementById("profileModal");
+                    // //    console.log(data);
+                        
+                    //     // alert(data);
+                    //     var image=document.querySelector(".profile-pic-me");
+                    //     image.src=data;
+                    //     // location.reload(true)
+                    //     modal.style.display="none";
+                    }
+                    
+                });
+            //    url=URL.createObjectURL(blob);
+            // //    console.log(url);
+            //    let reader=new FileReader();
+            //    reader.readAsDataURL(blob);
+            //    reader.onload=function(e){
+            //     let base64base=reader.result;
+            //     //  console.log(name);
+            //     let formData=new FormData();
+            //     formData.append("croppedImage",base64base);
+            //     formData.append("userId",u_id);
+            //     $.ajax({
+            //         url:"http://localhost/twirrer/backend/ajax/profilePhoto.php",
+            //         type:"POST",
+            //         cache:false,
+            //         processData:false,
+            //         data:formData,
+            //         contentType:false,
+            //         success:(data)=>{
+            //             alert(data);
+            //         //     var modal = document.getElementById("profileModal");
+            //         // //    console.log(data);
+                        
+            //         //     // alert(data);
+            //         //     var image=document.querySelector(".profile-pic-me");
+            //         //     image.src=data;
+            //         //     // location.reload(true)
+            //         //     modal.style.display="none";
+            //         }
+                    
+            //     });
+            // }
+           });
     })
+   
 //    $(document).on("change","#editProfile",function(){
 //         // let file=document.querySelector("#editProfile").files[0];
 //         // let name=$("#editProfile").val().split("\\").pop();

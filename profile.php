@@ -75,7 +75,7 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                                             </div>
                                             <h2>Edit Media</h2>
                                         </div>
-                                        <span class="submitProfileChange">Apply</span>
+                                        <span class="submitProfileChange" id="imageUploadButton">Apply</span>
                             </div>
                                     <div class="modal-body-profile">
 
