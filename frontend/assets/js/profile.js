@@ -65,7 +65,7 @@ $(function(){
         let stepModal=document.querySelector(".upload-profilePic-modal-step");
         let previewContainer=document.querySelector(".display-modal-preview-container");
         stepModal.style.display="block";
-       previewContainer.style.display="none";
+        previewContainer.style.display="none";
     })
 //    $(document).on("change","#editProfile",function(){
 //         // let file=document.querySelector("#editProfile").files[0];
@@ -113,30 +113,6 @@ $(function(){
 //     }
 // });
     
-
-// var btn = document.getElementById("profilePictureButton");
-// btn.addEventListener("click",function(){
-//     alert("Hi");
-// })
-
-// Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-//     // When the user clicks on <span> (x), close the modal
-//     $(document).on("click",".close",function(){
-//         modal.style.display="none";
-//     });
-
-//     // When the user clicks anywhere outside of the modal, close it
-//     $(window).on("click",function(e){
-//         if (e.target == modal) {
-//             modal.style.display = "none";
-//         }
-//     });
 
 })
 
