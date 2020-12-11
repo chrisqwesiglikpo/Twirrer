@@ -86,98 +86,12 @@ $(function(){
                     processData:false,
                     data:formData,
                     contentType:false,
-                    success:(data)=>{
-                        alert(data);
-                    //     var modal = document.getElementById("profileModal");
-                    // //    console.log(data);
-                        
-                    //     // alert(data);
-                    //     var image=document.querySelector(".profile-pic-me");
-                    //     image.src=data;
-                    //     // location.reload(true)
-                    //     modal.style.display="none";
-                    }
+                    success:(data)=> location.reload(true);
                     
                 });
-            //    url=URL.createObjectURL(blob);
-            // //    console.log(url);
-            //    let reader=new FileReader();
-            //    reader.readAsDataURL(blob);
-            //    reader.onload=function(e){
-            //     let base64base=reader.result;
-            //     //  console.log(name);
-            //     let formData=new FormData();
-            //     formData.append("croppedImage",base64base);
-            //     formData.append("userId",u_id);
-            //     $.ajax({
-            //         url:"http://localhost/twirrer/backend/ajax/profilePhoto.php",
-            //         type:"POST",
-            //         cache:false,
-            //         processData:false,
-            //         data:formData,
-            //         contentType:false,
-            //         success:(data)=>{
-            //             alert(data);
-            //         //     var modal = document.getElementById("profileModal");
-            //         // //    console.log(data);
-                        
-            //         //     // alert(data);
-            //         //     var image=document.querySelector(".profile-pic-me");
-            //         //     image.src=data;
-            //         //     // location.reload(true)
-            //         //     modal.style.display="none";
-            //         }
-                    
-            //     });
-            // }
+
            });
     })
-   
-//    $(document).on("change","#editProfile",function(){
-//         // let file=document.querySelector("#editProfile").files[0];
-//         // let name=$("#editProfile").val().split("\\").pop();
-//         var name = document.querySelector("#editProfile").files[0];
-//         if (name != '') {
-            
-//             let user_id=u_id;
-//             	//send ajax request
-// 				var formData  = new FormData();
-//     			formData.append("userId",user_id);
-//                 formData.append("file",name);
-//                 var httpRequest = new XMLHttpRequest();
-
-// 				if(httpRequest){
-// 					httpRequest.open('POST', 'http://localhost/twirrer/backend/ajax/profilePhoto.php', true);
-// 					httpRequest.onreadystatechange = function(){
-// 						if(this.readyState === 4 && this.status === 200){
-// 							if(this.responseText.length != 0){
-//                                 // alert(this.responseText);
-// 							}
-// 							location.reload(true);
-// 						}
-// 					}
-
-// 					httpRequest.send(formData);
-// 				}
-//         }
-    
-//    })
-//    document.querySelector('#editProfile').addEventListener("change", function(event){
-//     var regex = /(\.jpg|\.jpeg|\.png|\.zip)$/i;
-//     if(!regex.exec(this.value)){
-//         alert("Only '.jpeg','.jpg','.png', formats are allowed");
-//         this.value = '';
-//         return false;
-//     }else{
-//         if(this.files && this.files[0]){
-//             var reader  = new FileReader();
-//             reader.onload = function(event){
-//                 document.querySelector(".profile-pic-me").src = event.target.result;
-//             }
-//             reader.readAsDataURL(this.files[0]);
-//         }
-//     }
-// });
     
 
 })
