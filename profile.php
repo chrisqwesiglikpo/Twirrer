@@ -49,7 +49,7 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                             </div>
                                     <div class="modal-body-profile">
                                          <h3>Pick a profile picture</h2>
-                                         <p>Have a favorite selfie?Upload it now</p>
+                                         <p>Have a favorite selfie? Upload it now.</p>
                                          <!-- <input type="file" id="filePhoto" class="displayFileInput" name="filePhoto"> -->
                                          <div class="modal-body-profile-wrapper">
                                                 <div class="image-profile-container">

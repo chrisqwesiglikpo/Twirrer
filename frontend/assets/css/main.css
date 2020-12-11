@@ -1156,11 +1156,11 @@ svg.camera-img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  margin: 30px 0;
 }
 .image-profile-container {
-  width: 160px;
-  height: 160px;
+  width: 360px;
+  height: 400px;
 }
 .image-profile-container img{
     width: 100%;
@@ -1260,4 +1260,21 @@ svg.color-blue {
 
 .modal-header-profile-edit h2 {
   font-size: 2.5rem;
+}
+button.edit-profile-btn {
+  background: rgba(0,0,0,0);
+  border: none;
+  color: rgba(29,161,242,1.00);
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-color: rgb(29, 161, 242);
+  border: 1px solid;
+  padding: 1rem;
+  border-radius: 9999px;
+  text-align: center;
+  cursor: pointer;
+  transition:background-color 0.3s;
+}
+button.edit-profile-btn:hover{
+  background-color: rgba(29,161,242,0.1);
 }
