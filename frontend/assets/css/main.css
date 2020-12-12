@@ -1292,3 +1292,49 @@ button.edit-profile-btn:hover{
 .skip-for-now:hover{
   background-color: rgba(29,161,242,0.1);
 }
+.cover-modal-header-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+.coverphoto-site-logo-wrapper {
+  font-size: 3rem;
+  color: #1DA1F2;
+}
+.cover-modal-photo
+{
+  padding: 2rem;
+  line-height: 1.5;
+  font-size:2rem;
+}
+.upload-coverprofilePic-modal-step {
+  display: none;
+}
+.cover-modal-body-profile-wrapper {
+  background: #ddd;
+  position: relative;
+  height: 246px;
+}
+.cover-image-btn-upload-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+input#fileCoverPhoto {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  font-size: 1px;
+  cursor: pointer;
+}
+svg.camera-cover-icon:hover{
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 9999px;
+}

@@ -59,14 +59,32 @@ $(function(){
             reader.readAsDataURL(this.files[0]);
         }
     });
-
+    $(document).on("click","#skip-profile-pic",function(e){
+        e.preventDefault();
+        let profileModal=document.querySelector(".upload-profilePic-modal-step");
+        let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
+        profileModal.style.display="none";
+        coverModal.style.display="block";
+    });
     $(document).on("click",".profile-edit-back",function(e){
         e.preventDefault();
         let stepModal=document.querySelector(".upload-profilePic-modal-step");
         let previewContainer=document.querySelector(".display-modal-preview-container");
+        let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
         stepModal.style.display="block";
         previewContainer.style.display="none";
+        coverModal.style.display="none";
     });
+
+    // $(document).on("click",".profile-go-back",function(e){
+    //     e.preventDefault();
+    //     let stepModal=document.querySelector(".upload-profilePic-modal-step");
+    //     let previewContainer=document.querySelector(".display-modal-preview-container");
+    //     let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
+    //     stepModal.style.display="block";
+    //     previewContainer.style.display="none";
+    //     coverModal.style.display="none";
+    // });
      
     $("#imageUploadButton").click(function(e){
         var name = document.querySelector("#filePhoto").files[0];
