@@ -82,7 +82,7 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                                          <!-- <input type="file" id="filePhoto" class="displayFileInput" name="filePhoto"> -->
                                          <div class="modal-body-profile-wrapper">
                                                 <div class="imagePreviewContainer">
-                                                        <img  alt=" " id="imagePreview">
+                                                        <img src="" alt=" " id="imagePreview">
                                                 </div>
                                          </div>
                                         
