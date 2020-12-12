@@ -66,6 +66,18 @@ $userId=$user->user_id;
                         </div>
                     </div>
                 </div>
+                <div class="del-post-wrapper-container">
+                    <div class="del-post-wrapper">
+                        <div class="del-post-content">
+                            <h2 class="del-post-content-header">Delete Tweet?</h2>
+                            <p>This can’t be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Twitter search results. </p>
+                            <div class="del-btn-wrapper">
+                                <button class="del-btn" id="cancel" type="button">Cancel</button>
+                                <button class="del-btn" id="delete-post-btn" type="button">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
         </section>
         <aside role="complementary">

@@ -599,7 +599,7 @@ main .follow-user {
   /*background-color: rgba(0,0,0,0.4); Black w/ opacity 
 } */
 
-.retweet-modal-container,.reply-wrapper{
+.retweet-modal-container,.reply-wrapper,.del-post-wrapper-container{
     width: 100%;
     position: fixed;
     z-index: 1;
@@ -1440,4 +1440,69 @@ span.p-text {
 }
 .d-content:hover{
   background-color:rgba(0, 0, 0, 0.03);
+}
+.del-post-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 59%;
+  transform: translate(-50%,-50%);
+  background: #FFF;
+  box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+  width: 465px;
+  height: 250px;
+  max-height: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+}
+.del-post-content{
+  width:320px;
+  height:229px;
+  margin:0 auto;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+h2.del-post-content-header {
+  margin-bottom: 16px;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(15,20,25);
+}
+.del-post-content p{
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: rgb(91,112,131);
+}
+.del-btn-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+button.del-btn {
+  border: none;
+  padding: 2rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+}
+button#cancel {
+  color: rgb(15, 20, 25);
+  transition:background-color 0.3s;
+}
+button#cancel:hover{
+background: rgb(212,214,216);
+}
+button#delete-post-btn {
+  background-color: rgb(224, 36, 94);
+  color: #fff;
+  transition:background-color 0.3s;
+}
+button#delete-post-btn:hover{
+  background: rgb(202,32,85);
 }
