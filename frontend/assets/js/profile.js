@@ -87,7 +87,7 @@ $(function(){
                 }
 
                 cropper=new Cropper(image,{
-                    aspectRatio:1/1,
+                    aspectRatio:16/9,
                     background:false
                  });
              }
@@ -183,8 +183,8 @@ $(function(){
                     data:formData,
                     contentType:false,
                     success:(data)=> {
-                        // location.reload(true)
-                         alert(data);
+                        location.reload(true);
+                       
                     }
                     
                 });

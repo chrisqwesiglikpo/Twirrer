@@ -6,7 +6,7 @@
     // var_dump($_FILES['croppedImage']);
      if(!empty($_FILES['croppedImage'])){
       $userid=$_POST['userId'];
-      $imagePath=$loadFromUser->cropImageUpload($_FILES['croppedImage'],$userid);
+      $imagePath=$loadFromUser->cropProfileImageUpload($_FILES['croppedImage'],$userid);
       $loadFromUser->update("users",$userid,array('profilePic'=>$imagePath));
       
      }
@@ -14,12 +14,12 @@
  }  
 
  if($_SERVER['REQUEST_METHOD'] === "POST"){
-    // var_dump($_FILES['croppedImage']);
+  
      if(!empty($_FILES['croppedCoverImage'])){
       $userid=$_POST['userId'];
-    //   $imagePath=$loadFromUser->cropImageUpload($_FILES['croppedCoverImage'],$userid);
-    //   $loadFromUser->update("users",$userid,array('profilePic'=>$imagePath));
-      echo "It worked!";
+      $imagePath=$loadFromUser->cropCoverImageUpload($_FILES['croppedCoverImage'],$userid);
+      $loadFromUser->update("users",$userid,array('profileCover'=>$imagePath));
+      echo $imagePath;
      }
       
  }  

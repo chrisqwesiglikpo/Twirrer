@@ -3,6 +3,9 @@
                 </div>
                 <div class="profileHeaderContainer">
                     <div class="coverPhotoContainer">
+                    <?php if(!empty($profileData->profileCover)): ?>
+                      <img class="cover-photo-user-me" src="<?php echo url_for($profileData->profileCover); ?>" alt="User's Cover photo">
+                    <?php endif; ?>
                         <div class="userImageContainer">
                             <img class="profile-pic-me" src="<?php echo url_for($profileData->profilePic); ?>" alt="User's profile pic">
                             <?php if($user_id===$profileId): ?>
