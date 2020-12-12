@@ -62,6 +62,34 @@ $(function(){
             reader.readAsDataURL(this.files[0]);
         }
     });
+
+    $("#fileCoverPhoto").change(function(){
+        
+        // let input=$(e.target);
+        if(this.files && this.files[0]){
+        let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
+        let previewContainer=document.querySelector(".display-modal-preview-container");
+         coverModal.style.display="none";
+          previewContainer.style.display="block";
+           let reader=new FileReader();
+            reader.onload=function(e){
+
+               var image=document.getElementById("imagePreview");
+              image.src=e.target.result;
+             // $("#imagePreview").attr("src",e.target.result);
+
+              if(cropper !==  undefined){
+                   cropper.destroy();
+                }
+
+                cropper=new Cropper(image,{
+                    aspectRatio:1/1,
+                    background:false
+                 });
+             }
+           reader.readAsDataURL(this.files[0]);
+         }
+    });
     $(document).on("click","#skip-profile-pic",function(e){
         e.preventDefault();
         let profileModal=document.querySelector(".upload-profilePic-modal-step");
