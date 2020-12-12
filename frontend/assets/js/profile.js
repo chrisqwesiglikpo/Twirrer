@@ -120,6 +120,7 @@ $(function(){
         stepModal.style.display="none";
         previewContainer.style.display="none";
         let isCover=$(".profile-edit-back").hasClass("cover-go-back");
+        
        if(isCover){
         coverModal.style.display="block";
         stepModal.style.display="none";
@@ -134,12 +135,15 @@ $(function(){
     });
      
     $("#imageUploadButton").click(function(e){
-        var name = document.querySelector("#filePhoto").files[0];
-        let canvas=cropper.getCroppedCanvas();
-           if(canvas==null){
+        let isProfile=$(".profile-edit-back").hasClass("profile-go-back");
+        if(isProfile){
+            // alert("Hi,it's the profile preview");
+            var name = document.querySelector("#filePhoto").files[0];
+            let canvas=cropper.getCroppedCanvas();
+            if(canvas==null){
                alert("Could not upload image.Make sure it is an image file.");
                return;
-           }
+            }
            canvas.toBlob((blob)=>{
             let formData=new FormData();
                 formData.append("croppedImage",blob);
@@ -159,6 +163,35 @@ $(function(){
                 });
 
            });
+        }else{
+            // alert("Hi,it's not the profile preview");
+            var name = document.querySelector("#fileCoverPhoto").files[0];
+            let canvas=cropper.getCroppedCanvas();
+           if(canvas==null){
+               alert("Could not upload image.Make sure it is an image file.");
+               return;
+           }
+           canvas.toBlob((blob)=>{
+            let formData=new FormData();
+                formData.append("croppedCoverImage",blob);
+                formData.append("userId",u_id);
+                $.ajax({
+                    url:"http://localhost/twirrer/backend/ajax/profilePhoto.php",
+                    type:"POST",
+                    cache:false,
+                    processData:false,
+                    data:formData,
+                    contentType:false,
+                    success:(data)=> {
+                        // location.reload(true)
+                         alert(data);
+                    }
+                    
+                });
+
+           });
+        }
+        
     })
     
 

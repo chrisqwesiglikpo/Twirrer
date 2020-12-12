@@ -12,4 +12,15 @@
      }
       
  }  
+
+ if($_SERVER['REQUEST_METHOD'] === "POST"){
+    // var_dump($_FILES['croppedImage']);
+     if(!empty($_FILES['croppedCoverImage'])){
+      $userid=$_POST['userId'];
+    //   $imagePath=$loadFromUser->cropImageUpload($_FILES['croppedCoverImage'],$userid);
+    //   $loadFromUser->update("users",$userid,array('profilePic'=>$imagePath));
+      echo "It worked!";
+     }
+      
+ }  
     
