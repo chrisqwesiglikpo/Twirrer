@@ -1376,3 +1376,16 @@ img.cover-photo-user-me {
     height: 100%;
     object-fit: cover;
 }
+.postContentContainer .post-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+svg.dot-icon{
+  width:2.5rem;
+  height:2.5rem;
+}
+span.dot svg.dot-icon:hover{
+  border-radius:9999px;
+  background-color: var(--lightBlue);
+}
