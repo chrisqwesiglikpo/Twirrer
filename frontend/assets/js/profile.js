@@ -44,6 +44,7 @@ $(function(){
         let stepModal=document.querySelector(".upload-profilePic-modal-step");
         let previewContainer=document.querySelector(".display-modal-preview-container");
         stepModal.style.display="none";
+        $(".profile-edit-back").removeClass("cover-go-back").addClass("profile-go-back");
         previewContainer.style.display="block";
             let reader=new FileReader();
             reader.onload=function(e){
@@ -72,6 +73,7 @@ $(function(){
         let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
         let previewContainer=document.querySelector(".display-modal-preview-container");
          coverModal.style.display="none";
+         $(".profile-edit-back").removeClass("profile-go-back").addClass("cover-go-back");
           previewContainer.style.display="block";
            let reader=new FileReader();
             reader.onload=function(e){
@@ -99,7 +101,7 @@ $(function(){
         profileModal.style.display="none";
         coverModal.style.display="block";
     });
-    $(document).on("click",".profile-edit-back",function(e){
+    $(document).on("click",".profile-go-back",function(e){
         e.preventDefault();
         let stepModal=document.querySelector(".upload-profilePic-modal-step");
         let previewContainer=document.querySelector(".display-modal-preview-container");
@@ -109,15 +111,27 @@ $(function(){
         coverModal.style.display="none";
     });
 
-    // $(document).on("click",".profile-go-back",function(e){
-    //     e.preventDefault();
-    //     let stepModal=document.querySelector(".upload-profilePic-modal-step");
-    //     let previewContainer=document.querySelector(".display-modal-preview-container");
-    //     let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
-    //     stepModal.style.display="block";
-    //     previewContainer.style.display="none";
-    //     coverModal.style.display="none";
-    // });
+    $(document).on("click",".cover-go-back",function(e){
+        e.preventDefault();
+        let stepModal=document.querySelector(".upload-profilePic-modal-step");
+        let previewContainer=document.querySelector(".display-modal-preview-container");
+        let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
+        coverModal.style.display="block";
+        stepModal.style.display="none";
+        previewContainer.style.display="none";
+        let isCover=$(".profile-edit-back").hasClass("cover-go-back");
+       if(isCover){
+        coverModal.style.display="block";
+        stepModal.style.display="none";
+        previewContainer.style.display="none";
+        $(".profile-edit-back").removeClass("cover-go-back").addClass("profile-go-back");
+       }else{
+        coverModal.style.display="none";
+        stepModal.style.display="block";
+        previewContainer.style.display="none";
+        $(".profile-edit-back").removeClass("profile-go-back").addClass("cover-go-back");
+       }
+    });
      
     $("#imageUploadButton").click(function(e){
         var name = document.querySelector("#filePhoto").files[0];
