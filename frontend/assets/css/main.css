@@ -1334,7 +1334,40 @@ input#fileCoverPhoto {
   font-size: 1px;
   cursor: pointer;
 }
-svg.camera-cover-icon:hover{
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 9999px;
+svg.camera-cover-icon {
+  fill: rgb(255, 255, 255);
+  width: 5.55rem;
+  height: 5.55rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+.cover-image-btn-upload-icon:hover .camera-cover-icon{
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 9999px;
+}
+.cover-modal-header-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+.coverphoto-site-logo-wrapper {
+    font-size: 3.5rem;
+    color: rgba(29,161,242,1.00);
+}
+.cover-modal-photo {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding: 2rem;
+}
+.cover-modal-body-profile-wrapper {
+  background: #B2B2B2;
+  position: relative;
+  height: 246px;
+}
+.cover-image-btn-upload-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
