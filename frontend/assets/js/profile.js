@@ -86,7 +86,10 @@ $(function(){
                     processData:false,
                     data:formData,
                     contentType:false,
-                    success:(data)=> location.reload(true)
+                    success:(data)=> {
+                        location.reload(true)
+                        // alert(data);
+                    }
                     
                 });
 

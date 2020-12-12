@@ -87,6 +87,44 @@ class User{
         $user=$stmt->fetch(PDO::FETCH_OBJ);
         return $user->user_id;
     }
+    public function cropImageUpload($file,$userid){
+        $fileInfo     = getimagesize($file['tmp_name']);
+        $fileTmp      = $file['tmp_name'];
+        $fileName     = $file['name'];
+        $fileSize     = $file['size'];
+        $fileType     = $file['type'];
+        $errors       = $file['error'];
+
+        //get extenion
+        $ext   = explode('/', $fileType);
+        $ext   = strtolower(end($ext));
+
+        //extenions types 
+        $allowed  = array('image/png', 'image/jpeg', 'image/jpg');
+
+        if(in_array($fileInfo['mime'], $allowed)){
+            $path_directory = $_SERVER['DOCUMENT_ROOT']."/Twirrer/frontend/profileImage/".$userid.'/';
+  
+            if(!file_exists($path_directory) && !is_dir($path_directory)){
+                mkdir($path_directory, 0777, true);
+            
+            }
+
+            $folder   = "frontend/profileImage/".$userid.'/'.substr(md5(time().mt_rand()), 2,25).'.'.$ext;
+            $path_file=$_SERVER['DOCUMENT_ROOT']."/Twirrer/".$folder;
+
+            if(!file_exists($path_directory) && !is_dir($path_directory)){
+                mkdir($path_directory, 0777, true);
+            
+            }
+
+            if($errors===0){
+                move_uploaded_file($fileTmp,$path_file);
+                return $folder;
+            }
+        }
+        
+    }
     public function uploadImage($file,$user_id){
         $fileInfo     = getimagesize($file['tmp_name']);
         $fileTmp      = $file['tmp_name'];
