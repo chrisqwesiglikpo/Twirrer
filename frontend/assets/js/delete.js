@@ -7,6 +7,8 @@ $(function() {
     
      // When the user clicks on the button, open the modal
      $(document).on("click","#deletePostModal",function(){
+        $post_id=$(this).data('post');
+        // alert($post_id);
         modal.style.display="block";
         
      });
@@ -17,6 +19,14 @@ $(function() {
      $(document).on("click","#cancel",function(){
         deleteModal.style.display="none";
      })
+
+     $(document).on("click","#delete-post-btn",function(){
+        let user_id=u_id;
+        let post_id=$post_id;
+        $.post("http://localhost/twirrer/backend/ajax/deletePost.php",{post_id:post_id,postedBy:user_id},function(data){
+           location.reload(true);
+        })
+     });
      
      
     // When the user clicks anywhere outside of the modal, close it
