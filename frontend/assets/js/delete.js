@@ -9,11 +9,23 @@ $(function() {
      $(document).on("click","#deletePostModal",function(){
         $post_id=$(this).data('post');
         // alert($post_id);
-        modal.style.display="block";
+        let user_id=u_id;
+        
+        $.post("http://localhost/twirrer/backend/ajax/deletePost.php",{p_id:$post_id,postedBy:user_id},function(data){
+            modal.style.display="block";
+            $(".d-wrapper-container").html(data);
+        })
+     
         
      });
      $(document).on("click","#del-content",function(){
-        deleteModal.style.display="block";
+        let user_id=u_id;
+        let post_id=$post_id;
+        $.post("http://localhost/twirrer/backend/ajax/deletePost.php",{postId:post_id,postedBy:user_id},function(data){
+            deleteModal.style.display="block";
+            $(".del-post-wrapper-container").html(data);
+        })
+        
      })
 
      $(document).on("click","#cancel",function(){
