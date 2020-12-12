@@ -23,7 +23,9 @@ $(function(){
     // Get the button that opens the modal
     $(document).on("click","#profilePictureButton",function(){
        let coverModal=document.querySelector(".upload-coverprofilePic-modal-step");
+       let profileModal=document.querySelector(".upload-profilePic-modal-step");
         modal.style.display = "block"; 
+        profileModal.style.display="block";
         coverModal.style.display="none";
 
     });
