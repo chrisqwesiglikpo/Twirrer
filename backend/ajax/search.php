@@ -1,5 +1,6 @@
 <?php
 include '../init.php';
+$loadFromUser->preventAccess($_SERVER['REQUEST_METHOD'],realpath(__FILE__),realpath($_SERVER['SCRIPT_FILENAME']));
 if(is_post_request()){
 if(isset($_POST['search']) && !empty($_POST['search'])){
     $search=h($_POST['search']);

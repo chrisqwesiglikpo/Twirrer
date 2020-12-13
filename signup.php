@@ -1,6 +1,9 @@
 <?php
 include 'backend/init.php';
 
+// if($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__)==realpath($_SERVER['SCRIPT_FILENAME'])){
+//   header('Location:'.url_for('index.php'));
+// }
 $page_title="Sign up for Twitter / Twitter"; 
 if(is_post_request()){
   if(isset($_POST['submitButton'])){

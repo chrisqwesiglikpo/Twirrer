@@ -1,4 +1,8 @@
 <?php
+
+if($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__)==realpath($_SERVER['SCRIPT_FILENAME'])){
+  header('Location:http://localhost/twirrer/index.php');
+}
 function url_for($script_path){
     if($script_path[0] !='/'){
         $script_path ="/".$script_path;

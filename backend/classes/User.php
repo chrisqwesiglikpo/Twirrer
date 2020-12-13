@@ -21,6 +21,12 @@ class User{
             return false;
         }
     }
+
+    public function preventAccess($request,$currentFile,$currently){
+        if($request=='GET' && $currentFile==$currently){
+            header('Location:'.url_for('index.php'));
+          }
+    }
     public function search($search){
         $stmt=$this->con->prepare("SELECT * FROM `users` WHERE `username` LIKE ? OR `firstName` LIKE ? LIMIT 4");
         $stmt->bindValue(1,$search.'%',PDO::PARAM_STR);
