@@ -113,10 +113,6 @@ class User{
             $folder   = "frontend/profileImage/".$userid.'/'.substr(md5(time().mt_rand()), 2,25).'.'.$ext;
             $path_file=$_SERVER['DOCUMENT_ROOT']."/Twirrer/".$folder;
 
-            if(!file_exists($path_directory) && !is_dir($path_directory)){
-                mkdir($path_directory, 0777, true);
-            
-            }
 
             if($errors===0){
                 move_uploaded_file($fileTmp,$path_file);
@@ -152,10 +148,6 @@ class User{
             $folder   = "frontend/profileCover/".$userid.'/'.substr(md5(time().mt_rand()), 2,25).'.'.$ext;
             $path_file=$_SERVER['DOCUMENT_ROOT']."/Twirrer/".$folder;
 
-            if(!file_exists($path_directory) && !is_dir($path_directory)){
-                mkdir($path_directory, 0777, true);
-            
-            }
 
             if($errors===0){
                 move_uploaded_file($fileTmp,$path_file);
