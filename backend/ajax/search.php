@@ -1,6 +1,6 @@
 <?php
 include '../init.php';
-
+if(is_post_request()){
 if(isset($_POST['search']) && !empty($_POST['search'])){
     $search=h($_POST['search']);
 
@@ -26,5 +26,6 @@ if(isset($_POST['search']) && !empty($_POST['search'])){
     echo '</ul>';
 }
 
+}
 
 ?>

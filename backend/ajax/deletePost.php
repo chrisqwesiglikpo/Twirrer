@@ -1,5 +1,7 @@
 <?php
  require_once('../init.php');
+ if(is_post_request()){
+   
  if(isset($_POST['post_id']) && !empty($_POST['post_id'])){
       $userId=h($_POST['postedBy']);
       $postId=(int)h($_POST['post_id']);
@@ -46,4 +48,6 @@ if(isset($_POST['p_id']) && !empty($_POST['p_id'])){
 </div>';
   
   
+}
+
 }

@@ -1,6 +1,6 @@
 <?php
   include '../init.php';
- 
+  if(is_post_request()){
   if(isset($_POST['showPopup']) && !empty($_POST['showPopup'])){
      $postedBy=$_POST['postedBy'];
      $post_id=$_POST['showPopup'];
@@ -70,5 +70,5 @@
     echo $loadFromPost->removeComment($deleteCommentBy,$deleteCommentOn);
  }
 
-
+}
   ?>

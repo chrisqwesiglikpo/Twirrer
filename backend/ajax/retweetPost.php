@@ -1,7 +1,7 @@
 <?php
   include '../init.php';
  
-   
+if(is_post_request()){  
   if(isset($_POST['retweet']) && !empty($_POST['retweet'])){
     $tweet_id=$_POST['retweet'];
     $user_id=$_POST['user_id'];
@@ -22,6 +22,7 @@
     
 
   }
+}
 
 
 ?>

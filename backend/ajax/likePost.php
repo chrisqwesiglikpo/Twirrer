@@ -1,8 +1,12 @@
 <?php
  require_once('../init.php');
- $postId=$_POST['postId'];
- $userId=$_POST['userId'];
-
- echo $loadFromPost->Likes($userId,$postId);
-
+ if(is_post_request()){
+    if(isset($_POST['postId']) && !empty($_POST['postId'])){
+        $postId=h($_POST['postId']);
+        $userId=h($_POST['userId']);
+    
+        echo $loadFromPost->Likes($userId,$postId);
+    }
+   
+ }
 ?>

@@ -1,6 +1,6 @@
 <?php
  include '../init.php';
-
+if(is_post_request()){
  if(isset($_POST['hashtag'])){
      $hashtag=$account->formSanitizer($_POST['hashtag']);
      $mention=$account->formSanitizer($_POST['hashtag']);
@@ -31,5 +31,6 @@
            </li>';
         }
      }
+ }
 }
 ?> 
