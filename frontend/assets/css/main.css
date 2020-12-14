@@ -1617,3 +1617,13 @@ span.username-following {
     font-weight: 400;
     color: rgb(91,112,131);
 }
+.compose-stc{
+  fill: rgba(29,161,242,1.00);
+}
+a.compose-inbox {
+  padding: 1rem;
+}
+.compose-inbox:hover{
+  background-color: var(--lightBlue);
+  border-radius: 9999px;
+}

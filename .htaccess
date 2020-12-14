@@ -2,7 +2,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(home|profile|login|index|logout|signup|replies|post)$ $1.php [NC,L] 
+RewriteRule ^(home|profile|login|index|logout|signup|replies|post|messages)$ $1.php [NC,L] 
 RewriteRule ^([a-zA-Z0-9_-]+)/?$ profile.php?username=$1 [QSA]
 RewriteRule ^hashtag/([a-zA-Z0-9_-]+)/?$ hashtag.php?hashtag=$1
 RewriteRule ^post/([a-zA-Z0-9_-]+)/?$ post.php?post_id=$1
@@ -11,4 +11,8 @@ RewriteRule ^settings/password/?$ password.php
 RewriteRule ^i/notifications/?$ notification.php
 
 
+
+
 RewriteRule ^([a-zA-Z0-9_-]+)/(following|followers|replies|suggested)?$ $2.php?username=$1
+
+RewriteRule ^messages/compose/?$ compose.php
