@@ -118,6 +118,39 @@ class Follow extends User{
             </div>';
         }
     }
+
+    public function suggestedLists($profileID,$user_id){
+		$stmt=$this->con->prepare("SELECT * FROM `users` LEFT JOIN `follow` ON `sender` = `user_id` AND CASE WHEN `receiver` =:user_id  THEN `sender` = `user_id` END WHERE user_id !=:user_id AND `receiver` IS NULL INTERSECT SELECT * FROM `users` LEFT JOIN `follow` ON `receiver` = `user_id` AND CASE WHEN `sender` =:user_id THEN `receiver` = `user_id` END WHERE `sender` IS NULL ORDER BY followOn DESC");
+		$stmt->bindParam(":user_id",$profileID,PDO::PARAM_INT);
+		$stmt->execute();
+        $followings=$stmt->fetchAll(PDO::FETCH_OBJ);
+        
+        foreach ($followings as $user){
+            $userData=$this->checkFollow($profileID,$user->user_id);
+            echo ' <div class="resultsContainer__wrapper">
+                    <div class="resultsContainer__user-image">
+                        <img src="'.url_for($user->profilePic).'" alt="Users following"/>
+                    </div>
+                    <div class="resultsContainer__content">
+                    <div class="resultsContainer__content-disp">
+                        <div class="go-back-fullName__content">
+                            <a href="'.url_for($user->username).'" role="link">
+                                <h2>'.$user->firstName." ".$user->lastName.'</h2>
+                                <span class="go-back-username__content">@'.$user->username.'</span>
+                            </a>
+                        </div>
+                        <div class="profileButtonsContainer">
+                         '.(($profileID != $user->user_id) ? ((!empty($userData['receiver'])==$user->user_id) ? '<button class="follow-btn unfollow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Following</button>' : '<button class="follow-btn follow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Follow</button>')  : "").'
+          
+                        </div>
+                    </div>
+                    <div class="resultsContainer__content-desc">
+                        
+                    </div>
+                    </div>
+            </div>';
+        }
+    }
      public function unfollow($followID,$user_id,$profileID){
         $this->delete('follow', array('sender'=> $user_id ,'receiver' => $followID));
         $this->removeFollowCount($followID,$user_id);
