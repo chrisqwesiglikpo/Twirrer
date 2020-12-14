@@ -62,9 +62,8 @@ $("#submitPostButton").click(e=>{
 
 
 
+$(document).on('click','.go-back-arrow', function () {
 
-$(document).on('click', '.profileEdit', function () {
-
-  window.location.href = "profileEdit.php";
+  window.location.href = "http://localhost/twirrer/profile.php";
 
 })

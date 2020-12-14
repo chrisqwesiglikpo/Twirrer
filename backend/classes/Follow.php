@@ -33,6 +33,20 @@ class Follow extends User{
         }
     }
 
+    public function followingBtn($profileID,$user_id){
+        $data=$this->checkFollow($profileID,$user_id);
+        if($profileID != $user_id){
+             if(!empty($data['receiver'])==$profileID){
+                 //Following btn
+                
+                 echo  "<button class='followButton follow-btn' data-follow='".$profileID."'>Following</button>";
+             }else{
+                 //follow btn
+                echo  "<button class='followButton unfollow-btn' data-follow='".$profileID."'>Follow</button>";
+             }
+        }
+    }
+
     public function follow($followID,$user_id,$profileID){
         $this->create('follow', array('sender'=> $user_id ,'receiver' => $followID,"followStatus"=>1));
         $this->addFollowCount($followID,$user_id);
@@ -41,7 +55,35 @@ class Follow extends User{
         $data=$stmt->fetch(PDO::FETCH_ASSOC);
         echo json_encode($data);
      }
- 
+    public function followingLists($profileID,$user_id){
+        $stmt=$this->con->prepare("SELECT * FROM `users` LEFT JOIN `follow` ON `receiver` = `user_id` AND CASE WHEN `sender` =:user_id THEN `receiver` = `user_id` END WHERE `sender` IS NOT NULL ORDER BY followOn DESC");
+        $stmt->bindParam(":user_id",$profileID,PDO::PARAM_INT);
+        $stmt->execute();
+        $data=$stmt->fetchAll(PDO::FETCH_OBJ);
+        foreach ($data as $user){
+            echo ' <div class="resultsContainer__wrapper">
+                    <div class="resultsContainer__user-image">
+                        <img src="'.url_for($user->profilePic).'" alt="Users following"/>
+                    </div>
+                    <div class="resultsContainer__content">
+                    <div class="resultsContainer__content-disp">
+                        <div class="go-back-fullName__content">
+                            <a href="'.url_for($user->username).'" role="link">
+                                <h2>'.$user->firstName." ".$user->lastName.'</h2>
+                                <span class="go-back-username__content">@'.$user->username.'</span>
+                            </a>
+                        </div>
+                        <div class="profileButtonsContainer">
+                        '.((!empty($user->sender)==$user_id)? '<button class="follow-btn unfollow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Following</button>' : '<button class="follow-btn follow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Follow</button>').'
+                        </div>
+                    </div>
+                    <div class="resultsContainer__content-desc">
+                        User Profile Bio Here
+                    </div>
+                    </div>
+            </div>';
+        }
+    }
      public function unfollow($followID,$user_id,$profileID){
         $this->delete('follow', array('sender'=> $user_id ,'receiver' => $followID));
         $this->removeFollowCount($followID,$user_id);
