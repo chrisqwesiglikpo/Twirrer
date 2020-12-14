@@ -209,7 +209,7 @@ class User{
        
                if($seconds <= 60){
                    if($seconds == 0){
-                       return '0s';
+                       return 'Just now';
        
                    }else{
                        return ''.$seconds.'s';
