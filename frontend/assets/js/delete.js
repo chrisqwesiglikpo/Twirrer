@@ -1,4 +1,5 @@
 var u_id = $('.u_p_id').data('uid');
+var p_id = $('.u_p_id').data('pid');
 $(function() {
 
     var modal = document.querySelector(".d-wrapper-container");
@@ -57,8 +58,12 @@ $(function() {
     $(document).on('click','.post-body', function (event) {
        let element=$(event.target);
        let postId=$(this).data('post');
+       let postedBy=$(this).data('postedby');
        if(postId !== undefined){
-           window.location.href="http://localhost/twirrer/post/"+postId;
+        $.post('http://localhost/twirrer/backend/ajax/getUsername.php',{postedBy:postedBy},function(data){
+            window.location.href = "http://localhost/twirrer/"+data+"/status/"+postId;
+        });
+    
        }
        
     });

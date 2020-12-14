@@ -93,6 +93,14 @@ class User{
         $user=$stmt->fetch(PDO::FETCH_OBJ);
         return $user->user_id;
     }
+
+    public function getUsernameById($userid){
+        $stmt=$this->con->prepare("SELECT `username` FROM `users` WHERE `user_id`=:user_id");
+        $stmt->bindParam(":user_id",$userid,PDO::PARAM_INT);
+        $stmt->execute();
+        $user=$stmt->fetch(PDO::FETCH_OBJ);
+        return $user->username;
+    }
     public function cropProfileImageUpload($file,$userid){
         $fileInfo     = getimagesize($file['tmp_name']);
         $fileTmp      = $file['tmp_name'];

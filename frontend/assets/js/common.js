@@ -1,4 +1,5 @@
 var u_id = $('.u_p_id').data('uid');
+var p_id = $('.u_p_id').data('pid');
 $(function() {
   var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
   $('#nav a').each(function() {
@@ -61,8 +62,13 @@ $("#submitPostButton").click(e=>{
 
 
 $(document).on('click','.go-back-arrow', function () {
-
-  window.location.href = "http://localhost/twirrer/profile.php";
+  
+  if(p_id !==undefined){
+    $.post('http://localhost/twirrer/backend/ajax/getUsername.php',{post_id:p_id},function(data){
+        window.location.href = "http://localhost/twirrer/"+data;
+    });
+  }
+  
 });
 
 
