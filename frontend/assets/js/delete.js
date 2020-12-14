@@ -53,4 +53,13 @@ $(function() {
             deleteModal.style.display = "none";
           }
     });
+
+    $(document).on('click','.post-body', function (event) {
+       let element=$(event.target);
+       let postId=$(this).data('post');
+       if(postId !== undefined){
+           window.location.href="http://localhost/twirrer/post/"+postId;
+       }
+       
+    });
 });

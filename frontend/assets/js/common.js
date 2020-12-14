@@ -60,10 +60,9 @@ $("#submitPostButton").click(e=>{
 });
 
 
-
-
 $(document).on('click','.go-back-arrow', function () {
 
   window.location.href = "http://localhost/twirrer/profile.php";
+});
 
-})
+
