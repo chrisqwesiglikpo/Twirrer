@@ -20,7 +20,7 @@ else{
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
-$page_title="People followed by ".$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
+$page_title="People following by ".$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
 ?>
 <?php require_once 'backend/shared/header.php'; ?>
