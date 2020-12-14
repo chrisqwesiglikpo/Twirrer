@@ -79,7 +79,7 @@ class Follow extends User{
                         </div>
                     </div>
                     <div class="resultsContainer__content-desc">
-                        User Profile Bio Here
+                        
                     </div>
                     </div>
             </div>';
