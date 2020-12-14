@@ -7,6 +7,7 @@
 <script src="<?php echo url_for('frontend/assets/js/retweet.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/delete.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/common.js'); ?>"></script>
+<script src="<?php echo url_for('frontend/assets/js/pin.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/liveAction.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/reply.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/modal.js'); ?>"></script>

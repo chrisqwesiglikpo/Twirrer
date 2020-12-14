@@ -133,6 +133,9 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                 <div class="reply-wrapper"></div>
                 <div class="d-wrapper-container"></div>
                 <div class="del-post-wrapper-container"></div>
+                <div class="pin-post-wrapper-container">
+                    
+                </div>
 </section>
 </main>
 </section>

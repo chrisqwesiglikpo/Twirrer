@@ -599,7 +599,7 @@ main .follow-user {
   /*background-color: rgba(0,0,0,0.4); Black w/ opacity 
 } */
 
-.retweet-modal-container,.reply-wrapper,.del-post-wrapper-container{
+.retweet-modal-container,.reply-wrapper,.del-post-wrapper-container,.pin-post-wrapper-container{
     width: 100%;
     position: fixed;
     z-index: 1;
@@ -1441,7 +1441,7 @@ span.p-text {
 .d-content:hover{
   background-color:rgba(0, 0, 0, 0.03);
 }
-.del-post-wrapper {
+.del-post-wrapper,.pin-post-wrapper {
   position: absolute;
   top: 50%;
   left: 59%;
@@ -1454,21 +1454,21 @@ span.p-text {
   max-width: 600px;
   border-radius: 16px;
 }
-.del-post-content{
+.del-post-content,.pin-post-content{
   width:320px;
   height:229px;
   margin:0 auto;
   padding-top:30px;
   padding-bottom:30px;
 }
-h2.del-post-content-header {
+h2.del-post-content-header,h2.pin-post-content-header {
   margin-bottom: 16px;
   font-size: 19px;
   font-weight: 700;
   text-align: center;
   color: rgb(15,20,25);
 }
-.del-post-content p{
+.del-post-content p,.pin-post-content p{
     text-align: center;
     font-size: 15px;
     line-height: 1.7;
@@ -1476,7 +1476,7 @@ h2.del-post-content-header {
     margin-bottom: 20px;
     color: rgb(91,112,131);
 }
-.del-btn-wrapper {
+.del-btn-wrapper,.pin-btn-wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -1484,6 +1484,16 @@ h2.del-post-content-header {
 button.del-btn {
   border: none;
   padding: 2rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+}
+button.pin-btn {
+  border: none;
+  padding: 2rem 3rem;
   border-radius: 9999px;
   cursor: pointer;
   font-weight: 700;
@@ -1505,4 +1515,13 @@ button#delete-post-btn {
 }
 button#delete-post-btn:hover{
   background: rgb(202,32,85);
+}
+
+button#pin-post-btn {
+  background-color:rgb(29, 161, 242);
+  color: #fff;
+  transition:background-color 0.3s;
+}
+button#pin-post-btn:hover{
+  background:rgb(26,145,218);
 }

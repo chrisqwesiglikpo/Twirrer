@@ -56,6 +56,9 @@ $userId=$user->user_id;
                 <div class="del-post-wrapper-container">
                    
                 </div>
+                <div class="pin-post-wrapper-container">
+                   
+                </div>
                 
         </section>
         <aside role="complementary">
