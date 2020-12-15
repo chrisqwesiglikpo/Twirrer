@@ -10,7 +10,7 @@ RewriteRule ^settings/password/?$ password.php
 RewriteRule ^i/notifications/?$ notification.php
 
 
-RewriteRule ^([a-zA-Z0-9_-]+)/status/([0-9]+)?$ post.php?post_id=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/status/([0-9]+)?$ post.php?post_id=$1 [QSA,L]
 
 RewriteRule ^([a-zA-Z0-9_-]+)/(following|followers|replies|suggested)?$ $2.php?username=$1
 
