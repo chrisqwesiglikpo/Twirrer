@@ -10,7 +10,7 @@ if(isset($_POST['search']) && !empty($_POST['search'])){
     if(!empty($result)){
     foreach($result as $user){
         echo '<li>
-        <a href="'.url_for($user->username).'">
+        <a href="'.url_for(h(u($user->username))).'">
             <div id="image-wrapper-suggest">
                 <img src="'. url_for($user->profilePic) .'" alt="User Profile Pic">
             </div>

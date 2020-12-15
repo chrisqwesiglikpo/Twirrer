@@ -7,7 +7,7 @@ if(Login::isLoggedIn()){
 }else if(isset($_SESSION['userLoggedIn'])){
     $user_id=$_SESSION['userLoggedIn'];
 }else{
-    redirect_to(url_for("index.php"));
+    redirect_to(url_for("index"));
 }
 if(isset($_GET['username']) == true && empty($_GET['username']) === false){
     $username =h($_GET['username']);

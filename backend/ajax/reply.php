@@ -34,7 +34,7 @@
                         <?php echo $post->post; ?>
                         </div>
                         <div class="reply-to-desc">
-                            <span class="reply-to">Reply to</span> <a href="<?php echo url_for($post->username); ?>" class="reply-username-link">@<?php echo $post->username; ?></a>
+                            <span class="reply-to">Reply to</span> <a href="<?php echo url_for(h(u($post->username))); ?>" class="reply-username-link">@<?php echo $post->username; ?></a>
                         </div>
                   </div>
                </div>

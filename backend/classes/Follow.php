@@ -19,12 +19,12 @@ class Follow extends User{
              if(!empty($data['receiver'])==$profileID){
                  //Following btn
                 
-                 echo  "<a href='".url_for('messages.php?id='.$profileID)."' class='profileButton'>
+                 echo  "<a href='".url_for('messages.php?id='.h(u($profileID)))."' class='profileButton'>
                        <i class='fa fa-envelope'></i></a>
                        <button class='followButton follow-btn' data-follow='".$profileID."'>Following</button>";
              }else{
                  //follow btn
-                echo  "<a href='".url_for('messages.php?id='.$profileID)."' class='profileButton'><i class='fa fa-envelope'></i></a>
+                echo  "<a href='".url_for('messages.php?id='.h(u($profileID)))."' class='profileButton'><i class='fa fa-envelope'></i></a>
                       <button class='followButton unfollow-btn' data-follow='".$profileID."'>Follow</button>";
              }
         }else{
@@ -69,7 +69,7 @@ class Follow extends User{
                     <div class="resultsContainer__content">
                     <div class="resultsContainer__content-disp">
                         <div class="go-back-fullName__content">
-                            <a href="'.url_for($user->username).'" role="link">
+                            <a href="'.url_for(h(u($user->username))).'" role="link">
                                 <h2>'.$user->firstName." ".$user->lastName.'</h2>
                                 <span class="go-back-username__content">@'.$user->username.'</span>
                             </a>
@@ -101,7 +101,7 @@ class Follow extends User{
                     <div class="resultsContainer__content">
                     <div class="resultsContainer__content-disp">
                         <div class="go-back-fullName__content">
-                            <a href="'.url_for($user->username).'" role="link">
+                            <a href="'.url_for(h(u($user->username))).'" role="link">
                                 <h2>'.$user->firstName." ".$user->lastName.'</h2>
                                 <span class="go-back-username__content">@'.$user->username.'</span>
                             </a>
@@ -134,7 +134,7 @@ class Follow extends User{
                     <div class="resultsContainer__content">
                     <div class="resultsContainer__content-disp">
                         <div class="go-back-fullName__content">
-                            <a href="'.url_for($user->username).'" role="link">
+                            <a href="'.url_for(h(u($user->username))).'" role="link">
                                 <h2>'.$user->firstName." ".$user->lastName.'</h2>
                                 <span class="go-back-username__content">@'.$user->username.'</span>
                             </a>
@@ -188,7 +188,7 @@ class Follow extends User{
                  <img src="'.url_for($user->profilePic).'" alt="">
                 </div>
              <div class="follow-user-info">
-                 <h4><a href="'.url_for($user->username).'">'.$user->firstName." ".$user->lastName.'</a></h4>
+                 <h4><a href="'.url_for(h(u($user->username))).'">'.$user->firstName." ".$user->lastName.'</a></h4>
                  <p>@'.$user->username.'</p>
              </div>
              '.((!empty($userData['receiver'])==$user->user_id)? '<button class="follow-btn unfollow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Following</button>' : '<button class="follow-btn follow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Follow</button>').'

@@ -4,7 +4,7 @@
  if(Login::isLoggedIn()){
     redirect_to(url_for("home.php"));
 }else if(isset($_SESSION['userLoggedIn'])){
-    redirect_to(url_for("home.php"));
+    redirect_to(url_for("home"));
 }
  $page_title="Twitter.It's what's happening / Twitter";
 ?>
@@ -35,8 +35,8 @@
                  <i class="fa fa-twitter"></i>
                  <h1>See what’s happening in the world right now</h1>
                  <h4>Join Twirrer today</h4>
-                 <a href="<?php echo url_for('signup.php'); ?>" class="sign-up btn">Sign Up</a>
-                 <a href="<?php echo url_for('login.php'); ?>" class="log-in btn">Log in</a>
+                 <a href="<?php echo url_for('signup'); ?>" class="sign-up btn">Sign Up</a>
+                 <a href="<?php echo url_for('login'); ?>" class="log-in btn">Log in</a>
              </div>
          </div>
          <!-- end of right -->

@@ -21,7 +21,7 @@ if(is_post_request()){
         session_regenerate_id();
         $user_id=$account->getUserId($email);
         $_SESSION["userLoggedIn"]=$user_id;
-        redirect_to(url_for("home.php"));
+        redirect_to(url_for("home"));
       }
   
   }
