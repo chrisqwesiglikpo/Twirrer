@@ -1627,3 +1627,16 @@ a.compose-inbox {
   background-color: var(--lightBlue);
   border-radius: 9999px;
 }
+/* Post styles */
+.resultsContainer .post-header-featured-left{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  margin:1rem;
+}
+.resultsContainer a.displayName{
+  line-height:1.5;
+}
+.resultsContainer .post-body {
+  padding-bottom: 1rem;
+}
