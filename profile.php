@@ -139,5 +139,6 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
 </section>
 </main>
 </section>
+<script src="<?php echo url_for('frontend/assets/js/reply.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/profile.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>

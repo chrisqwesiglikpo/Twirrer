@@ -48,8 +48,10 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." on Twitter";
                 </div>
     </div>
     <div class="replyContainer">
-                <div class="postsContainer">
-                     <?php $loadFromPost->replyPost($postId,$profileId); ?> 
+                <div class="postsContainer replyContainerWrapper">
+                     <?php //$loadFromPost->replyPost($postId,$profileId);
+                      $loadFromPost->comments($postId,$profileId);
+                      ?> 
                 </div>
     </div>
     <div id="popUpModal" class="retweet-modal-container"></div> 
