@@ -1,5 +1,6 @@
 var u_id = $('.u_p_id').data('uid');
-var p_id = $('.u_p_id').data('pid');
+var p_id = $('.u_p_id').data('pid'); 
+var timer;
 $(function() {
   var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
   $('#nav a').each(function() {
@@ -28,6 +29,33 @@ $(function() {
         submitButton.prop("disabled",false);
      
 })
+
+
+$("#userSearchTextbox").keydown((event) => {
+  clearTimeout(timer);
+  var textbox = $(event.target);
+  var value = textbox.val();
+
+  if (value == "" && event.keycode == 8) {
+      // remove user from selection
+      return;
+  }
+
+  timer = setTimeout(() => {
+      value = textbox.val().trim();
+
+      if(value == "") {
+          $(".resultsContainer").html("");
+      }
+      else {
+          $.get("http://localhost/twirrer/backend/ajax/searchChatUser.php",{searchTerm:value,userid:u_id},function(data){
+            $(".resultsContainer").html(data);
+          })
+      }
+  }, 1000)
+
+})
+
 // //  ,#replyTextarea
 // $("#postTextarea").keyup(e=>{
 //   let textbox=$(e.target);

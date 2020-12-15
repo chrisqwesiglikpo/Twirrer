@@ -32,13 +32,19 @@ $page_title="Messages / Twitter";
            
     </div>
     <div class="chatPageContainer">
-        <div class="chatTitleBar"></div>
+        <div class="chatTitleBar">
+           <label for="userSearchTextbox">To:</label>
+           <div id="selectedUsers">
+                <input type="text" id="userSearchTextbox" placeholder="Type the name of the person">
+           </div>
+        </div>
         <div class="resultsContainer" aria-label="Timeline:Inbox">
         
         </div>
+        <button id="createChatButton" type="button" disabled="true">Create Chat</button>
     </div>
     
 </section>
 </main>
-<script src="<?php echo url_for('frontend/assets/js/inboxPage.js'); ?>"></script>
+
 <?php require_once 'backend/shared/mainFooter.php'; ?>
