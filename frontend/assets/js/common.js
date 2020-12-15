@@ -72,3 +72,10 @@ $(document).on('click','.go-back-arrow', function () {
 });
 
 
+$(document).on('click','.go-back-arrow-home', function () {
+
+  window.location.href = "http://localhost/twirrer/home";
+  
+});
+
+

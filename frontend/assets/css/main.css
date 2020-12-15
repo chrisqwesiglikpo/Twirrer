@@ -1531,7 +1531,7 @@ button#pin-post-btn:hover{
   padding: 1rem;
   cursor:pointer;
 }
-.go-back-arrow {
+.go-back-arrow,.go-back-arrow-home {
   margin-right: 1.5rem;
 }
 .go-back-name{
@@ -1560,10 +1560,10 @@ button#pin-post-btn:hover{
   color: rgb(91,112,131);
   line-height: 1.3125;
 }
-.go-back-arrow svg{
+.go-back-arrow svg,.go-back-arrow-home svg{
   fill:rgba(29,161,242,1.00);
 }
-.go-back-arrow:hover svg{
+.go-back-arrow:hover svg,.go-back-arrow-home:hover svg{
   background:rgba(29,161,242,0.1);
   border-radius:9999px;
   cursor: pointer;
