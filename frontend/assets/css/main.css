@@ -1620,6 +1620,7 @@ span.username-following {
 .compose-stc{
   fill: rgba(29,161,242,1.00);
 }
+/* Chat styles */
 a.compose-inbox {
   padding: 1rem;
 }
@@ -1639,4 +1640,39 @@ a.compose-inbox {
 }
 .resultsContainer .post-body {
   padding-bottom: 1rem;
+}
+.chatPageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.chatTitleBar {
+  display: flex;
+  align-items: center;
+  min-height: 6rem;
+  border-bottom: 1px solid var(--lightGrey);
+  padding: 1rem;
+}
+.chatTitleBar label {
+  margin:0 1rem 0 0;
+  font-size:1.9rem;
+}
+#userSearchTextbox {
+  border: none;
+  flex: 1;
+  font-weight: 200;
+  min-width: 350px;
+  padding: 1rem;
+  font-size:1.5rem;
+}
+button#createChatButton {
+  border: none;
+  background-color: var(--deepBlue);
+  color: #fff;
+  padding: 0.7rem 2rem;
+  margin: 1rem auto;
+  border-radius: 4rem;
+}
+#createChatButton:disabled{
+   background-color: var(--deepblueLight);
 }
