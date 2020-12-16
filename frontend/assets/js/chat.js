@@ -28,7 +28,7 @@
 //         }
 //     });
 // })
-
+var u_id = $('.u_p_id').data('uid');
 var createChatBtn  = document.querySelector("#createChatButton");
 
 
@@ -43,12 +43,13 @@ createChatBtn.addEventListener("click", function(e){
 				profileIds.push(el.dataset.profile);
 			}
 		});
-
+        // console.log(profileIds.length);
 		if(profileIds.length > 0){
 			if(confirm("Are you sure,you want to create the chat?")){
 				var formData  = new FormData();
 
                 formData.append("profileid",JSON.stringify(profileIds));
+                formData.append("userId",u_id);
 
 				var httpRequest = new XMLHttpRequest();
 
@@ -57,9 +58,9 @@ createChatBtn.addEventListener("click", function(e){
 					httpRequest.onreadystatechange = function(){
 						if(this.readyState === 4 && this.status === 200){
 							if(this.responseText.length != 0){
-								alert(this.responseText);
+                                window.location.href = "http://localhost/twirrer/chat/"+this.responseText;
 							}
-							// location.reload(true);
+							
 						}
 					}
 

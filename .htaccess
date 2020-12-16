@@ -5,6 +5,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(home|profile|login|index|logout|signup|replies|post|messages)$ $1.php [NC,L] 
 RewriteRule ^([a-zA-Z0-9_-]+)/?$ profile.php?username=$1 [QSA]
 RewriteRule ^hashtag/([a-zA-Z0-9_-]+)/?$ hashtag.php?hashtag=$1
+RewriteRule ^chat/([a-zA-Z0-9_-]+)/?$ chat.php?chatId=$1
 RewriteRule ^settings/account/?$ account.php
 RewriteRule ^settings/password/?$ password.php
 RewriteRule ^i/notifications/?$ notification.php
