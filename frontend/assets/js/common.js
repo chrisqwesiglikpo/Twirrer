@@ -91,7 +91,7 @@ function updateSelectedUsersHtml(){
    selectedUsers.forEach(user=>{
      var name=user.firstName+" "+user.lastName;
      var user_id=user.user_id;
-     var userElement=$(`<div class="selectedUser" data-user="${user_id}">
+     var userElement=$(`<div class="selectedUser" data-profile="${user_id}">
                           <div class="selectedUser__wrapper">
                               <img src="http://localhost/twirrer/${user.profilePic}"/>
                           </div>

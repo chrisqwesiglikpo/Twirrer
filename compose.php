@@ -47,4 +47,5 @@ $page_title="Messages / Twitter";
 </section>
 </main>
 
+<script src="<?php echo url_for('frontend/assets/js/chat.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>
