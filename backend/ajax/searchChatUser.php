@@ -10,7 +10,7 @@ if(is_get_request()){
          <ul role="checkbox" data-focusable="true" class="resultsContainer__item-wrapper">';
          if(!empty($results)){
                 foreach($results as $result){
-                  
+                      if($result->user_id != $userid){
                       echo  '<li role="listitem" class="resultsContainer__listitem" data-profileId="'.$result->user_id.'">
                               <div class="resultsContainer__wrapper-select">
                                 <img src="'.url_for($result->profilePic).'"/>
@@ -20,6 +20,7 @@ if(is_get_request()){
                                   <span>@<span class="username__listitem">'.$result->username.'</span></span>
                               </div>
                           </li>';
+                      }
                 }
             
         }else{

@@ -8,7 +8,7 @@ if(is_post_request()){
        $profileIds=json_decode($_POST['profileid']);
        if(!empty($profileIds)){
            foreach($profileIds as $profileId){
-               echo $profileId."<br/>";
+               echo $profileId;
            }
        }
     }
