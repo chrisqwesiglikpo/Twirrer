@@ -33,7 +33,7 @@ $userId=$user->user_id;
                       <img src="<?php echo $user->profilePic; ?>" alt="User Profile Pic">
                    </div>
                    <form class="textareaContainer"> 
-                        <textarea  id="postTextarea" placeholder="What's happening?" aria-label="What's happening?"></textarea>
+                        <textarea  id="postTextarea" placeholder="What's happening?" aria-label="What's happening?" autofocus></textarea>
                         <div class="hash-box">
                            <ul></ul>
                         </div>

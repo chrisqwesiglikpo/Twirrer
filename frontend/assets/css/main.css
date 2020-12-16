@@ -1652,6 +1652,7 @@ a.compose-inbox {
   min-height: 6rem;
   border-bottom: 1px solid var(--lightGrey);
   padding: 1rem;
+  background-color: #EBEEF0;
 }
 .chatTitleBar label {
   margin:0 1rem 0 0;
@@ -1664,7 +1665,7 @@ a.compose-inbox {
   min-width: 350px;
   padding: 1rem;
   font-size:2rem;
-  background-color:#EBEEF0;
+  /* background-color:#EBEEF0; */
 }
 button#createChatButton {
   border: none;
@@ -1713,4 +1714,31 @@ li.resultsContainer__listitem:hover {
     font-size: 1.5rem;
     line-height: 1.5;
     font-weight: 400;
+}
+.selectedUser {
+  display: flex;
+  width: 169.59px;
+  min-height: 28px;
+  padding: 2px;
+  justify-content: space-between;
+  align-items: center;
+  background:#fff;
+  border: 1px solid rgb(196,207,217);
+  border-radius: 9999px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.selectedUser:hover{
+  cursor: pointer;
+  background-color:rgb(235,249,250);
+}
+.selectedUser__wrapper {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.selectedUser__wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
 }

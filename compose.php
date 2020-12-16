@@ -35,7 +35,7 @@ $page_title="Messages / Twitter";
         <div class="chatTitleBar">
            <label for="userSearchTextbox">To:</label>
            <div id="selectedUsers">
-                <input type="text" id="userSearchTextbox" placeholder="Type the name of the person">
+                <input type="text" id="userSearchTextbox" placeholder="Type the name of the person" autofocus>
            </div>
         </div>
         <div class="resultsContainer" aria-label="Timeline:Inbox">

@@ -57,7 +57,7 @@ $("#userSearchTextbox").keydown((event) => {
               // console.log(value);
               $.get("http://localhost/twirrer/backend/ajax/searchChatUser.php",{searchResult:username},function(results){
                   let result=JSON.parse(results);
-                  if(result.user_id==u_id || selectedUsers.some(u=>u.user_id==result.user_id)){
+                  if(selectedUsers.some(u=>u.user_id==result.user_id)){
                     return;
                   }
                   selectedUsers.push(result);
@@ -85,12 +85,18 @@ function updateSelectedUsersHtml(){
    selectedUsers.forEach(user=>{
      var name=user.firstName+" "+user.lastName;
      var user_id=user.user_id;
-     var userElement=$(`<span class="selectedUser" data-user="${user_id}">${name}</span>`);
+     var userElement=$(`<div class="selectedUser" data-user="${user_id}">
+                          <div class="selectedUser__wrapper">
+                              <img src="http://localhost/twirrer/${user.profilePic}"/>
+                          </div>
+                          <h3>${name}</h3>
+                          <span class="selectedUser__close-items"><svg viewBox="0 0 24 24"><g><path d="M13.414 12l5.793-5.793c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0L12 10.586 6.207 4.793c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414L10.586 12l-5.793 5.793c-.39.39-.39 1.023 0 1.414.195.195.45.293.707.293s.512-.098.707-.293L12 13.414l5.793 5.793c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L13.414 12z" fill="#69C1F7"></path></g></svg></span>
+                </div>`);
      elements.push(userElement);
    });
 
    $(".selectedUser").remove();
-   $("#selectedUsers").prepend(elements);
+   $("#selectedUsers").append(elements);
 }
 
 
