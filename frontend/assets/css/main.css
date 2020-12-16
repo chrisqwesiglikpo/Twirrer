@@ -1677,6 +1677,9 @@ button#createChatButton {
 #createChatButton:disabled{
    background-color: var(--deepblueLight);
 }
+#createChatButton:enabled{
+  cursor: pointer;
+}
 li.resultsContainer__listitem {
     display: flex;
     align-items: center;

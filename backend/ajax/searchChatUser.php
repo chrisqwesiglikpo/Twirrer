@@ -17,7 +17,7 @@ if(is_get_request()){
                               </div>
                               <div class="resultsContainer__listitem-name">
                                   <h3>'.$result->firstName." ".$result->lastName.'</h3>
-                                  <span>@'.$result->username.'</span>
+                                  <span>@<span class="username__listitem">'.$result->username.'</span></span>
                               </div>
                           </li>';
                 }
@@ -28,5 +28,13 @@ if(is_get_request()){
             
      echo '</ul>
           </div>';
+    }
+
+    if(isset($_GET['searchResult']) && !empty($_GET['searchResult'])){
+       $searchTerm=h($_GET['searchResult']);
+       $user=$loadFromUser->searchUser($searchTerm);
+      
+      echo  json_encode($user);
+
     }
 }

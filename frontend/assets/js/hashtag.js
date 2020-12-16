@@ -21,7 +21,7 @@ $(function(){
                  $('#postTextarea').val(newContent+value+' ');
                  $('.hash-box li').hide();
                  $('#postTextarea').focus();
-            })
+            });
           }
         })
       }
