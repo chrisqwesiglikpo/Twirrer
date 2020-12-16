@@ -39,7 +39,7 @@ $page_title="Messages / Twitter";
            </div>
         </div>
         <div class="resultsContainer" aria-label="Timeline:Inbox">
-        
+               
         </div>
         <button id="createChatButton" type="button" disabled="true">Create Chat</button>
     </div>

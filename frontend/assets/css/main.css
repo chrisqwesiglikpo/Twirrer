@@ -1663,7 +1663,8 @@ a.compose-inbox {
   font-weight: 200;
   min-width: 350px;
   padding: 1rem;
-  font-size:1.5rem;
+  font-size:2rem;
+  background-color:#EBEEF0;
 }
 button#createChatButton {
   border: none;
@@ -1675,4 +1676,38 @@ button#createChatButton {
 }
 #createChatButton:disabled{
    background-color: var(--deepblueLight);
+}
+li.resultsContainer__listitem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(235,238,240);
+    opacity: 1;
+}
+li.resultsContainer__listitem:hover {
+    background-color:rgb(247,249,250);
+}
+.resultsContainer__wrapper-select {
+    width: 3.9rem;
+    height: 3.9rem;
+    margin-right: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 2px inset;
+}
+.resultsContainer__wrapper-select img{
+   width:100%;
+   height:100%;
+   border-radius:9999px;
+   object-fit:cover;
+}
+.resultsContainer__listitem-name h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.3;
+}
+.resultsContainer__listitem-name span {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-weight: 400;
 }
