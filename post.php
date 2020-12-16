@@ -22,6 +22,8 @@ if(isset($_GET['post_id']) && !empty($_GET['post_id'])){
      $link_array=explode('/',$pageUrl);
      $postId=h($link_array[4]);
      $postedBy=h($_GET['post_id']);
+
+      $userId=$loadFromUser->userIdByUsername($postedBy);
      
    
 }
@@ -50,7 +52,7 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." on Twitter";
     <div class="replyContainer">
                 <div class="postsContainer replyContainerWrapper">
                      <?php //$loadFromPost->replyPost($postId,$profileId);
-                      $loadFromPost->comments($postId,$profileId);
+                      $loadFromPost->comments($postId,$userId);
                       ?> 
                 </div>
     </div>

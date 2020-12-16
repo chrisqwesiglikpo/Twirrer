@@ -277,7 +277,7 @@ class Post extends User{
              </div>
         </div>';
         }
-    
+    }
     // public function comments($tweetId){
     //     $stmt=$this->con->prepare("SELECT * FROM `comment` LEFT JOIN `users` ON `commentBy`=`user_id` WHERE `commentOn`=:tweetId");
     //     $stmt->bindParam(":tweetId",$tweetId,PDO::PARAM_INT);
