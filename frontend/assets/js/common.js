@@ -57,7 +57,11 @@ $("#userSearchTextbox").keydown((event) => {
               // console.log(value);
               $.get("http://localhost/twirrer/backend/ajax/searchChatUser.php",{searchResult:username},function(results){
                   let result=JSON.parse(results);
+                  if(result.user_id==u_id || selectedUsers.some(u=>u.user_id==result.user_id)){
+                    return;
+                  }
                   selectedUsers.push(result);
+                  updateSelectedUsersHtml();
                   $("#userSearchTextbox").val("").focus();
                   $(".resultsContainer").html("");
                   $("#createChatButton").prop("disabled",false);
@@ -76,86 +80,19 @@ $("#userSearchTextbox").keydown((event) => {
 
 });
 
-$("")
+function updateSelectedUsersHtml(){
+   var elements=[];
+   selectedUsers.forEach(user=>{
+     var name=user.firstName+" "+user.lastName;
+     var user_id=user.user_id;
+     var userElement=$(`<span class="selectedUser" data-user="${user_id}">${name}</span>`);
+     elements.push(userElement);
+   });
 
-// $("#userSearchTextbox").keyup((event) => {
-//   clearTimeout(timer);
-//   var textbox = $(event.target);
-//   var value = textbox.val();
+   $(".selectedUser").remove();
+   $("#selectedUsers").prepend(elements);
+}
 
-//   if (value == "" && event.keycode == 8) {
-//       // remove user from selection
-//       return;
-//   }
-
-//   timer = setTimeout(() => {
-//       $value = textbox.val().trim();
-
-//       if($value == "") {
-//           $(".resultsContainer").html("");
-//       }
-//       else {
-//           $.get("http://localhost/twirrer/backend/ajax/searchChatUser.php",{searchResult:$value,userid:u_id},function(results){
-            
-//             // results.forEach(result => {
-//             //   console.log(result);
-//             // });
-//         //     $('ul li.resultsContainer__listitem').click(function(){
-//         //       var value=$.trim($(this).find(".resultsContainer__listitem-name span span.username__listitem").text());
-//         //       // console.log(value);
-//         //       $('#userSearchTextbox').val(value);
-//         //       // var oldContent=$('#postTextarea').val();
-//         //       // var newContent=oldContent.replace(regex,"");
-
-//         //       // $('#postTextarea').val(newContent+value+' ');
-//         //       // $('.hash-box li').hide();
-//         //       // $('#postTextarea').focus();
-//         //  });
-//           });
-//       }
-//   }, 1000);
-
-// });
-
-// $("#userSearchTextbox").keydown((event) => {
-  
-//   var textbox = $(event.target);
-//   var value = textbox.val();
-//   $.get("http://localhost/twirrer/backend/ajax/searchChatUser.php",{searchResult:$value,userid:u_id},function(results){
-//     // $(".resultsContainer").html(data);
-  
-
-// //     $('ul li.resultsContainer__listitem').click(function(){
-// //       var value=$.trim($(this).find(".resultsContainer__listitem-name span span.username__listitem").text());
-// //       // console.log(value);
-// //       $('#userSearchTextbox').val(value);
-// //       // var oldContent=$('#postTextarea').val();
-// //       // var newContent=oldContent.replace(regex,"");
-
-// //       // $('#postTextarea').val(newContent+value+' ');
-// //       // $('.hash-box li').hide();
-// //       // $('#postTextarea').focus();
-// //  });
-//   });
-// })
-
-// //  ,#replyTextarea
-// $("#postTextarea").keyup(e=>{
-//   let textbox=$(e.target);
-//   let value=textbox.val().trim();
-
- 
-  
-//   let submitButton=$("#submitPostButton");
-//   if(submitButton.length ==0) return alert("No submit button not found");
-  
-//   if(value ==""){
-//     submitButton.prop("disabled",true);
-//     return;
-//   }
-//   submitButton.prop("disabled",false);
-//   // console.log( submitButton.prop("disabled",false));
-// });
 
 
 $("#submitPostButton").click(e=>{
