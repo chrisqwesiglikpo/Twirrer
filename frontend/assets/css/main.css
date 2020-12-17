@@ -1766,3 +1766,14 @@ span.description {
   fill:rgb(91,112,131);
   margin-right:10px;
 }
+.go-back-container.notification-header {
+  justify-content: space-between;
+}
+.notification-settings {
+  padding: 1rem;
+  transition:background-color 0.3s;
+}
+.notification-settings:hover{
+  background-color: rgba(29,161,242,0.1);
+  border-radius:9999px;
+}
