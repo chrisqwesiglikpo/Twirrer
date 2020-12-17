@@ -233,7 +233,7 @@ form.textareaContainer {
 #submitPostButton:disabled{
   background-color: var(--deepblueLight);
 }
-.postsContainer .post,.profilePostsContainer .post{
+.postsContainer .post,.profilePostsContainer .post,.commentPostsContainer .post{
   display:flex;
   flex-direction:column;
   padding:var(--spacing);
@@ -243,17 +243,18 @@ form.textareaContainer {
 .post:hover{
   background-color: rgba(0,0,0,0.03);
 }
-.postsContainer .mainContentContainer,.profilePostsContainer .mainContentContainer{
+.postsContainer .mainContentContainer,.profilePostsContainer .mainContentContainer,.commentPostsContainer .mainContentContainer
+{
   flex:1;
   display:flex;
 }
-.postsContainer .postContentContainer,.profilePostsContainer .postContentContainer{
+.postsContainer .postContentContainer,.profilePostsContainer .postContentContainer,.commentPostsContainer .postContentContainer{
   padding-left:var(--spacing);
   display:flex;
   flex-direction:column;
   flex:1;
 }
-.postsContainer .username, .postsContainer .date,.profilePostsContainer .username,.profilePostsContainer .date {
+.postsContainer .username, .postsContainer .date,.profilePostsContainer .username,.profilePostsContainer .date,.commentPostsContainer .username,.commentPostsContainer .date {
   color: var(--greyText);
   font-size: 1.5rem;
   font-weight: 600;
@@ -840,8 +841,9 @@ div#retweet-btn:hover{
   font-weight:bold;
   margin-right:5px;
 }
-.followersContainer span:not(.value){
- color:var(--greyText);
+.followersContainer span:not(.value) {
+  color: var(--greyText);
+  font-weight: 400;
 }
 .followersContainer a{
   margin-right:15px;

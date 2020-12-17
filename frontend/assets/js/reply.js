@@ -87,7 +87,22 @@ $(function(){
     });
 
 
-
+    $(document).ready(function(){
+        loadPosts();
+    })
+    
+    function loadPosts(){
+        // var p_id = $('.u_p_id').data('pid');
+        var u_id = $('.u_p_id').data('uid');
+        var p_id = $('.u_p_id').data('pid');
+        var offset=10;
+                // $('#loader').show();
+                $.post('http://localhost/twirrer/backend/ajax/fetchPosts.php',
+                    {commentPost:offset,userid:u_id,profileId:p_id},function(data){
+                     $('.commentPostsContainer').html(data);
+                    //  $('#loader').hide();
+            });
+    }
     function updateCommentValue(element,num){
         let commentCountVal=element.text() || "0";
          element.text(parseInt(commentCountVal) + parseInt(num));

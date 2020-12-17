@@ -14,6 +14,13 @@
          $limit=(int)trim($_POST['fetchPost']);
          $loadFromPost->profilePosts($userId,$profileId,$limit);
       }
+
+      if(isset($_POST['commentPost']) && !empty($_POST['commentPost'])){
+         $userId=$_POST['userid'];
+         $profileId=$_POST['profileId'];
+         $limit=(int)trim($_POST['commentPost']);
+         $loadFromPost->replyPosts($userId,$profileId,$limit);
+      }
 }
 
   

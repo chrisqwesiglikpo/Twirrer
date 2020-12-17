@@ -190,6 +190,45 @@ class Post extends User{
              
         }
     }
+    public function replyPosts($user_id,$profileId,$num){
+        $userdata = $this->userData($user_id);
+
+        $stmt= $this->con->prepare("SELECT * FROM users  LEFT JOIN comment ON comment.commentBy = users.user_id WHERE comment.commentBy= :user_id ORDER BY comment.commentAt DESC LIMIT :num");
+
+        $stmt->bindParam(":user_id", $profileId, PDO::PARAM_INT);
+        $stmt->bindParam(":num", $num, PDO::PARAM_INT);
+        $stmt->execute();
+        $posts=$stmt->fetchAll(PDO::FETCH_OBJ);
+
+        foreach($posts as $post){
+            $postControls=new PostControls;
+            $controls=$postControls->createControls($post->commentID,$post->commentBy,$user_id);     
+                echo  '<div class="post">
+                 <div class="mainContentContainer">
+                      <div class="userImageContainer">
+                          <img src="'.url_for($post->profilePic).'" alt="User Profile Pic">
+                      </div>
+                      <div class="postContentContainer">
+                          <div class="post-header">
+                              <div class="post-header-featured-left">
+                                    <a href="'.url_for(h(u($post->username))).'" class="displayName">'.$post->firstName.' '.$post->lastName.'</a>
+                                    <span class="username">@'.$post->username.'</span>
+                                    <span class="date">'.$this->timeAgo($post->commentAt).'</span>
+                              </div>
+                             ' .(($post->commentBy===$user_id) ? '<span class="dot deletePostButton" id="deletePostModal" data-post="'.$post->commentID.'" data-postedby="'.$post->commentBy.'" data-user="'.$user_id.'"><svg viewBox="0 0 24 24" class="dot-icon"><g><path d="M19.39 14.882c-1.58 0-2.862-1.283-2.862-2.86s1.283-2.862 2.86-2.862 2.862 1.283 2.862 2.86-1.284 2.862-2.86 2.862zm0-4.223c-.75 0-1.362.61-1.362 1.36s.61 1.36 1.36 1.36 1.362-.61 1.362-1.36-.61-1.36-1.36-1.36zM12 14.882c-1.578 0-2.86-1.283-2.86-2.86S10.42 9.158 12 9.158s2.86 1.282 2.86 2.86S13.578 14.88 12 14.88zm0-4.223c-.75 0-1.36.61-1.36 1.36s.61 1.362 1.36 1.362 1.36-.61 1.36-1.36-.61-1.363-1.36-1.363zm-7.39 4.223c-1.577 0-2.86-1.283-2.86-2.86S3.034 9.16 4.61 9.16s2.862 1.283 2.862 2.86-1.283 2.862-2.86 2.862zm0-4.223c-.75 0-1.36.61-1.36 1.36s.61 1.36 1.36 1.36 1.362-.61 1.362-1.36-.61-1.36-1.36-1.36z"></path></g></svg></span>' : '' ).' 
+                          </div>
+                          <div class="post-body" data-post="'.$post->commentID.'" data-postedBy="'.$post->commentBy.'">
+                                <div>'.$this->getTweetLinks($post->comment).'</div>
+                          </div>
+                          '.$controls.'
+                      </div>
+                 </div>
+                
+      </div>';
+            
+             
+        }
+    }
     public function singlePost($postedby,$postId){
         $userId=$this->userIdByUsername($postedby);
         $stmt=$this->con->prepare("SELECT * FROM post p LEFT JOIN users u ON p.userId = u.user_id  WHERE  p.userId =:user_id AND p.post_id=:postId");

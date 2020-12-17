@@ -19,6 +19,7 @@ else{
 
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
+$d=strtotime($user->signUpDate);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title="Tweets with replies by ".$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
@@ -33,10 +34,11 @@ $page_title="Tweets with replies by ".$profileData->firstName." ".$profileData->
                     <?php echo $loadFromPost->createTab("Posts",url_for($profileData->username),false); ?>
                     <?php echo $loadFromPost->createTab("Replies", url_for($profileData->username.'/replies'),true); ?>
                 </div>
-                <div class="postsContainer">
-                   
+                <div class="commentPostsContainer">
+                <?php $loadFromPost->replyPosts($user_id,$profileId,10); ?>
                 </div>
 </section>
 </main>
 </section>
+<script src="<?php echo url_for('frontend/assets/js/reply.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>
