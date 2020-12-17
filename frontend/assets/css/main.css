@@ -233,7 +233,7 @@ form.textareaContainer {
 #submitPostButton:disabled{
   background-color: var(--deepblueLight);
 }
-.postsContainer .post{
+.postsContainer .post,.profilePostsContainer .post{
   display:flex;
   flex-direction:column;
   padding:var(--spacing);
@@ -243,17 +243,17 @@ form.textareaContainer {
 .post:hover{
   background-color: rgba(0,0,0,0.03);
 }
-.postsContainer .mainContentContainer{
+.postsContainer .mainContentContainer,.profilePostsContainer .mainContentContainer{
   flex:1;
   display:flex;
 }
-.postsContainer .postContentContainer{
+.postsContainer .postContentContainer,.profilePostsContainer .postContentContainer{
   padding-left:var(--spacing);
   display:flex;
   flex-direction:column;
   flex:1;
 }
-.postsContainer .username, .postsContainer .date {
+.postsContainer .username, .postsContainer .date,.profilePostsContainer .username,.profilePostsContainer .date {
   color: var(--greyText);
   font-size: 1.5rem;
   font-weight: 600;
@@ -1665,7 +1665,7 @@ a.compose-inbox {
   min-width: 350px;
   padding: 1rem;
   font-size:2rem;
-  /* background-color:#EBEEF0; */
+  /* profilePostsContainer */
 }
 button#createChatButton {
   border: none;

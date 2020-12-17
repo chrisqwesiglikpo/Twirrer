@@ -7,6 +7,13 @@
          $limit=(int)trim($_POST['fetchPosts']);
          $loadFromPost->posts($userId,$limit);
       }
+
+      if(isset($_POST['fetchPost']) && !empty($_POST['fetchPost'])){
+         $userId=$_POST['userid'];
+         $profileId=$_POST['profileId'];
+         $limit=(int)trim($_POST['fetchPost']);
+         $loadFromPost->profilePosts($userId,$profileId,$limit);
+      }
 }
 
   

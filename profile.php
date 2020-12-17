@@ -32,8 +32,8 @@ $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileDa
                     <?php echo $loadFromPost->createTab("Posts",url_for($profileData->username),true); ?>
                     <?php echo $loadFromPost->createTab("Replies", url_for($profileData->username.'/replies'),false); ?>
                 </div>
-                <div class="postsContainer">
-                   <?php $loadFromPost->posts($profileId,10); ?>
+                <div class="profilePostsContainer">
+                   <?php $loadFromPost->profilePosts($user_id,$profileId,10); ?>
                 </div>
                 <div id="popUpModal" class="retweet-modal-container">
                    

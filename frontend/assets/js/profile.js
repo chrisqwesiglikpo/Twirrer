@@ -9,11 +9,12 @@ $(function(){
     function loadPosts(){
         // var p_id = $('.u_p_id').data('pid');
         var u_id = $('.u_p_id').data('uid');
+        var p_id = $('.u_p_id').data('pid');
         var offset=10;
                 // $('#loader').show();
                 $.post('http://localhost/twirrer/backend/ajax/fetchPosts.php',
-                    {fetchPosts:offset,userid:u_id},function(data){
-                     $('.postsContainer').html(data);
+                    {fetchPost:offset,userid:u_id,profileId:p_id},function(data){
+                     $('.profilePostsContainer').html(data);
                     //  $('#loader').hide();
             });
     }
