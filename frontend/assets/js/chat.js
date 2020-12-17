@@ -43,13 +43,16 @@ createChatBtn.addEventListener("click", function(e){
 				profileIds.push(el.dataset.profile);
 			}
 		});
-        // console.log(profileIds.length);
-		if(profileIds.length > 0){
-			if(confirm("Are you sure,you want to create the chat?")){
+		//  profileIds.push(u_id);
+        //  console.log(profileIds);
+		if(profileIds.length > 1){
+				var chatName = prompt("Enter your Group Chat Name?");
+				if(chatName != null || chatName != ''){
 				var formData  = new FormData();
 
                 formData.append("profileid",JSON.stringify(profileIds));
                 formData.append("userId",u_id);
+                formData.append("chatName",chatName);
 
 				var httpRequest = new XMLHttpRequest();
 
@@ -58,12 +61,41 @@ createChatBtn.addEventListener("click", function(e){
 					httpRequest.onreadystatechange = function(){
 						if(this.readyState === 4 && this.status === 200){
 							if(this.responseText.length != 0){
-                                window.location.href = "http://localhost/twirrer/chat/"+this.responseText;
+								window.location.href = "http://localhost/twirrer/chat/"+this.responseText;
+								// alert(this.responseText);
 							}
 							
 						}
 					}
 
+				
+					httpRequest.send(formData);
+				}	
+			}
+		}else if(profileIds.length ==1){
+				var chatName = prompt("Enter the chat name?");
+				if(chatName != null || chatName != ''){
+				var formData  = new FormData();
+
+				formData.append("profileId",JSON.stringify(profileIds));
+				formData.append("userId",u_id);
+				formData.append("chatName",chatName);
+
+				var httpRequest = new XMLHttpRequest();
+
+				if(httpRequest){
+					httpRequest.open('POST', 'http://localhost/twirrer/backend/ajax/chat.php', true);
+					httpRequest.onreadystatechange = function(){
+						if(this.readyState === 4 && this.status === 200){
+							if(this.responseText.length != 0){
+								window.location.href = "http://localhost/twirrer/chat/"+this.responseText;
+								// alert(this.responseText);
+							}
+							
+						}
+					}
+
+				
 					httpRequest.send(formData);
 				}	
 			}
