@@ -826,10 +826,15 @@ div#retweet-btn:hover{
 }
 .profileHeaderContainer .displayName{
   font-size:19px;
-  font-weight:bold;
+  font-weight:800;
+  color:rgb(15, 20, 25);
+  line-height:1.312;
 }
-.profileHeaderContainer .username{
-  font-size:17px;
+.profileHeaderContainer .username {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(91,112,131);
+  line-height: 1.5;
 }
 .followersContainer .value{
   font-weight:bold;
@@ -1741,4 +1746,21 @@ li.resultsContainer__listitem:hover {
   height: 100%;
   object-fit: cover;
   border-radius: 9999px;
+}
+span.description {
+  display: flex;
+  margin-top: 0.3rem;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: rgb(91,112,131);
+}
+.description .join{
+    margin-right: 1rem;
+}
+.description svg{
+  fill:rgb(91,112,131);
+  margin-right:10px;
 }

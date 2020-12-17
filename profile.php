@@ -19,6 +19,7 @@ else{
 
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
+$d=strtotime($user->signUpDate);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
