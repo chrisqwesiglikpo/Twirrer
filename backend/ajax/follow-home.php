@@ -13,6 +13,7 @@ if(is_post_request()){
   	  $user_id=$_POST['user_id'];
   	  $followID=$_POST['follow'];
       $profileID=$_POST['profile'];
+      $loadFromUser->create('notification',array('notificationFrom'=>$user_id, 'notificationFor' =>$followID, 'postid' =>'0', 'type'=>'follow', 'status'=> '0', 'notificationCount'=>'0'));
       $loadFromFollow->follow($followID,$user_id,$profileID);
   }
 }

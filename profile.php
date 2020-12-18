@@ -21,6 +21,7 @@ $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
 $d=strtotime($user->signUpDate);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
+$notificationCount=$loadFromPost->notificationCount($user_id);
 $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
 ?>

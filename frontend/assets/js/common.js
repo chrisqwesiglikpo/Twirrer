@@ -131,6 +131,18 @@ $(document).on('click','.go-back-arrow', function () {
   
 });
 
+$(document).on('click','.notify-container', function () {
+   var profileid=$('.notify-container').data('profileid'); 
+  
+  
+  if(profileid !==undefined){
+    $.post('http://localhost/twirrer/backend/ajax/getUsername.php',{post_id:profileid},function(data){
+        window.location.href = "http://localhost/twirrer/"+data;
+    });
+  }
+  
+});
+
 
 $(document).on('click','.go-back-arrow-home', function () {
 

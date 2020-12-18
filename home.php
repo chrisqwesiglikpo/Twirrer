@@ -18,6 +18,8 @@ $profileId =$user_id;
 }
 $user=$loadFromUser->userData($user_id);
 $userId=$user->user_id;
+// $notification=$loadFromPost->notification($userId);
+$notificationCount=$loadFromPost->notificationCount($userId);
 
 ?>
 <?php require_once 'backend/shared/header.php'; ?>

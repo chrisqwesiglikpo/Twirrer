@@ -62,6 +62,7 @@
      $commentOn=$_POST['commentOn'];
 
      echo $loadFromPost->comment($commentBy,$commentOn,$comment);
+    //  $loadFromUser->create('notification',array('notificationFrom'=>$commentBy, 'notificationFor' => $profi, 'postid' => $commentOn, 'type'=>'comment', 'status'=> '0', 'notificationCount'=>'0'));
   }
 
   if(isset($_POST['deleteCommentOn']) && !empty($_POST['deleteCommentOn'])){

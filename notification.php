@@ -19,6 +19,8 @@ else{
 
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
+// $notification=$loadFromPost->notification($user_id);
+$notificationCount=$loadFromPost->notificationCount($user_id);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title="Notifications / Twitter";
 
@@ -39,8 +41,8 @@ $page_title="Notifications / Twitter";
                     <?php echo $loadFromPost->createTab("All", url_for('i/notifications'),true); ?>
                     <?php echo $loadFromPost->createTab("Mentions",url_for('notifications/mentions'),false); ?>
     </div>
-    <div class="resultsContainer" aria-label="Timeline: Following">
-      
+    <div class="resultsContainer" aria-label="Timeline: Notification">
+         <?php $loadFromPost->notification($user_id); ?>
     </div>
 </section>
 </main>
