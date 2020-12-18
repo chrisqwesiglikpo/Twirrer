@@ -20,6 +20,7 @@ else{
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
+$notificationCount=$loadFromPost->notificationCount($user_id);
 $page_title="People following by ".$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
 ?>

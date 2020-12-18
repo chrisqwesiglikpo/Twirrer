@@ -19,6 +19,7 @@ else{
 
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
+$notificationCount=$loadFromPost->notificationCount($user_id);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title="Messages / Twitter";
 

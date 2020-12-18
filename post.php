@@ -31,6 +31,7 @@ if(isset($_GET['post_id']) && !empty($_GET['post_id'])){
 $profileData = $loadFromUser->userData($profileId);
 $user = $loadFromUser->userData($user_id);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
+$notificationCount=$loadFromPost->notificationCount($user_id);
 $page_title=$profileData->firstName." ".$profileData->lastName ." on Twitter";
 
 ?>
