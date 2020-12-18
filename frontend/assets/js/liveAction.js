@@ -1,5 +1,5 @@
-function likePost(button,postId,likedBy){
-    $.post('http://localhost/twirrer/backend/ajax/likePost.php',{postId:postId,userId:likedBy},function(data){
+function likePost(button,postId,likedBy,postedBy){
+    $.post('http://localhost/twirrer/backend/ajax/likePost.php',{postId:postId,userId:likedBy,postedBy:postedBy},function(data){
         let likeButton=$(button);
         likeButton.addClass("like-active");
         

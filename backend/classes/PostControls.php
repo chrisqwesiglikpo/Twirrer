@@ -53,7 +53,7 @@ class PostControls{
     private function createlikeButton($postId,$postedBy,$user_id){
        $post=new Post();
        $text=$post->getLikes($postId);
-       $action="likePost(this,$postId,$user_id)";
+       $action="likePost(this,$postId,$user_id,$postedBy)";
        $class="like-btn";
        $imageSrc="<i class='fa fa-heart-o'></i>";
 

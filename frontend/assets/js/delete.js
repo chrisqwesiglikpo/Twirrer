@@ -67,4 +67,19 @@ $(function() {
        }
        
     });
+
+    $(document).on('click','.liked-container', function (event) {
+        let element=$(event.target);
+        let postId=$(this).data('post');
+        let postedBy=$(this).data('profileid');
+       
+     
+        if(postId !== undefined){
+         $.post('http://localhost/twirrer/backend/ajax/getUsername.php',{postedBy:postedBy},function(data){
+             window.location.href = "http://localhost/twirrer/"+data+"/status/"+postId;
+         });
+     
+        }
+        
+     });
 });

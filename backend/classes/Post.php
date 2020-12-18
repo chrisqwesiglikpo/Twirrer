@@ -431,7 +431,7 @@ class Post extends User{
         $stmt = $this->con->prepare("SELECT * FROM notification LEFT JOIN users ON notification.notificationFrom = users.user_id WHERE notification.notificationFor = :userid  AND  notification.`notificationFrom` !=:userid ORDER BY notification.notificationOn DESC");
         $stmt->bindValue(':userid', $userid, PDO::PARAM_INT);
          $stmt->execute();
-         $notification=$stmt->fetchAll(PDO::FETCH_OBJ);
+         $notification=$stmt->fetchAll(PDO::FETCH_OBJ);         
          if(!empty($notification)){
             foreach($notification as $notify){
                 $profileid=$notify->notificationFrom;
@@ -457,7 +457,31 @@ class Post extends User{
                             </div>
                         </div>
                    </div>';
-                }
+                }else  if($notify->type=='like'){
+                    echo '<div class="liked-container '.(($notify->status=='0')? 'unread-notification': 'read-notification').'" data-profileid="'.$notify->notificationFor.'" data-post="'.$notify->postId.'">
+                              <div class="liked-user-wrapper">
+                              <svg viewBox="0 0 24 24" ><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12z"></path></g></svg>
+                              </div>
+                             <div class=notify-wrapper-content">
+                                  <div class="liked-wrapper-user">
+                                          <a href="'.url_for(h(u($userdata->username))).'">
+                                              <img src="'.url_for($userdata->profilePic).'"/>
+                                          </a>
+                                          <div class="liked-post">
+                                         
+                                          </div>
+                                  </div>
+                                  <div class="liked-content">
+                                      <a href="'.url_for(h(u($userdata->username))).'" class="notify-content__name">
+                                          '.$userdata->firstName." ".$userdata->lastName.'
+                                      </a>
+                                      <div class="notify-content__text">
+                                       Liked your tweet
+                                      </div>
+                                  </div>
+                              </div>
+                         </div>';
+                      }
             }
          }
          

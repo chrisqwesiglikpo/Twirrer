@@ -5,7 +5,8 @@
     if(isset($_POST['postId']) && !empty($_POST['postId'])){
         $postId=h($_POST['postId']);
         $userId=h($_POST['userId']);
-        //$loadFromUser->create('notification',array('notificationFrom'=>$userId, 'notificationFor' => '1', 'postid' => $postId, 'type'=>'like', 'status'=> '0', 'notificationCount'=>'0'));
+        $postedBy=h($_POST['postedBy']);
+        $loadFromUser->create('notification',array('notificationFrom'=>$userId, 'notificationFor' =>$postedBy, 'postid' => $postId, 'type'=>'like', 'status'=> '0', 'notificationCount'=>'0'));
         echo $loadFromPost->Likes($userId,$postId);
         
  
