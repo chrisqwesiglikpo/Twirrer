@@ -428,7 +428,7 @@ class Post extends User{
 	}
  
     public function notification($userid){
-        $stmt = $this->con->prepare("SELECT * FROM notification LEFT JOIN users ON notification.notificationFrom = users.user_id WHERE notification.notificationFor = :userid AND notification.`notificationFrom` !=:userid ORDER BY notification.notificationOn DESC");
+        $stmt = $this->con->prepare("SELECT * FROM notification LEFT JOIN users ON notification.notificationFrom = users.user_id WHERE notification.notificationFor = :userid  AND  notification.`notificationFrom` !=:userid ORDER BY notification.notificationOn DESC");
         $stmt->bindValue(':userid', $userid, PDO::PARAM_INT);
          $stmt->execute();
          $notification=$stmt->fetchAll(PDO::FETCH_OBJ);
@@ -436,7 +436,8 @@ class Post extends User{
             foreach($notification as $notify){
                 $profileid=$notify->notificationFrom;
                 $userdata = $this->userData($profileid);
-              echo '<div class="notify-container" data-profileid="'.$profileid.'">
+                if($notify->type=='follow'){
+              echo '<div class="notify-container '.(($notify->status=='0')? 'unread-notification': 'read-notification').'" data-profileid="'.$profileid.'" data-post="'.$notify->postId.'">
                      <div class="notify-user-wrapper">
                         <svg viewBox="0 0 24 24" class="r-13gxpu9 r-4qtqp9 r-yyyyoo r-yucp9h r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M12.225 12.165c-1.356 0-2.872-.15-3.84-1.256-.814-.93-1.077-2.368-.805-4.392.38-2.826 2.116-4.513 4.646-4.513s4.267 1.687 4.646 4.513c.272 2.024.008 3.46-.806 4.392-.97 1.106-2.485 1.255-3.84 1.255zm5.849 9.85H6.376c-.663 0-1.25-.28-1.65-.786-.422-.534-.576-1.27-.41-1.968.834-3.53 4.086-5.997 7.908-5.997s7.074 2.466 7.91 5.997c.164.698.01 1.434-.412 1.967-.4.505-.985.785-1.648.785z"></path></g></svg>
                      </div>
@@ -456,14 +457,30 @@ class Post extends User{
                      </div>
               
                    </div>';
+                }
             }
          }
          
     }
 
     public function notificationCount($userid){
-        $stmt = $this->con->prepare("SELECT * FROM notification LEFT JOIN users ON notification.notificationFrom = users.user_id WHERE notification.notificationFor = :userid AND notification.`notificationFrom` !=:userid ORDER BY notification.notificationOn DESC");
+        $stmt = $this->con->prepare("SELECT * FROM notification LEFT JOIN users ON notification.notificationFrom = users.user_id WHERE notification.notificationFor = :userid AND notification.notificationCount='0' AND notification.`notificationFrom` !=:userid ORDER BY notification.notificationOn DESC");
         $stmt->bindValue(':userid', $userid, PDO::PARAM_INT);
+         $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function notificationCountReset($userid){
+        $stmt = $this->con->prepare("UPDATE notification SET notificationCount='1' WHERE notificationFor=:userid AND status='0'");
+        $stmt->bindValue(':userid', $userid, PDO::PARAM_INT);
+         $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function notificationStatusUpdate($userid,$postid,$profileId){
+        $stmt = $this->con->prepare("UPDATE notification SET status='1' WHERE notificationFor=:userid AND postid=:postid AND notificationFrom=:profileid");
+        $stmt->bindValue(':userid', $userid, PDO::PARAM_INT);
+        $stmt->bindValue(':posrid', $postid, PDO::PARAM_INT);
+        $stmt->bindValue(':profileid', $userid, PDO::PARAM_INT);
          $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
