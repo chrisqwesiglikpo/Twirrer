@@ -1842,7 +1842,42 @@ a.notify-content__name {
   font-weight: 400;
 }
 
-
+/* Home Photo */
+.blank-hr {
+  height: 0.1rem;
+  width: 100%;
+  background-color: rgb(235,238,240);
+  margin-bottom: 1rem;
+}
+.add-photo {
+  width: 37px;
+  height: 37px;
+  position: relative;
+  margin-bottom: 1.5rem;
+  transition:background-color 0.3s;
+  padding:0.9rem;
+}
+.add-photo:hover{
+  background-color:rgba(29,161,242,0.1);
+  border-radius:9999px;
+}
+input#addPhoto {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  font-size: 1px;
+}
+svg.photo-icon {
+  fill: rgba(29,161,242,1);
+  cursor: pointer;
+  width:22.5px;
+  height:22.5px;
+}
 
 
 
