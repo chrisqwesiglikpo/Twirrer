@@ -95,6 +95,28 @@ $(function(){
            reader.readAsDataURL(this.files[0]);
          }
     });
+
+    $("#addPhoto").change(function(){
+        
+        if(this.files && this.files[0]){
+        
+         let postImageWrapper=document.querySelector(".postImageContainer__wrapper");
+         var createChatButton=document.getElementById("submitPostButton");
+          postImageWrapper.style.display="block";
+          createChatButton.disabled = false;
+           let reader=new FileReader();
+            reader.onload=function(e){
+
+              var image=document.getElementById("postImageItem");
+              image.src=e.target.result;
+             
+             }
+           reader.readAsDataURL(this.files[0]);
+         }
+    });
+
+
+
     $(document).on("click","#skip-profile-pic",function(e){
         e.preventDefault();
         let profileModal=document.querySelector(".upload-profilePic-modal-step");

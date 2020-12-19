@@ -39,6 +39,11 @@ $notificationCount=$loadFromPost->notificationCount($userId);
                         <div class="hash-box">
                            <ul></ul>
                         </div>
+                        <div aria-label="Media" role="group" class="postImageContainer">
+                                <div class="postImageContainer__wrapper">
+                                    <img src="" draggable="false" alt="" id="postImageItem">
+                                </div>
+                        </div>
                         <div class="blank-hr"></div>
                         <div aria-label="Add photo" role="button" data-focusable="true" tabindex="0" class="add-photo">
                             <label for="addPhoto">
