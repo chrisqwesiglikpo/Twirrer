@@ -113,7 +113,7 @@ $("#submitPostButton").click(e=>{
   var postImage = document.querySelector("#addPhoto").files[0];
   let textbox=$("#postTextarea").val();
   let userid=u_id;
- if((textbox != "" && textbox !=null) || postImage ==null){
+ if((textbox != "" && textbox !=null) && postImage ==null ){
     $.post('http://localhost/twirrer/backend/ajax/post.php',{userid:u_id,onlyStatusText:textbox},function(data){
       var image=document.getElementById("postImageItem");
       image.src=""; 
@@ -122,7 +122,7 @@ $("#submitPostButton").click(e=>{
         button.prop("disabled",true);
         
     });
- }else if((postImage !="" && postImage !=null) || textbox ==""){
+ }else if((postImage !="" && postImage !=null) && textbox==""){
     let formData=new FormData();
     formData.append("postImage",postImage);
     formData.append("userid",u_id);
@@ -139,39 +139,37 @@ $("#submitPostButton").click(e=>{
             let createChatButton=document.getElementById("submitPostButton");
              postImageWrapper.style.display="none";
              createChatButton.disabled =true;
-             var image=document.getElementById("postImageItem");
-             image.src=""; 
-          
+            $("#addPhoto").val("");
         }
         
     });
+  }else if(postImage !=null && textbox !=""){
+        let formData=new FormData();
+        formData.append("postImageText",postImage);
+        formData.append("postText",textbox);
+        formData.append("userid",u_id);
+        $.ajax({
+            url:"http://localhost/twirrer/backend/ajax/post.php",
+            type:"POST",
+            cache:false,
+            processData:false,
+            data:formData,
+            contentType:false,
+            success:(data)=> {
+             
+                $('.postsContainer').html(data);
+                let postImageWrapper=document.querySelector(".postImageContainer__wrapper");
+                let createChatButton=document.getElementById("submitPostButton");
+                 postImageWrapper.style.display="none";
+                 $("#postTextarea").val("");
+                 createChatButton.disabled =true;
+                 $("#addPhoto").val("");
+             
+              
+            }
+            
+        });
   }
-//  }else if(postImage !="" && textbox !=null){
-//   let formData=new FormData();
-//   formData.append("postImageText",postImage);
-//   formData.append("postText",textbox);
-//   formData.append("userid",u_id);
-//   $.ajax({
-//       url:"http://localhost/twirrer/backend/ajax/post.php",
-//       type:"POST",
-//       cache:false,
-//       processData:false,
-//       data:formData,
-//       contentType:false,
-//       success:(data)=> {
-//         alert(data);
-//           // $('.postsContainer').html(data);
-//           // let postImageWrapper=document.querySelector(".postImageContainer__wrapper");
-//           // let createChatButton=document.getElementById("submitPostButton");
-//           //  postImageWrapper.style.display="none";
-//           //  createChatButton.disabled =true;
-//           //  var image=document.getElementById("postImageItem");
-//           //  image.src="";
-        
-//       }
-      
-//   });
-// }
  
 });
 
