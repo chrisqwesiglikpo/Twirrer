@@ -87,10 +87,10 @@ class Post extends User{
                       </div>
                       <div class="post-body" data-post="'.$post->post_id.'" data-postedBy="'.$post->postBy.'">
                           <div>'.$this->getTweetLinks($post->post).'</div>
+                          '.((!empty($post->postImage)) ? '<div class="postContentContainer__postImage" araia-label="PostImage">
+                          <img src="'.url_for($post->postImage).'" alt="image"/>
+                              </div>' : '').'
                       </div>
-                      '.((!empty($post->postImage)) ? '<div class="postContentContainer__postImage" araia-label="PostImage">
-                      <img src="'.url_for($post->postImage).'" alt="image"/>
-                          </div>' : '').'
                       '.$controls.'
                   </div>
              </div>
@@ -310,6 +310,9 @@ class Post extends User{
                       </div>
                       <div class="post-body" data-post="'.$post->post_id.'" data-postedBy="'.$post->postBy.'">
                             <div>'.$this->getTweetLinks($post->post).'</div>
+                            '.((!empty($post->postImage)) ? '<div class="postContentContainer__postImage" araia-label="PostImage">
+                            <img src="'.url_for($post->postImage).'" alt="image"/>
+                                </div>' : '').'
                       </div>
                       '.$controls.'
                   </div>
