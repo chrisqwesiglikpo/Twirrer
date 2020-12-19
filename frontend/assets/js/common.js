@@ -115,9 +115,12 @@ $("#submitPostButton").click(e=>{
   let userid=u_id;
  if(textbox != "" && textbox !=null){
     $.post('http://localhost/twirrer/backend/ajax/post.php',{userid:u_id,onlyStatusText:textbox},function(data){
-      $('.postsContainer').html(data);
+      var image=document.getElementById("postImageItem");
+      image.src=""; 
+    $('.postsContainer').html(data);
       $("#postTextarea").val("");
         button.prop("disabled",true);
+        
     });
  }else if(postImage !="" && postImage !=null){
     let formData=new FormData();
@@ -136,11 +139,37 @@ $("#submitPostButton").click(e=>{
             let createChatButton=document.getElementById("submitPostButton");
              postImageWrapper.style.display="none";
              createChatButton.disabled =true;
+             var image=document.getElementById("postImageItem");
+             image.src=""; 
           
         }
         
     });
- }
+//  }else if(postImage !="" && postImage !=null && textbox != "" && textbox !=null){
+//   let formData=new FormData();
+//   formData.append("postImageText",postImage);
+//   formData.append("postText",textbox);
+//   formData.append("userid",u_id);
+//   $.ajax({
+//       url:"http://localhost/twirrer/backend/ajax/post.php",
+//       type:"POST",
+//       cache:false,
+//       processData:false,
+//       data:formData,
+//       contentType:false,
+//       success:(data)=> {
+//           $('.postsContainer').html(data);
+//           let postImageWrapper=document.querySelector(".postImageContainer__wrapper");
+//           let createChatButton=document.getElementById("submitPostButton");
+//            postImageWrapper.style.display="none";
+//            createChatButton.disabled =true;
+//            var image=document.getElementById("postImageItem");
+//            image.src="";
+        
+//       }
+      
+//   });
+}
  
 });
 

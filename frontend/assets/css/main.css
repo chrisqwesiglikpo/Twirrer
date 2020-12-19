@@ -1892,6 +1892,7 @@ svg.photo-icon {
 .postContentContainer__postImage {
     width: 507px;
     height: 285.19px;
+    margin-bottom:1rem;
 }
 .postContentContainer__postImage img{
   height: 100%;
