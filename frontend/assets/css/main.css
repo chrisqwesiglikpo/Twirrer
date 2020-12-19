@@ -1889,4 +1889,12 @@ svg.photo-icon {
     width: 100%;
     border-radius: 16px;
 }
-
+.postContentContainer__postImage {
+    width: 507px;
+    height: 285.19px;
+}
+.postContentContainer__postImage img{
+  height: 100%;
+  width: 100%;
+  border-radius: 16px;
+}

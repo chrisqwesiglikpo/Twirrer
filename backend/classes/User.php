@@ -92,6 +92,31 @@ class User{
         $stmt->execute();
 
     }
+
+    public function updatePost($table, $user_id, $fields = array()){
+        $columns = '';
+        $i = 1;
+
+        foreach($fields as $name => $value){
+            $columns .= "{$name} = :{$name}";
+//            coverPic = :coverPic, profilePic = :profilePic,
+            if($i < count($fields)){
+                $columns .= ', ';
+            }
+            $i++;
+
+
+        }
+         $sql = "UPDATE {$table} SET {$columns} WHERE userId = {$user_id}";
+//        UPDATE profile SET coverPic = :coverPic, profilePic = :profilePic WHERE userId = 10;
+        if($stmt = $this->con->prepare($sql)){
+            foreach($fields as $key => $value){
+                $stmt->bindValue(':'.$key, $value);
+            }
+        }
+        $stmt->execute();
+
+    }
     public function userIdByUsername($username){
         $stmt=$this->con->prepare("SELECT `user_id` FROM `users` WHERE `username`=:username");
         $stmt->bindParam(":username",$username,PDO::PARAM_STR);
