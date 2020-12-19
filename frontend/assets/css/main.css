@@ -45,9 +45,13 @@ li{ list-style: none;}
 a{ text-decoration: none;}
 .wrapper {
   display: grid;
-  grid-template-columns: 1.9fr 4.5fr;
+  grid-template-columns: 1.2fr 4.5fr;
   height: 100vh;
   background-color: #fff;
+}
+.wrapper >header >div.header-footer>.user-name {
+  display: flex;
+  flex-direction: column;
 }
 a:hover{
   text-decoration: none;
@@ -456,12 +460,12 @@ ul#suggestion li:hover{
 }
 /* End of Auto-suggest styles */
 /* End of search area */
-main .follow {
-  width: 321px;
-  left: 77%;
-  top: 6rem;
+main aside {
+  grid-column: 2/3;
   position: fixed;
-  background: #fff;
+  top: 0;
+  right: 0;
+  left: 74%;
 }
 main .follow-user-img{
   width:6rem;
