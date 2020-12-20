@@ -156,7 +156,7 @@ $("#submitPostButton").click(e=>{
             data:formData,
             contentType:false,
             success:(data)=> {
-             
+
                 $('.postsContainer').html(data);
                 let postImageWrapper=document.querySelector(".postImageContainer__wrapper");
                 let createChatButton=document.getElementById("submitPostButton");

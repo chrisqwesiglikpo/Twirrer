@@ -19,7 +19,7 @@
    
      $postImagePath=$loadFromUser->uploadPostImage($_FILES['postImage'],$userid);
      $lastInsertedId=$loadFromUser->create('post',array('userId'=>$userid,'postImage'=>$postImagePath,'postBy'=>$userid,'postedOn'=>date('Y-m-d H:i:s')));
-     $loadFromUser->updatePost("post",$userid,array('imageId'=>$lastInsertedId));
+     $loadFromUser->updatePost("post",$userid,$lastInsertedId,array('imageId'=>$lastInsertedId));
      $loadFromPost->posts($userid,10);
    
   }
@@ -30,8 +30,8 @@
     $postImagePath=$loadFromUser->uploadPostImage($_FILES['postImageText'],$userid);
      $allowed_tags='<div><h1><h2><h3><h4><p><br/><strong><em><ul><li>';
      $statusText=strip_tags(h($_POST['postText']),$allowed_tags);
-    $lastInsertedId=$loadFromUser->create('post',array('userId'=>$userid,'post'=>$statusText,'postImage'=>$postImagePath,'postBy'=>$userid,'postedOn'=>date('Y-m-d H:i:s')));
-     $loadFromUser->updatePost("post",$userid,array('imageId'=>$lastInsertedId));
+     $lastInsertedId=$loadFromUser->create('post',array('userId'=>$userid,'post'=>$statusText,'postImage'=>$postImagePath,'postBy'=>$userid,'postedOn'=>date('Y-m-d H:i:s')));
+     $loadFromUser->updatePost("post",$userid,$lastInsertedId,array('imageId'=>$lastInsertedId));
      preg_match_all("/#+([a-zA-Z0-9_]+)/i",$statusText,$hashtag);
      if(!empty($hashtag)){
        $loadFromPost->addTrend($statusText);

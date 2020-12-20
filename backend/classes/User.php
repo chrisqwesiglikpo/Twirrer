@@ -93,7 +93,7 @@ class User{
 
     }
 
-    public function updatePost($table, $user_id, $fields = array()){
+    public function updatePost($table, $user_id,$post_id, $fields = array()){
         $columns = '';
         $i = 1;
 
@@ -107,7 +107,7 @@ class User{
 
 
         }
-         $sql = "UPDATE {$table} SET {$columns} WHERE userId = {$user_id}";
+         $sql = "UPDATE {$table} SET {$columns} WHERE userId = {$user_id} AND post_id={$post_id}";
 //        UPDATE profile SET coverPic = :coverPic, profilePic = :profilePic WHERE userId = 10;
         if($stmt = $this->con->prepare($sql)){
             foreach($fields as $key => $value){
