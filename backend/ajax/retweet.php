@@ -38,6 +38,11 @@ if(is_post_request()){
                                 </div>
                                 <div class="modal-retweet-post-body">
                                     <p><?php echo $post->post; ?></p>
+                                    <?php if(!empty($post->postImage)): ?> 
+                                        <div class="postContentContainer__postImage" araia-label="PostImage">
+                                        <img src="<?php echo url_for($post->postImage); ?>" alt="image"/>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

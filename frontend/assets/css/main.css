@@ -726,7 +726,10 @@ svg.close-icon {
   overflow-wrap: break-word;
   word-spacing: 2px;
   line-height: 1.5;
+  width: 424px;
+  height: 295px;
 }
+
 .retweet-date-post {
   margin-left: 1rem;
 }
@@ -1902,4 +1905,20 @@ svg.photo-icon {
   height: 100%;
   width: 100%;
   border-radius: 16px;
+}
+.retweet-modal-container .modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #FFF;
+  box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+  width: 600px;
+  height: 553px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.modal-retweet-post-body .postContentContainer__postImage {
+  width: 392px;
+  height: 285.29px;
 }
