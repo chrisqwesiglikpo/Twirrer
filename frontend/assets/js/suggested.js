@@ -9,9 +9,9 @@ $(function(){
             offset +=5;
             // $('#loader').show();
             $.post('http://localhost/twirrer/backend/ajax/fetchSuggested.php',
-                {fetchFollowing:offset,userid:u_id,profileid:p_id},function(data){
+                {fetchSuggest:offset,userid:u_id,profileid:p_id},function(data){
                     // alert(data);
-                $('.resultsContainer__following').html(data);
+                $('.resultsContainer__suggest').html(data);
                 //  $('#loader').hide();
                 });
         }

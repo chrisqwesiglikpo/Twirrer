@@ -24,10 +24,10 @@ $page_title="People following by ".$profileData->firstName." ".$profileData->las
                     <?php echo $loadFromPost->createTab("Following",url_for($profileData->username.'/following'),false); ?>
                     <?php echo $loadFromPost->createTab("Suggested", url_for($profileData->username.'/suggested'),true); ?>
     </div>
-    <div class="resultsContainer" aria-label="Timeline: Following">
-       <?php   $loadFromFollow->suggestedLists($profileId,$user_id); ?>
+    <div class="resultsContainer resultsContainer__suggest" aria-label="Timeline: Suggested">
+       <?php   $loadFromFollow->suggestedLists($profileId,$user_id,7); ?>
     </div>
 </section>
 </main>
-<script src="<?php echo url_for('frontend/assets/js/following.js'); ?>"></script>
+<script src="<?php echo url_for('frontend/assets/js/suggested.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>

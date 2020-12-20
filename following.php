@@ -23,8 +23,8 @@ $page_title="People followed by ".$profileData->firstName." ".$profileData->last
                     <?php echo $loadFromPost->createTab("Following",url_for($profileData->username.'/following'),true); ?>
                     <?php echo $loadFromPost->createTab("Suggested", url_for($profileData->username.'/suggested'),false); ?>
     </div>
-    <div class="resultsContainer" aria-label="Timeline: Following">
-       <?php   $loadFromFollow->followingLists($profileId,$user_id); ?>
+    <div class="resultsContainer resultsContainer__following" aria-label="Timeline: Following">
+       <?php   $loadFromFollow->followingLists($profileId,$user_id,7); ?>
     </div>
 </section>
 </main>

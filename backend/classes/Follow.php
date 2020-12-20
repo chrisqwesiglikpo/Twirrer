@@ -55,9 +55,10 @@ class Follow extends User{
         $data=$stmt->fetch(PDO::FETCH_ASSOC);
         echo json_encode($data);
      }
-    public function followingLists($profileID,$user_id){
-        $stmt=$this->con->prepare("SELECT * FROM `users` LEFT JOIN `follow` ON `receiver` = `user_id` AND CASE WHEN `sender` =:user_id THEN `receiver` = `user_id` END WHERE `sender` IS NOT NULL ORDER BY followOn DESC");
+    public function followingLists($profileID,$user_id,$num){
+        $stmt=$this->con->prepare("SELECT * FROM `users` LEFT JOIN `follow` ON `receiver` = `user_id` AND CASE WHEN `sender` =:user_id THEN `receiver` = `user_id` END WHERE `sender` IS NOT NULL ORDER BY followOn DESC LIMIT :num");
         $stmt->bindParam(":user_id",$profileID,PDO::PARAM_INT);
+        $stmt->bindParam(":num",$num,PDO::PARAM_INT);
         $stmt->execute();
         $data=$stmt->fetchAll(PDO::FETCH_OBJ);
 
@@ -119,9 +120,10 @@ class Follow extends User{
         }
     }
 
-    public function suggestedLists($profileID,$user_id){
-		$stmt=$this->con->prepare("SELECT * FROM `users` LEFT JOIN `follow` ON `sender` = `user_id` AND CASE WHEN `receiver` =:user_id  THEN `sender` = `user_id` END WHERE user_id !=:user_id AND `receiver` IS NULL INTERSECT SELECT * FROM `users` LEFT JOIN `follow` ON `receiver` = `user_id` AND CASE WHEN `sender` =:user_id THEN `receiver` = `user_id` END WHERE `sender` IS NULL ORDER BY followOn DESC");
+    public function suggestedLists($profileID,$user_id,$num){
+		$stmt=$this->con->prepare("SELECT * FROM `users` LEFT JOIN `follow` ON `sender` = `user_id` AND CASE WHEN `receiver` =:user_id  THEN `sender` = `user_id` END WHERE user_id !=:user_id AND `receiver` IS NULL INTERSECT SELECT * FROM `users` LEFT JOIN `follow` ON `receiver` = `user_id` AND CASE WHEN `sender` =:user_id THEN `receiver` = `user_id` END WHERE `sender` IS NULL ORDER BY followOn DESC LIMIT :num");
 		$stmt->bindParam(":user_id",$profileID,PDO::PARAM_INT);
+		$stmt->bindParam(":num",$num,PDO::PARAM_INT);
 		$stmt->execute();
         $followings=$stmt->fetchAll(PDO::FETCH_OBJ);
         
