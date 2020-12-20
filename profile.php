@@ -1,27 +1,8 @@
 <?php
-include 'backend/init.php';
-
-if(Login::isLoggedIn()){
-    $user_id=Login::isLoggedIn();
-
-}else if(isset($_SESSION['userLoggedIn'])){
-    $user_id=$_SESSION['userLoggedIn'];
-}else{
-    redirect_to(url_for("index.php"));
-}
-if(isset($_GET['username']) == true && empty($_GET['username']) === false){
-        $username =h($_GET['username']);
-        $profileId = $loadFromUser->userIdByUsername($username);
-}
-else{
-    $profileId =$user_id;
-}
-
+require_once 'backend/shared/mainHeader.php';
 $profileData = $loadFromUser->userData($profileId);
-$user = $loadFromUser->userData($user_id);
 $d=strtotime($user->signUpDate);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
-$notificationCount=$loadFromPost->notificationCount($user_id);
 $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
 ?>

@@ -1,25 +1,6 @@
 <?php
-include 'backend/init.php';
-
-if(Login::isLoggedIn()){
-    $user_id=Login::isLoggedIn();
-
-}else if(isset($_SESSION['userLoggedIn'])){
-    $user_id=$_SESSION['userLoggedIn'];
-}else{
-    redirect_to(url_for("index"));
-}
-if(isset($_GET['username']) == true && empty($_GET['username']) === false){
-    $username =h($_GET['username']);
-    $profileId = $loadFromUser->userIdByUsername($username);
-}
-else{
-$profileId =$user_id;
-}
-$user=$loadFromUser->userData($user_id);
+require_once 'backend/shared/mainHeader.php';
 $userId=$user->user_id;
-// $notification=$loadFromPost->notification($userId);
-$notificationCount=$loadFromPost->notificationCount($userId);
 
 ?>
 <?php require_once 'backend/shared/header.php'; ?>
