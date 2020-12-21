@@ -424,13 +424,17 @@ class Post extends User{
     	$stmt=$this->con->prepare("SELECT *,COUNT(`post_id`) AS `tweetsCount` FROM trends t LEFT JOIN post p ON p.post_id=t.postId AND post  LIKE CONCAT('%#',`hashtag`,'%') GROUP BY `hashtag` ORDER BY `tweetsCount` DESC  LIMIT 4");
     	$stmt->execute();
     	$trends=$stmt->fetchAll(PDO::FETCH_OBJ);
-
-    	foreach ($trends as $trend) {
-    	  echo '<div class="trends-content">
-           <h2 aria-level="2" role="heading">#'.$trend->hashtag.'</h2>
-           <div class="trends-text"><span class="trends-count">'.$trend->tweetsCount.'</span> Tweets</div>
-           </div>';
-    	}
+        if(!empty($trends)){
+            foreach ($trends as $trend) {
+            echo '<div class="trends-content">
+            <h2 aria-level="2" role="heading">#'.$trend->hashtag.'</h2>
+            <div class="trends-text"><span class="trends-count">'.$trend->tweetsCount.'</span> Tweets</div>
+            </div>';
+            }
+            echo '<div class="trends-footer">
+                <a href="#">Show more</a>
+            </div>';
+       }
     	
     }
     public function getTrendByHash($hashtag){

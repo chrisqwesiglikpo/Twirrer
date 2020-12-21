@@ -81,9 +81,7 @@ $userId=$user->user_id;
                     </div>
                     <div class="trends-body" aria-label="Timeline: Trending now">
                     <?php $loadFromPost->trends(); ?>
-                    <div class="trends-footer">
-                        <a href="#">Show more</a>
-                    </div>
+                    
                     </div>
                 </div>
     
