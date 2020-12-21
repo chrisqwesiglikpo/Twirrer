@@ -421,7 +421,7 @@ class Post extends User{
     }
   
     public function trends(){
-    	$stmt=$this->con->prepare("SELECT *,COUNT(`post_id`) AS `tweetsCount` FROM `trends` INNER JOIN `post` ON `post` LIKE CONCAT('%#',`hashtag`,'%')  GROUP BY `hashtag` ORDER BY `post_id` LIMIT 4");
+    	$stmt=$this->con->prepare("SELECT *,COUNT(`post_id`) AS `tweetsCount` FROM trends t LEFT JOIN post p ON p.post_id=t.postId AND post  LIKE CONCAT('%#',`hashtag`,'%') GROUP BY `hashtag` ORDER BY `tweetsCount` DESC  LIMIT 4");
     	$stmt->execute();
     	$trends=$stmt->fetchAll(PDO::FETCH_OBJ);
 
@@ -554,15 +554,15 @@ class Post extends User{
     //          $stmt->execute();
     //     }
     // }
-    public function addTrend($hashtag){
+    public function addTrend($hashtag,$postId){
 		preg_match_all("/#+([a-zA-Z0-9_]+)/i",$hashtag,$matches);
 		if($matches){
 			$result=array_values($matches[1]);
 		}
-		$sql ="INSERT INTO `trends` (`hashtag`,`createdOn`) VALUES(:hashtag,CURRENT_TIMESTAMP)";
+		$sql ="INSERT INTO `trends` (`hashtag`,`postId`,`createdOn`) VALUES(:hashtag,:postId,CURRENT_TIMESTAMP)";
 		foreach ($result as $trend) {
 			if($stmt=$this->con->prepare($sql)){
-				$stmt->execute(array(':hashtag'=>$trend));
+				$stmt->execute(array(':hashtag'=>$trend,':postId'=>$postId));
 			}
 		}
 	}
