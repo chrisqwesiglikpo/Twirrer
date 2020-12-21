@@ -185,7 +185,8 @@ $(document).on('click','.go-back-arrow', function () {
 });
 
 $(document).on('click','.notify-container', function () {
-   var profileid=$('.notify-container').data('profileid'); 
+   var profileid=$(this).data('profileid'); 
+   
   
   
   if(profileid !==undefined){

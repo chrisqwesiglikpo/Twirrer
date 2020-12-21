@@ -1,7 +1,7 @@
 <?php
 require_once 'backend/shared/mainHeader.php';
 $profileData = $loadFromUser->userData($profileId);
-$d=strtotime($user->signUpDate);
+$d=strtotime($profileData->signUpDate);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title=$profileData->firstName." ".$profileData->lastName ." (@".$profileData->username.") / Twitter";
 
