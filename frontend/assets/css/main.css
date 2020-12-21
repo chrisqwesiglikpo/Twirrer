@@ -171,12 +171,22 @@ section.mainSectionContainer {
   display: flex;
   flex-direction: column;
 }
-.mainSectionContainer .header-top{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:var(--spacing);
-    border-bottom: .1rem solid var(--grey);
+.mainSectionContainer .header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing);
+  z-index: 8;
+  position: sticky;
+  background: rgba(255,255,255,1);
+  top: 0;
+  border-bottom: .1rem solid var(--grey);
+}
+div#search-area {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(255,255,255,1.0);
 }
 .mainSectionContainer .header-top h4{
   font-size: 19px;
