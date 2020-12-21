@@ -102,6 +102,66 @@ class Post extends User{
             
         }
     }
+    public function getHashTag($hashtag,$user_id){
+        // echo $hashtag;
+        $stmt=$this->con->prepare("SELECT * FROM post p INNER JOIN trends t ON p.post_id=t.postId WHERE hashtag=:hashtag");
+        $stmt->bindParam(":hashtag",$hashtag,PDO::PARAM_STR);
+        $stmt->execute();
+        $getHashTag=$stmt->fetchAll(PDO::FETCH_OBJ);
+        foreach($getHashTag as $post){
+            $userdata = $this->userData($post->postBy);
+            $postControls=new PostControls;
+           $controls=$postControls->createControls($post->post_id,$post->postBy,$user_id);
+           $retweet=$this->checkRetweet($user_id,$post->post_id);
+          //var_dump($retweet);
+           if(!empty($retweet)){
+            $retweetUserData=$this->userData($retweet["retweetBy"]); 
+           }
+                 echo  '<div class="post">
+                  '.(((!empty($retweet['retweetBy']))==$user_id) ? '<div class="retweet-header"><div class="retweet-image">
+                      <svg viewBox="0 0 24 24"><g><path d="M23.615 15.477c-.47-.47-1.23-.47-1.697 0l-1.326 1.326V7.4c0-2.178-1.772-3.95-3.95-3.95h-5.2c-.663 0-1.2.538-1.2 1.2s.537 1.2 1.2 1.2h5.2c.854 0 1.55.695 1.55 1.55v9.403l-1.326-1.326c-.47-.47-1.23-.47-1.697 0s-.47 1.23 0 1.697l3.374 3.375c.234.233.542.35.85.35s.613-.116.848-.35l3.375-3.376c.467-.47.467-1.23-.002-1.697zM12.562 18.5h-5.2c-.854 0-1.55-.695-1.55-1.55V7.547l1.326 1.326c.234.235.542.352.848.352s.614-.117.85-.352c.468-.47.468-1.23 0-1.697L5.46 3.8c-.47-.468-1.23-.468-1.697 0L.388 7.177c-.47.47-.47 1.23 0 1.697s1.23.47 1.697 0L3.41 7.547v9.403c0 2.178 1.773 3.95 3.95 3.95h5.2c.664 0 1.2-.538 1.2-1.2s-.535-1.2-1.198-1.2z"></path></g></svg></div>
+                      <div class="retweet-user-link">
+                     <a href="'.url_for(h(u($retweetUserData->username))).'" role="link" data-focusable="true" class="retweet-link">
+                                  <span>'.$retweetUserData->firstName.' '.$retweetUserData->lastName.' Retweeted</span>
+                     </a>
+                  </div>
+          </div>' : '' ).'
+                   <div class="mainContentContainer">
+                        <div class="userImageContainer">
+                            <img src="'.url_for($userdata->profilePic).'" alt="User Profile Pic">
+                        </div>
+                        <div class="postContentContainer">
+                            <div class="post-header">
+                                <div class="post-header-featured-left">
+                                      <a href="'.url_for(h(u($userdata->username))).'" class="displayName">'.$userdata->firstName.' '.$userdata->lastName.'</a>
+                                      <span class="username">@'.$userdata->username.'</span>
+                                      <span class="date">'.$this->timeAgo($post->postedOn).'</span>
+                                </div>
+                               ' .(($post->postBy===$user_id) ? '<span class="dot deletePostButton" id="deletePostModal" data-post="'.$post->post_id.'" data-postedby="'.$post->postBy.'" data-user="'.$user_id.'"><svg viewBox="0 0 24 24" class="dot-icon"><g><path d="M19.39 14.882c-1.58 0-2.862-1.283-2.862-2.86s1.283-2.862 2.86-2.862 2.862 1.283 2.862 2.86-1.284 2.862-2.86 2.862zm0-4.223c-.75 0-1.362.61-1.362 1.36s.61 1.36 1.36 1.36 1.362-.61 1.362-1.36-.61-1.36-1.36-1.36zM12 14.882c-1.578 0-2.86-1.283-2.86-2.86S10.42 9.158 12 9.158s2.86 1.282 2.86 2.86S13.578 14.88 12 14.88zm0-4.223c-.75 0-1.36.61-1.36 1.36s.61 1.362 1.36 1.362 1.36-.61 1.36-1.36-.61-1.363-1.36-1.363zm-7.39 4.223c-1.577 0-2.86-1.283-2.86-2.86S3.034 9.16 4.61 9.16s2.862 1.283 2.862 2.86-1.283 2.862-2.86 2.862zm0-4.223c-.75 0-1.36.61-1.36 1.36s.61 1.36 1.36 1.36 1.362-.61 1.362-1.36-.61-1.36-1.36-1.36z"></path></g></svg></span>' : '' ).' 
+                            </div>
+                            <div class="post-body" data-post="'.$post->post_id.'" data-postedBy="'.$post->postBy.'">
+                                <div>'.$this->getTweetLinks($post->post).'</div>
+                                '.((!empty($post->postImage)) ? '<div class="postContentContainer__postImage" araia-label="PostImage">
+                                <img src="'.url_for($post->postImage).'" alt="image"/>
+                                    </div>' : '').'
+                            </div>
+                            '.$controls.'
+                        </div>
+                   </div>
+                  
+        </div>';
+              
+            
+        }
+        // $userdata=$this->userData($user_id);
+        // $stmt=$this->con->prepare("SELECT * FROM trends t INNER JOIN post p On p.post_id=t.postId WHERE hashtag=:hashtag ORDER BY postedOn DESC");
+
+        // $stmt->bindParam(":hashtag",$hashtag,PDO::PARAM_INT);
+        // // $stmt->bindParam(":num",$num,PDO::PARAM_INT);
+        // $stmt->execute();
+        // $posts=$stmt->fetchAll(PDO::FETCH_OBJ);
+        // var_dump($posts);
+    }
     public function profilePosts($user_id, $profileId, $num){
         $userdata = $this->userData($user_id);
 
@@ -426,7 +486,7 @@ class Post extends User{
     	$trends=$stmt->fetchAll(PDO::FETCH_OBJ);
         if(!empty($trends)){
             foreach ($trends as $trend) {
-            echo '<div class="trends-content">
+            echo '<div class="trends-content" data-trend="'.$trend->trendID.'">
             <h2 aria-level="2" role="heading">#'.$trend->hashtag.'</h2>
             <div class="trends-text"><span class="trends-count">'.$trend->tweetsCount.'</span> Tweets</div>
             </div>';
@@ -436,6 +496,12 @@ class Post extends User{
             </div>';
        }
     	
+    }
+    public function getTrendNameById($trendID){
+        $stmt=$this->con->prepare("SELECT  * FROM `trends` WHERE trendID=:trendID");
+        $stmt->bindParam(':trendID',$trendID,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
     public function getTrendByHash($hashtag){
         $stmt=$this->con->prepare("SELECT DISTINCT `hashtag` FROM `trends` WHERE `hashtag` LIKE :hashtag  LIMIT 5");
@@ -558,15 +624,15 @@ class Post extends User{
     //          $stmt->execute();
     //     }
     // }
-    public function addTrend($hashtag,$postId){
+    public function addTrend($hashtag,$postId,$userId){
 		preg_match_all("/#+([a-zA-Z0-9_]+)/i",$hashtag,$matches);
 		if($matches){
 			$result=array_values($matches[1]);
 		}
-		$sql ="INSERT INTO `trends` (`hashtag`,`postId`,`createdOn`) VALUES(:hashtag,:postId,CURRENT_TIMESTAMP)";
+		$sql ="INSERT INTO `trends` (`hashtag`,`postId`,`userId`,`createdOn`) VALUES(:hashtag,:postId,:userId,CURRENT_TIMESTAMP)";
 		foreach ($result as $trend) {
 			if($stmt=$this->con->prepare($sql)){
-				$stmt->execute(array(':hashtag'=>$trend,':postId'=>$postId));
+				$stmt->execute(array(':hashtag'=>$trend,':postId'=>$postId,':userId'=>$userId));
 			}
 		}
 	}

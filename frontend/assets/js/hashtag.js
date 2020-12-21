@@ -27,6 +27,19 @@ $(function(){
       }
   })
 
+  $(document).on('click','.trends-content', function (event) {
+    let element=$(event.target);
+    let trendID=$(this).data('trend');
+
+    if(trendID !== undefined){
+     $.post('http://localhost/twirrer/backend/ajax/getTrendName.php',{trendID:trendID},function(data){
+        window.location.href = "http://localhost/twirrer/hashtag/"+data;
+        
+     });
+ 
+     }
+    
+ });
   $("#submitPostButton").click(e=>{
     e.preventDefault();
     $.post('http://localhost/twirrer/backend/ajax/fetchHashtag.php',{fetchHashtag:true},function(data){

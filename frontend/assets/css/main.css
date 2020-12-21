@@ -1980,3 +1980,10 @@ svg.photo-icon {
     font-weight: 400;
     color: rgba(29,161,242,1.00);
 }
+/* .resultsContainer .post{
+   display: flex;
+    flex-direction: column;
+    padding: var(--spacing);
+    cursor: pointer;
+    border-bottom: .1rem solid var(--grey);
+} */

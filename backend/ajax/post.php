@@ -9,7 +9,7 @@
     $lastId=$loadFromUser->create('post',array('userId'=>$userid,'post'=>$statusText,'postBy'=>$userid,'postedOn'=>date('Y-m-d H:i:s')));
     preg_match_all("/#+([a-zA-Z0-9_]+)/i",$statusText,$hashtag);
     if(!empty($hashtag)){
-      $loadFromPost->addTrend($statusText,$lastId);
+      $loadFromPost->addTrend($statusText,$lastId,$userid);
     }
     $loadFromPost->posts($userid,10);
   }
