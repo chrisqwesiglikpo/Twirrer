@@ -26,4 +26,15 @@ $(function(){
         })
       }
   })
+
+  $("#submitPostButton").click(e=>{
+    e.preventDefault();
+    $.post('http://localhost/twirrer/backend/ajax/fetchHashtag.php',{fetchHashtag:true},function(data){
+       $('.trends-body').html(data);
+        $("#postTextarea").val("");
+        $('.hash-box li').hide();
+        button.prop("disabled",true);
+        
+    });
+  });
 });
