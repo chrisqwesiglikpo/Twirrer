@@ -46,7 +46,7 @@ $(function(){
        $('.trends-body').html(data);
         $("#postTextarea").val("");
         $('.hash-box li').hide();
-        button.prop("disabled",true);
+       
         
     });
   });
