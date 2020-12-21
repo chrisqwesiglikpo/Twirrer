@@ -1922,3 +1922,61 @@ svg.photo-icon {
   width: 392px;
   height: 285.29px;
 }
+/*  Trends */
+.trends {
+  border-radius: 16px;
+  background: #F7F9FA;
+  margin: 1rem;
+  border: 1px solid rgb(247, 249, 250);
+}
+.trends-container {
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+}
+.trends-container__header {
+  padding: 1rem;
+  font-weight: 800;
+  font-size: 15px;
+  border-bottom: 1px solid rgb(235, 238, 240);
+}
+.trends-content {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  border-bottom: 1px solid rgb(235, 238, 240);
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.trends-content:hover{
+  background-color:rgba(0,0,0,0.03);
+}
+.trends-content h3 {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: rgb(15, 20, 25);
+}
+.trends-text {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(91, 112, 131);
+}
+.trends-footer {
+  padding: 0.6rem;
+  transition: background-color 0.3s;
+  overflow: hidden;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  cursor: pointer;
+}
+.trends-footer:hover{
+  background-color:rgba(0,0,0,0.03);
+}
+.trends-footer a{
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(29,161,242,1.00);
+}

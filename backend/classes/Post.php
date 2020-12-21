@@ -419,14 +419,22 @@ class Post extends User{
         </div>';
         }
     }
-    // public function comments($tweetId){
-    //     $stmt=$this->con->prepare("SELECT * FROM `comment` LEFT JOIN `users` ON `commentBy`=`user_id` WHERE `commentOn`=:tweetId");
-    //     $stmt->bindParam(":tweetId",$tweetId,PDO::PARAM_INT);
-    //     $stmt->execute();
-    //     return $stmt->fetchAll(PDO::FETCH_OBJ);
-    // }
+  
+    public function trends(){
+    	$stmt=$this->con->prepare("SELECT *,COUNT(`post_id`) AS `tweetsCount` FROM `trends` INNER JOIN `post` ON `post` LIKE CONCAT('%#',`hashtag`,'%')  GROUP BY `hashtag` ORDER BY `post_id` LIMIT 4");
+    	$stmt->execute();
+    	$trends=$stmt->fetchAll(PDO::FETCH_OBJ);
+
+    	foreach ($trends as $trend) {
+    	  echo '<div class="trends-content">
+           <h2 aria-level="2" role="heading">#'.$trend->hashtag.'</h2>
+           <div class="trends-text"><span class="trends-count">'.$trend->tweetsCount.'</span> Tweets</div>
+           </div>';
+    	}
+    	
+    }
     public function getTrendByHash($hashtag){
-        $stmt=$this->con->prepare("SELECT * FROM `trends` WHERE `hashtag` LIKE :hashtag  LIMIT 5");
+        $stmt=$this->con->prepare("SELECT DISTINCT `hashtag` FROM `trends` WHERE `hashtag` LIKE :hashtag  LIMIT 5");
         $stmt->bindValue(':hashtag',$hashtag.'%');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -528,6 +536,24 @@ class Post extends User{
 
     }
 
+    // public function addTrend($hashtag){
+	// 	preg_match_all("/#+([a-zA-Z0-9_]+)/i",$hashtag,$matches);
+	// 	if($matches){
+	// 		$result=array_values($matches[1]);
+	// 	}
+	// 	$sql ="INSERT INTO `trends` (`hashtag`,`createdOn`) VALUES (:hashtag,CURRENT_TIMESTAMP)";
+	// 	// foreach ($result as $trend) {
+	// 	// 	if($stmt=$this->con->prepare($sql)){
+	// 	// 		$stmt->execute([':hashtag'=>$trend]);
+	// 	// 	}
+    //     // }
+    //     if($stmt = $this->con->prepare($sql)){
+    //         foreach($result as $trend){
+    //             $stmt->bindValue(':hashtag', $trend);
+    //         }
+    //          $stmt->execute();
+    //     }
+    // }
     public function addTrend($hashtag){
 		preg_match_all("/#+([a-zA-Z0-9_]+)/i",$hashtag,$matches);
 		if($matches){
@@ -536,7 +562,7 @@ class Post extends User{
 		$sql ="INSERT INTO `trends` (`hashtag`,`createdOn`) VALUES(:hashtag,CURRENT_TIMESTAMP)";
 		foreach ($result as $trend) {
 			if($stmt=$this->con->prepare($sql)){
-				$stmt->execute([':hashtag'=>$trend]);
+				$stmt->execute(array(':hashtag'=>$trend));
 			}
 		}
 	}

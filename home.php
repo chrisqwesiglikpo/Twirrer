@@ -73,22 +73,38 @@ $userId=$user->user_id;
                     </div>
                </div>
             </div>
-            <div class="follow">
-            <h3 class="follow-heading">Who to follow</h3>
-               <?php $loadFromFollow->whoToFollow($user_id,$profileId); ?>
-            <div class="follow-link">
-                <a href="#">Show more</a>
-            </div>
-            <footer class="follow-footer">
-                <ul>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                    <li><a href="#">Cookies</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">More</a></li>
-                </ul>
-            </footer>
-            
+            <div class="aside-fixed">
+                <section class="trends" aria-labelledby="accessible-list-0" role="region">
+                <div class="trends-container">
+                    <div class="trends-container__header">
+                        <h1 aria-level="1" role="heading">Trends for you</h1>
+                    </div>
+                    <div class="trends-body" aria-label="Timeline: Trending now">
+                    <?php $loadFromPost->trends(); ?>
+                    <div class="trends-footer">
+                        <a href="#">Show more</a>
+                    </div>
+                    </div>
+                </div>
+    
+                </section>
+                <div class="follow">
+                <h3 class="follow-heading">Who to follow</h3>
+                <?php $loadFromFollow->whoToFollow($user_id,$profileId); ?>
+                <div class="follow-link">
+                    <a href="#">Show more</a>
+                </div>
+                <footer class="follow-footer">
+                    <ul>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">More</a></li>
+                    </ul>
+                </footer>
+                
+                </div>
             </div>
         </aside>
         </main>
