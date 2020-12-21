@@ -34,7 +34,7 @@
      $loadFromUser->updatePost("post",$userid,$lastInsertedId,array('imageId'=>$lastInsertedId));
      preg_match_all("/#+([a-zA-Z0-9_]+)/i",$statusText,$hashtag);
      if(!empty($hashtag)){
-       $loadFromPost->addTrend($statusText);
+      $loadFromPost->addTrend($statusText,$lastInsertedId,$userid);
      }
      $loadFromPost->posts($userid,10);
    
