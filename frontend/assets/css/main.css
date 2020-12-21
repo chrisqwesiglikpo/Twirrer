@@ -462,10 +462,6 @@ ul#suggestion li:hover{
 /* End of search area */
 main aside {
   grid-column: 2/3;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 74%;
 }
 main .follow-user-img{
   width:6rem;
