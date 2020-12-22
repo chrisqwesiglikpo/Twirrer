@@ -15,48 +15,7 @@ $page_title="Messages / Twitter";
             <a href="<?php echo url_for('messages/compose'); ?>" aria-label="Compose a DM" role="button" data-focusable="true" data-testid="NewDM_Button" class="compose-inbox"><div class=""><svg viewBox="0 0 24 24" class="compose-stc"><g><path d="M23.25 3.25h-2.425V.825c0-.414-.336-.75-.75-.75s-.75.336-.75.75V3.25H16.9c-.414 0-.75.336-.75.75s.336.75.75.75h2.425v2.425c0 .414.336.75.75.75s.75-.336.75-.75V4.75h2.425c.414 0 .75-.336.75-.75s-.336-.75-.75-.75zm-3.175 6.876c-.414 0-.75.336-.75.75v8.078c0 .414-.337.75-.75.75H4.095c-.412 0-.75-.336-.75-.75V8.298l6.778 4.518c.368.246.79.37 1.213.37.422 0 .844-.124 1.212-.37l4.53-3.013c.336-.223.428-.676.204-1.012-.223-.332-.675-.425-1.012-.2l-4.53 3.014c-.246.162-.563.163-.808 0l-7.586-5.06V5.5c0-.414.337-.75.75-.75h9.094c.414 0 .75-.336.75-.75s-.336-.75-.75-.75H4.096c-1.24 0-2.25 1.01-2.25 2.25v13.455c0 1.24 1.01 2.25 2.25 2.25h14.48c1.24 0 2.25-1.01 2.25-2.25v-8.078c0-.415-.337-.75-.75-.75z"></path></g></svg></div></a>
     </div>
     <div class="resultsContainer" aria-label="Timeline:Inbox">
-      <a href="#" class="resultsContainer__resultsListItem">
-        <div class="resultsContainerImage">
-            <img src="<?php echo url_for('frontend/assets/images/profilePic.jpeg'); ?>" alt="User's profile pic">
-        </div>
-        <div class="resultsDetailsContainer ellipsis">
-          <span class="chat__heading ellipsis">Chat Name</span>
-          <span class="chat__subtext ellipsis">Lastest Message</span>
-        </div>
-      </a>
-      <a href="#" class="resultsContainer__resultsListItem">
-       <div class="resultsContainerImage groupChatMessage">
-            <img src="<?php echo url_for('frontend/assets/images/avatar.png'); ?>" alt="User's profile pic" >
-            <img src="<?php echo url_for('frontend/assets/images/defaultProfilePic.png'); ?>" alt="User's profile pic">
-        </div>
-        <div class="resultsDetailsContainer ellipsis">
-          <span class="chat__heading ellipsis">Chat Name</span>
-          <span class="chat__subtext ellipsis">Lastest Message</span>
-        </div>
-      </a>
-      <a href="#" class="resultsContainer__resultsListItem">
-           <div class="resultsContainerImage groupChatMessage-three">
-                <img src="<?php echo url_for('frontend/assets/images/avatar.png'); ?>" alt="User's profile pic" >
-                <img src="<?php echo url_for('frontend/assets/images/defaultProfilePic.png'); ?>" alt="User's profile pic">
-                <img src="<?php echo url_for('frontend/assets/images/profilePic.jpeg'); ?>" alt="User's profile pic">
-            </div>
-            <div class="resultsDetailsContainer ellipsis">
-            <span class="chat__heading ellipsis">Chat Name</span>
-            <span class="chat__subtext ellipsis">Lastest Message</span>
-            </div>
-      </a>
-      <a href="#" class="resultsContainer__resultsListItem">
-       <div class="resultsContainerImage groupChatMessage-more">
-            <img src="<?php echo url_for('frontend/assets/images/avatar.png'); ?>" alt="User's profile pic" >
-            <img src="<?php echo url_for('frontend/assets/images/defaultProfilePic.png'); ?>" alt="User's profile pic">
-            <img src="<?php echo url_for('frontend/assets/images/profilePic.jpeg'); ?>" alt="User's profile pic">
-            <img src="<?php echo url_for('frontend/assets/images/0.jpg'); ?>" alt="User's profile pic">
-        </div>
-        <div class="resultsDetailsContainer ellipsis">
-          <span class="chat__heading ellipsis">Chat Name</span>
-          <span class="chat__subtext ellipsis">Lastest Message</span>
-        </div>
-      </a>
+      <?php  echo $loadFromPost->displayChatUsers($user_id); ?>
     </div>
 </section>
 </main>

@@ -583,7 +583,86 @@ class Post extends User{
          $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+    private function getChatUsers($userid){
+        $stmt = $this->con->prepare("SELECT * FROM chats WHERE chatFrom=:userid ORDER BY createdAt DESC");
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+       
+    }
 
+    public function displayChatUsers($userid){
+        $getChats=$this->getChatUsers($userid);
+        if(!empty($getChats)){
+            foreach ($getChats as $getChat){
+                $chats=json_decode($getChat->chatTo);
+                $chatCount=count((array)$chats);
+                if($chatCount ==1){
+                   foreach($chats as $chatTo){
+                    $userdata=$this->userData($chatTo);
+                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                            <a href="#" class="resultsContainerImage">
+                                <img src="'.url_for($userdata->profilePic).'" alt="User profile pic">
+                            </a>
+                            <div class="resultsDetailsContainer ellipsis">
+                                <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
+                                <span class="chat__subtext ellipsis"></span>
+                            </div>
+                        </div>';
+                    }
+                }else if($chatCount ==2){
+                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                    <a  href="#"  class="resultsContainerImage groupChatMessage">';
+                    foreach($chats as $chatTo){
+                        $userdata=$this->userData($chatTo);
+                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic">';
+                        }
+                    echo '</a>
+                    <div class="resultsDetailsContainer ellipsis">
+                      <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
+                      <span class="chat__subtext ellipsis">Lastest Message</span>
+                    </div>
+                  </div>';
+                }else if($chatCount ==3){
+                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                    <a href="#"  class="resultsContainerImage groupChatMessage-three">';
+                    foreach($chats as $chatTo){
+                        $userdata=$this->userData($chatTo);
+                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic">';
+                        }
+                    echo '</a>
+                    <div class="resultsDetailsContainer ellipsis">
+                      <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
+                      <span class="chat__subtext ellipsis"></span>
+                    </div>
+                  </div>';
+                }
+                else if($chatCount > 3){
+                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                    <a href="#"  class="resultsContainerImage groupChatMessage-more">';
+                    foreach($chats as $chatTo){
+                        $userdata=$this->userData($chatTo);
+                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic">';
+                        }
+                    echo '</a>
+                    <div class="resultsDetailsContainer ellipsis">
+                      <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
+                      <span class="chat__subtext ellipsis"></span>
+                    </div>
+                  </div>';
+                }
+
+                
+            }
+            
+        }
+    }
+    public function getUserChatName($userid){
+        $stmt=$this->con->prepare("SELECT * FROM chats c LEFT JOIN users u ON c.chatTo=u.user_id WHERE chatFrom=:userid");
+        $stmt->bindValue(":userid",$userid,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
     public function notificationCountReset($userid){
         $stmt = $this->con->prepare("UPDATE notification SET notificationCount='1' WHERE notificationFor=:userid AND status='0'");
         $stmt->bindValue(':userid', $userid, PDO::PARAM_INT);

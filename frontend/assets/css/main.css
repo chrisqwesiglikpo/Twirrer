@@ -1995,7 +1995,7 @@ svg.photo-icon {
 } */
 
 /* Chat Message */
-a.resultsContainer__resultsListItem {
+.resultsContainer__resultsListItem {
   border-bottom: .1rem solid var(--grey);
   padding: 2rem;
   display: flex;
@@ -2003,8 +2003,9 @@ a.resultsContainer__resultsListItem {
   font-size: 1.5rem;
   line-height: 1.5;
   flex-shrink: 0;
+  cursor: pointer;
 }
-a.resultsContainer__resultsListItem:hover{
+.resultsContainer__resultsListItem:hover{
   background-color:#f2f2f2;
 }
 .resultsDetailsContainer {

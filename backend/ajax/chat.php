@@ -12,18 +12,18 @@ if(is_post_request()){
       echo $lastInsertedId;
     } 
     
-    if(isset($_POST['profileId']) && !empty($_POST['profileId'])){
-        $profileIds=json_decode($_POST['profileId']);
-        $userId=h($_POST['userId']);
-        $chatName=h($_POST['chatName']);
+    // if(isset($_POST['profileId']) && !empty($_POST['profileId'])){
+    //     $profileIds=json_decode($_POST['profileId']);
+    //     $userId=h($_POST['userId']);
+    //     $chatName=h($_POST['chatName']);
 
-        if(!empty($profileIds)){
-           foreach($profileIds as $profileId){
-               $lastInsertedId=$loadFromUser->create("chats",['isGroupChat'=>false,'chatFrom'=>$userId,'chatTo'=>$profileId,'chatTitle'=>$chatName]);
-           }
-           echo $lastInsertedId;
-       }
+    //     if(!empty($profileIds)){
+    //        foreach($profileIds as $profileId){
+    //            $lastInsertedId=$loadFromUser->create("chats",['isGroupChat'=>false,'chatFrom'=>$userId,'chatTo'=>$profileId,'chatTitle'=>$chatName]);
+    //        }
+    //        echo $lastInsertedId;
+    //    }
         
-     }  
+    //  }  
     
 }
