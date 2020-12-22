@@ -24,7 +24,7 @@ function h($string=""){
 }
 
 function redirect_to($location){
-    header("Location: ".$location);
+    header("Location:http://localhost/twirrer/".$location);
     exit;
 }
 function lyn_copyright($startYear){

@@ -628,7 +628,7 @@ class Post extends User{
                     echo '</a>
                     <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
                       <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
-                      <span class="chat__subtext ellipsis">Lastest Message</span>
+                      <span class="chat__subtext ellipsis"></span>
                     </div>
                   </div>';
                 }else if($chatCount ==3){
@@ -667,6 +667,16 @@ class Post extends User{
                 
             }
             
+        }
+    }
+    
+    public function getChatData($chatId,$userid){
+        $stmt=$this->con->prepare("SELECT * FROM chats WHERE chatFrom=:userid AND chat_id=:chatID");
+        $stmt->bindParam(":userid",$userid,PDO::PARAM_INT);
+        $stmt->bindParam(":chatID",$chatId,PDO::PARAM_INT);
+        $stmt->execute();
+        if($stmt->rowCount() != 0){
+             return $stmt->fetch(PDO::FETCH_OBJ);
         }
     }
     public function getUserChatName($userid){

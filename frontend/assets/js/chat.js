@@ -31,8 +31,8 @@ createChatBtn.addEventListener("click", function(e){
 					httpRequest.onreadystatechange = function(){
 						if(this.readyState === 4 && this.status === 200){
 							if(this.responseText.length != 0){
-								window.location.href = "http://localhost/twirrer/messages/"+this.responseText+"/participants/";
-								// alert(this.responseText);
+								window.location.href = "http://localhost/twirrer/messages/"+this.responseText;
+								
 							}
 							
 						}
