@@ -7,4 +7,11 @@ $(document).ready(function(){
                 window.location.href = "http://localhost/twirrer/messages/"+chatid;
             }
       });
+
+        
+    $(document).on('click','.chats__parts', function () {
+
+        window.location.href = "http://localhost/twirrer/messages";
+        
+      });
 });

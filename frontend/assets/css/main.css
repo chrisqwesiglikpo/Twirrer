@@ -2080,3 +2080,29 @@ span.chat__subtext {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* Participants */
+section.participants-chats {
+  grid-column: 2/3;
+  width: 640px;
+}
+.participants-chats .header-top {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing);
+  border-bottom: .1rem solid var(--grey);
+  height:74px;
+}
+.participants-chats .header-top h2{
+    font-size: 19px;
+    font-weight: 800;
+    color: rgb(15, 20, 25);
+}
+.chats__parts {
+  margin-right: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+.chats__parts:hover{
+  border-radius:9999px;
+  background-color:rgba(29,161,242,0.1);
+}
