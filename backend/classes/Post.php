@@ -584,24 +584,29 @@ class Post extends User{
          $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    private function getChatUsers($userid){
-        $stmt = $this->con->prepare("SELECT * FROM chats WHERE chatFrom=:userid ORDER BY createdAt DESC");
+    private function getChatUsers($userid,$num){
+        $stmt = $this->con->prepare("SELECT * FROM chats WHERE chatFrom=:userid ORDER BY createdAt DESC LIMIT :num");
         $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+        $stmt->bindParam(':num', $num, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
        
     }
 
-    public function displayChatUsers($userid){
-        $getChats=$this->getChatUsers($userid);
+    public function displayChatUsers($userid,$chatId,$num){
+        $getChats=$this->getChatUsers($userid,$num);
+        //echo $chatId;
         if(!empty($getChats)){
             foreach ($getChats as $getChat){
                 $chats=json_decode($getChat->chatTo);
+
                 $chatCount=count((array)$chats);
                 if($chatCount ==1){
                    foreach($chats as $chatTo){
+                    $chat_id=$getChat->chat_id;
+                    $chatActive= $chat_id==$chatId ? "chatActive" : "";
                     $userdata=$this->userData($chatTo);
-                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                    echo '<div class="resultsContainer__resultsListItem  '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                             <a href="'.url_for($userdata->username).'" class="resultsContainerImage">
                                 <img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">
                             </a>
@@ -612,7 +617,9 @@ class Post extends User{
                         </div>';
                     }
                 }else if($chatCount ==2){
-                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                    $chat_id=$getChat->chat_id;
+                    $chatActive= $chat_id==$chatId ? "chatActive" : "";
+                    echo '<div class="resultsContainer__resultsListItem  '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                     <a  href="'.url_for('messages/'.$getChat->chat_id.'/participants').'"  class="resultsContainerImage groupChatMessage">';
                     foreach($chats as $chatTo){
                         $userdata=$this->userData($chatTo);
@@ -625,7 +632,9 @@ class Post extends User{
                     </div>
                   </div>';
                 }else if($chatCount ==3){
-                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                    $chat_id=$getChat->chat_id;
+                    $chatActive= $chat_id==$chatId ? "chatActive" : "";
+                    echo '<div class="resultsContainer__resultsListItem  '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                     <a href="'.url_for('messages/'.$getChat->chat_id.'/participants').'"  class="resultsContainerImage groupChatMessage-three">';
                     foreach($chats as $chatTo){
                         $userdata=$this->userData($chatTo);
@@ -639,7 +648,9 @@ class Post extends User{
                   </div>';
                 }
                 else if($chatCount > 3){
-                    echo '<div class="resultsContainer__resultsListItem" data-chatid="'.$getChat->chat_id.'">
+                    $chat_id=$getChat->chat_id;
+                    $chatActive= $chat_id==$chatId ? "chatActive" : "";
+                    echo '<div class="resultsContainer__resultsListItem '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                     <a href="'.url_for('messages/'.$getChat->chat_id.'/participants').'"  class="resultsContainerImage groupChatMessage-more">';
                     foreach($chats as $chatTo){
                         $userdata=$this->userData($chatTo);

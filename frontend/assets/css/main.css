@@ -2106,3 +2106,12 @@ section.participants-chats {
   border-radius:9999px;
   background-color:rgba(29,161,242,0.1);
 }
+.profileButton.msg__profile {
+  padding: 1rem;
+}
+.msg__profileButton{
+  fill:rgba(29,161,242,1.00);
+}
+.chatActive{
+  border-right:2px solid rgb(29, 161, 242);
+}
