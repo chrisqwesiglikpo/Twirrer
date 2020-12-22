@@ -200,6 +200,56 @@ class Follow extends User{
          }
        
     }
+
+    public function displayParticipant($userid,$chatId){
+        $stmt=$this->con->prepare("SELECT * FROM chats WHERE chatFrom=:userId AND chat_id=:chatId");
+        $stmt->bindParam(":userId",$userid,PDO::PARAM_INT);
+        $stmt->bindParam(":chatId",$chatId,PDO::PARAM_INT);
+        $stmt->execute();
+        $chatDatas=$stmt->fetchAll(PDO::FETCH_OBJ);
+        if(!empty($chatDatas)){
+            foreach ($chatDatas as $getChat){
+                $chats=json_decode($getChat->chatTo);
+                foreach($chats as $chatTo){
+                    $userData=$this->checkFollow($chatTo,$userid);
+                    $user=$this->userData($chatTo);
+                 echo'<div class="follow-user">
+                        <div class="follow-user-img">
+                            <img src="'.url_for($user->profilePic).'" alt="">
+                        </div>
+                        <div class="follow-user-info">
+                            <h4><a href="'.url_for(h(u($user->username))).'">'.$user->firstName." ".$user->lastName.'</a></h4>
+                            <p>@'.$user->username.'</p>
+                        </div>
+                    '.((!empty($userData['receiver'])==$user->user_id)? '<button class="follow-btn unfollow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Following</button>' : '<button class="follow-btn follow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Follow</button>').'
+                    </div>';
+                }
+                //$chatCount=count((array)$chats);
+            }
+            $user=$this->userData($userid);
+            echo'<div class="follow-user">
+                <div class="follow-user-img">
+                    <img src="'.url_for($user->profilePic).'" alt="">
+                </div>
+                <div class="follow-user-info">
+                    <h4><a href="'.url_for(h(u($user->username))).'">'.$user->firstName." ".$user->lastName.'</a></h4>
+                    <p>@'.$user->username.'</p>
+                </div>
+            </div>';
+        }
+        // <div class="follow-user">
+        //         <div class="follow-user-img">
+        //          <img src="<?php echo url_for('frontend/assets/images/avatar.png'); " alt="">
+        //         </div>
+        //      <div class="follow-user-info">
+        //          <h4><a href="'.url_for(h(u($user->username))).'">Christopher Glikpo</a></h4>
+        //          <p>@cglikpo</p>
+        //      </div>
+        //       '.((!empty($userData['receiver'])==$user->user_id)? '<button class="follow-btn unfollow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Following</button>' : '<button class="follow-btn follow-home" data-follow="'.$user->user_id.'" data-profileId="'.$user->user_id.'">Follow</button>').'
+           
+             
+        //  </div>
+    }
    
 
 }

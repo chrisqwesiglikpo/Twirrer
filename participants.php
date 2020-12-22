@@ -28,7 +28,9 @@ if(isset($_GET['chatId'])){
             </div>
             <h2>People</h2>
     </div>
+    <?php $loadFromFollow->displayParticipant($user_id,$chatId); ?>
 </section>
 </main>
 <script src="<?php echo url_for('frontend/assets/js/inboxPage.js'); ?>"></script>
+<script src="<?php echo url_for('frontend/assets/js/toggleFollow.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>
