@@ -604,7 +604,7 @@ class Post extends User{
                             <a href="'.url_for($userdata->username).'" class="resultsContainerImage">
                                 <img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">
                             </a>
-                            <div class="resultsDetailsContainer ellipsis">
+                            <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
                                 <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
                                 <span class="chat__subtext ellipsis"></span>
                             </div>
@@ -618,7 +618,7 @@ class Post extends User{
                             echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">';
                         }
                     echo '</a>
-                    <div class="resultsDetailsContainer ellipsis">
+                    <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
                       <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
                       <span class="chat__subtext ellipsis">Lastest Message</span>
                     </div>
@@ -631,7 +631,7 @@ class Post extends User{
                             echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">';
                         }
                     echo '</a>
-                    <div class="resultsDetailsContainer ellipsis">
+                    <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
                       <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
                       <span class="chat__subtext ellipsis"></span>
                     </div>
@@ -645,7 +645,7 @@ class Post extends User{
                             echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">';
                         }
                     echo '</a>
-                    <div class="resultsDetailsContainer ellipsis">
+                    <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
                       <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
                       <span class="chat__subtext ellipsis"></span>
                     </div>

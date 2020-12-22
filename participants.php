@@ -21,6 +21,8 @@ if(isset($_GET['chatId'])){
       <?php  //echo $loadFromPost->displayChatUsers($user_id); ?>
     </div>
 </section>
+<section class="participants-chats">
+</section>
 </main>
 <script src="<?php echo url_for('frontend/assets/js/inboxPage.js'); ?>"></script>
 <?php require_once 'backend/shared/mainFooter.php'; ?>
