@@ -4,7 +4,7 @@ $(document).ready(function(){
        let chatid=$(this).data('chatid');
        
             if(chatid !==undefined){
-                window.location.href = "http://localhost/twirrer/messages/"+chatid;
+                window.location.href = "http://localhost/twirrer/chat/messages/"+chatid;
             }
       });
 
