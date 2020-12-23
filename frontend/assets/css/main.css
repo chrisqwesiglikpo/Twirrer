@@ -2196,3 +2196,59 @@ section.participants-chats,.chatsMessageContainer {
 .chatFooter .emojionearea{
   height:38px;
 } 
+.rightChat__wrapper {
+  width: 100%;
+  height: 39px;
+}
+.rightChat__msg-wrapper {
+  width: 80%;
+  float: right;
+  text-align: end;
+  height: 39px;
+}
+.chatText__you {
+  width: 294.52px;
+  float: right;
+  outline: 1px dotted red ! important;
+  cursor: crosshair !important;
+  text-align: center;
+  color: #fff;
+  background-color: rgb(29, 161, 242);
+  font-size: 19px;
+  padding: 2px 15px;
+  line-height: 1.5;
+  font-weight: 600;
+  border: 1px solid rgb(29, 161, 242);
+  border-radius: 16px;
+  border-bottom-right-radius: 0px;
+  transition: background-color 0.3s;
+}
+.chatText__you:hover{
+  background-color: rgb(26, 145, 218);
+}
+.rightChatMsg.user-loggedIn-chat {
+  padding-top: 2rem;
+}
+.leftChat__wrapper {
+  width: 552px;
+  height: 62px;
+  margin-bottom: 2px;
+}
+.leftChat__msg-wrapper {
+  width: 552px;
+  height: 58px;
+  margin-top:2rem;
+}
+.chatLeftText__you {
+  width: 341.52px;
+  color: rgb(15, 20, 25);
+  background-color: rgb(235, 238, 240);
+  font-size: 19px;
+  padding: 8px 15px;
+  line-height: 1.5;
+  font-weight: 600;
+  border: 1px solid rgb(196, 207, 214);
+  border-radius: 16px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}

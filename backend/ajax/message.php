@@ -8,13 +8,15 @@ if(is_post_request()){
         $profileIds=json_decode($_POST['profileid']);
         $userId=h($_POST['userId']);
         $chatId=h($_POST['chatId']);
-        $msg=h($_POST['msg']);
+        $msg=$_POST['msg'];
         if(!empty($profileIds)){
                  foreach($profileIds as $profileId){
                      $profileId=h($profileId);
                      $lastInsertedId=$loadFromUser->create("messages",['message'=>$msg,'messageFrom'=>$userId,'messageTo'=>$profileId,'chatID'=>$chatId]);
                    }
-                    echo $msg;
+                    // echo $msg;
+                    $loadFromPost->getMessages($userId,$chatId);
+
           }
        
     } 

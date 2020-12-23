@@ -14,7 +14,7 @@ $(function(){
        if(submitButton.length ==0) return alert("No submit button not found");
             
         if(statusText ==""){
-            submitButton.prop("disabled",true);
+            submitButton.prop("disabled",false);
             return;
         }
 
@@ -76,7 +76,7 @@ $(function(){
         var statusText = $('.emojionearea-editor').html();
         var ThisEle=$('.emojionearea-editor');
         
-        if(statusText !=""){
+        // if(statusText !=""){
             //alert(statusText);
            // let msg=statusText.slice(0,-15);
             //alert(msg);
@@ -93,6 +93,7 @@ $(function(){
             });
 
             if(profileIds.length > 0){
+                // button.prop("disabled",false);
                 //alert(msg);
                 var formData  = new FormData();
 
@@ -107,10 +108,11 @@ $(function(){
 					httpRequest.onreadystatechange = function(){
 						if(this.readyState === 4 && this.status === 200){
 							if(this.responseText.length != 0){
+                                $('.chatmsg__container').html(this.responseText);
                                 //location.reload(true);
-                                alert(this.responseText);
-                                $(ThisEle).text('');
-                                button.prop("disabled",false);
+                                //alert(this.responseText);
+                               $(ThisEle).text('');
+                               // button.prop("disabled",false);
 								
 							}
 							
@@ -138,7 +140,7 @@ $(function(){
             //     }
                 
             // });
-        }
+        // }
         
     })
    

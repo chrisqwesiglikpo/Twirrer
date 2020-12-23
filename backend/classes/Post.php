@@ -749,6 +749,119 @@ class Post extends User{
         $tweet=preg_replace("/@([\w]+)/","<a href='".url_for('$1')."'>$0</a>",$tweet);
         return $tweet;
    }
+   public function getMessageTo($user_id,$chatId){
+        $stmt=$this->con->prepare("SELECT `messageTo` FROM `messages` WHERE messageFrom=:userID AND chatID=:chatId LIMIT 1");
+        $stmt->bindParam(":userID",$user_id,PDO::PARAM_INT);
+        $stmt->bindParam(":chatId",$chatId,PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+   }
+
+   public function getMessages($user_id,$chatId){
+    //    $messageTos=$this->getUserMessage($user_id,$chatId);
+    //TODO:FIX BUG
+      $msgTo=$this->getMessageTo($user_id,$chatId);
+      if(!empty($msgTo)){
+        $msgToF=$msgTo->messageTo;
+        $stmt=$this->con->prepare("SELECT * FROM `messages` LEFT JOIN `users` ON `messageFrom` =`user_id` WHERE `messageFrom`=:messageFrom AND `messageTo` =:user_id AND chatID=:chatId OR `messageTo`=:messageFrom AND `messageFrom`=:user_id AND chatID=:chatId ORDER BY messageOn");
+        $stmt->bindParam(":messageFrom",$msgToF,PDO::PARAM_INT);
+         $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+         $stmt->bindParam(":chatId",$chatId,PDO::PARAM_INT);
+         $stmt->execute();
+         $messages=$stmt->fetchAll(PDO::FETCH_OBJ);
+         foreach ($messages as $message) {
+             if($message->messageFrom===$user_id){
+                 echo '<div class="rightChatMsg user-loggedIn-chat">
+                 <div class="rightChat__wrapper" aria-expanded="false" role="button" data-focusable="true" tabindex="0">
+                         <div class="rightChat__msg-wrapper">
+                             <div class="chat__icons">
+                                <div class="chat__wrapper">
+                                    
+                                </div>
+                             </div>
+                             <div class="chatText__you">
+                               '.$message->message.'
+                             </div>
+                         </div>
+                 </div>
+              </div>';
+             }else{
+                 echo '<div class="leftChatMsg">
+                 <div class="leftChat__wrapper" aria-expanded="false" role="button" data-focusable="true" tabindex="0">
+                           <div class="leftChat__msg-wrapper">
+                               <div class="chat__icons">
+                               <div class="chat__wrapper">
+                                   
+                               </div>
+                               </div>
+                               <div class="chatLeftText__you">
+                               '.$message->message.'
+                               </div>
+                           </div>
+                   </div>
+            </div>';
+             }
+         }
+
+      }
+      
+    // $stmt=$this->con->prepare("SELECT * FROM `messages` WHERE messageFrom=:userID AND chatID=:chatId");
+    // $stmt->bindParam(":userID",$user_id,PDO::PARAM_INT);
+    // $stmt->bindParam(":chatId",$chatId,PDO::PARAM_INT);
+    // $stmt->execute();
+    // $data=$stmt->fetchAll(PDO::FETCH_OBJ);
+    // foreach($data as $message){
+    //     echo $message->messageTo;
+    // }
+    
+    //     $stmt=$this->con->prepare("SELECT * FROM `messages` LEFT JOIN `users` ON `messageFrom` =`user_id` WHERE `messageFrom`=:messageFrom AND `messageTo` =:user_id AND `chatID`=:chatID OR `messageTo`=:messageFrom AND `messageFrom`=:user_id AND `chatID`=:chatID");
+    //     foreach($messageTos as $messageTo){
+           
+    //     }
+        // $stmt->bindParam(":messageFrom",$messageFrom,PDO::PARAM_INT);
+        // $stmt->bindParam(":chatID",$chatId,PDO::PARAM_INT);
+        // $stmt->bindParam(":user_id",$user_id,PDO::PARAM_INT);
+        // $stmt->execute();
+        // $messages=$stmt->fetchAll(PDO::FETCH_OBJ);
+        // var_dump($messages);
+   }
+
+   private function getUserMessage($user_id,$chatId){
+     $stmt=$this->con->prepare("SELECT `messageTo` FROM `messages` WHERE chatID=:chatId AND messageFrom=:userId");
+     $stmt->bindParam(":chatId",$chatId,PDO::PARAM_INT);
+     $stmt->bindParam(":userId",$user_id,PDO::PARAM_INT);
+     $stmt->execute();
+     if($stmt->rowCount() !=0){
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        //$stmt=$this->con->prepare("SELECT * FROM `messages` LEFT JOIN `users` ON `messageFrom` =`user_id` WHERE `messageFrom`=:messageFrom AND `messageTo` =:user_id AND `chatID`=:chatID OR `messageTo`=:messageFrom AND `messageFrom`=:user_id AND `chatID`=:chatID");
+        //foreach($message as $messageID){
+        // echo $messageID->messageTo;
+         
+       // } 
+     }
+    
+   } 
+   public function lastPersonWithAllUserMSG($userid){
+    $stmt = $this->pdo->prepare("SELECT * FROM messages  LEFT JOIN users ON messages.messageFrom = users.user_id WHERE (messages.messageTo = :userid OR messages.messageFrom = :userid) AND messages.chatID IN (SELECT MAX(messages.messageID) FROM messages GROUP BY messages.messageTo, messages.messageFrom ORDER BY messages.messageID DESC)  ORDER BY messages.messageOn DESC;");
+    $stmt->bindParam(":userid", $userid, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+public function lastPersonMsg($userid){
+    $stmt = $this->pdo->prepare("SELECT * FROM profile LEFT JOIN messages ON profile.userId = (SELECT IF(messages.messageTo =:userid, messages.messageFrom, messages.messageTo)) WHERE (messages.messageFrom = :userid OR messages.messageTo = :userid) ORDER BY messages.messageOn DESC LIMIT 0, 1");
+    $stmt->bindParam(":userid", $userid, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_OBJ);
+}
+   public function messageData($userid, $lastpersonid){
+    $stmt = $this->pdo->prepare("SELECT * FROM messages LEFT JOIN profile ON profile.userId = messages.messageFrom WHERE (messageTo = :userid and messageFrom=:otherid) OR (messageTo = :otherid and messageFrom=:userid) ORDER BY messageOn ASC");
+    $stmt->bindParam(":userid", $userid, PDO::PARAM_INT);
+    $stmt->bindParam(":otherid", $lastpersonid, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
+}
 
    public function getModalPost($post_id,$postedby){
        $stmt=$this->con->prepare("SELECT * FROM `post` LEFT JOIN `users` ON users.user_id=post.userId WHERE post_id=:post_id AND `postBy`=:postedBy");
