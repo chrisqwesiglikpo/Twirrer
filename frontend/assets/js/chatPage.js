@@ -77,7 +77,9 @@ $(function(){
         var ThisEle=$('.emojionearea-editor');
         
         if(statusText !=""){
-            var msg=statusText.slice(0,-15);
+            //alert(statusText);
+           // let msg=statusText.slice(0,-15);
+            //alert(msg);
             var selectedItem=document.querySelectorAll(".c_id");
             //console.log(selectedItem);
              var profileIds=new Array();
@@ -91,13 +93,14 @@ $(function(){
             });
 
             if(profileIds.length > 0){
+                //alert(msg);
                 var formData  = new FormData();
 
                 formData.append("profileid",JSON.stringify(profileIds));
                 formData.append("userId",u_id);
                 formData.append("chatId",c_id);
-                formData.append("msg",msg);
-                var httpRequest = new XMLHttpRequest();
+                formData.append("msg",statusText);
+               var httpRequest = new XMLHttpRequest();
 
 				if(httpRequest){
 					httpRequest.open('POST', 'http://localhost/twirrer/backend/ajax/message.php', true);
