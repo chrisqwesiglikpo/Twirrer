@@ -2193,3 +2193,6 @@ section.participants-chats,.chatsMessageContainer {
 .chatContainer .chatFooter button svg{
   fill:var(--blue);
 }
+.chatFooter .emojionearea{
+  height:38px;
+} 

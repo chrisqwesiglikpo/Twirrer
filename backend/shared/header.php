@@ -18,6 +18,7 @@ if(!isset($page_title)){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.js"></script>
     <script src="<?php echo url_for('frontend/assets/js/jquery.min.js'); ?>"></script>
+    <script src="<?php echo url_for('frontend/assets/js/jquery.js'); ?>"></script>
     <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/twitter.ico'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/font-awesome/css/font-awesome.css'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/master.css'); ?>">
