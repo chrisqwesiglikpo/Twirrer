@@ -604,11 +604,12 @@ class Post extends User{
                 if($chatCount ==1){
                    foreach($chats as $chatTo){
                     $chat_id=$getChat->chat_id;
+                    $c_id=$chat_id==$chatId ? "c_id" : "";
                     $chatActive= $chat_id==$chatId ? "chatActive" : "";
                     $userdata=$this->userData($chatTo);
                     echo '<div class="resultsContainer__resultsListItem  '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                             <a href="'.url_for($userdata->username).'" class="resultsContainerImage">
-                                <img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">
+                                <img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'" class="'.$c_id.'">
                             </a>
                             <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
                                 <span class="chat__heading ellipsis">'.$getChat->chatTitle.'</span>
@@ -618,12 +619,13 @@ class Post extends User{
                     }
                 }else if($chatCount ==2){
                     $chat_id=$getChat->chat_id;
+                    $c_id=$chat_id==$chatId ? "c_id" : "";
                     $chatActive= $chat_id==$chatId ? "chatActive" : "";
                     echo '<div class="resultsContainer__resultsListItem  '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                     <a  href="'.url_for('messages/'.$getChat->chat_id.'/participants').'"  class="resultsContainerImage groupChatMessage">';
                     foreach($chats as $chatTo){
                         $userdata=$this->userData($chatTo);
-                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">';
+                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'" class="'. $c_id.'">';
                         }
                     echo '</a>
                     <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
@@ -633,12 +635,13 @@ class Post extends User{
                   </div>';
                 }else if($chatCount ==3){
                     $chat_id=$getChat->chat_id;
+                    $c_id=$chat_id==$chatId ? "c_id" : "";
                     $chatActive= $chat_id==$chatId ? "chatActive" : "";
                     echo '<div class="resultsContainer__resultsListItem  '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                     <a href="'.url_for('messages/'.$getChat->chat_id.'/participants').'"  class="resultsContainerImage groupChatMessage-three">';
                     foreach($chats as $chatTo){
                         $userdata=$this->userData($chatTo);
-                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">';
+                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'" class="'.$c_id.'">';
                         }
                     echo '</a>
                     <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
@@ -649,12 +652,13 @@ class Post extends User{
                 }
                 else if($chatCount > 3){
                     $chat_id=$getChat->chat_id;
+                    $c_id=$chat_id==$chatId ? "c_id" : "";
                     $chatActive= $chat_id==$chatId ? "chatActive" : "";
                     echo '<div class="resultsContainer__resultsListItem '.$chatActive.'" data-chatid="'.$getChat->chat_id.'">
                     <a href="'.url_for('messages/'.$getChat->chat_id.'/participants').'"  class="resultsContainerImage groupChatMessage-more">';
                     foreach($chats as $chatTo){
                         $userdata=$this->userData($chatTo);
-                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'">';
+                            echo '<img src="'.url_for($userdata->profilePic).'" alt="User profile pic" data-profileid="'.$userdata->user_id.'" class="'.$c_id.'">';
                         }
                     echo '</a>
                     <div class="resultsDetailsContainer ellipsis" data-chatid="'.$getChat->chat_id.'">
