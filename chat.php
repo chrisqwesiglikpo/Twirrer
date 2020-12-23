@@ -31,17 +31,35 @@ $page_title=$chatTitle." / Twitter";
       <?php  echo $loadFromPost->displayChatUsers($user_id,$chatId,7); ?>
     </div>
 </section>
-<section class="participants-chats">
+<section class="chatsMessageContainer">
     <div class="header-top">
             <div class="chats__parts" aria-label="back" role="button" data-focusable="true" tabindex="0">
                   <svg viewBox="0 0 24 24" class="color-blue"><g><path d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"></path></g></svg>
             </div>
             <h2><?php echo $chatTitle; ?></h2>
     </div>
+    <div class="chatPageContainer">
+        <!-- <div class="chatTitleBarContainer">
+            <span id="chatName">This is the chat</span>
+        </div> -->
+        <div class="mainChatContentContainer">
+            <div class="chatContainer">
+                <div class="chatMessages__chatContainer"></div>
+                <div class="chatFooter">
+                    <textarea name="messageInput" id="statusEmoji" placeholder="Start a new message" aria-label="Start a new messsage"></textarea> 
+                    <button class="sendMessageButton" aria-label="Send" disabled="true">
+                        <svg viewBox="0 0 24 24" class="msg-send"><g><path d="M21.13 11.358L3.614 2.108c-.29-.152-.64-.102-.873.126-.23.226-.293.577-.15.868l4.362 8.92-4.362 8.92c-.143.292-.08.643.15.868.145.14.333.212.523.212.12 0 .24-.028.35-.087l17.517-9.25c.245-.13.4-.386.4-.664s-.155-.532-.4-.662zM4.948 4.51l12.804 6.762H8.255l-3.307-6.76zm3.307 8.26h9.498L4.948 19.535l3.307-6.763z"></path></g></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </section>
 </main>
 
+<script src="<?php echo url_for('frontend/assets/dist/emojionearea.min.js'); ?>"></script>
+<script src="<?php echo url_for('frontend/assets/js/chatPage.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/partScroll.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/inboxPage.js'); ?>"></script>
 <script src="<?php echo url_for('frontend/assets/js/toggleFollow.js'); ?>"></script>

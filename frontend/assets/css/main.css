@@ -37,6 +37,8 @@ html{font-size: 62.5%;}
 html,body{
     width:100%;
     height: 100%;
+    min-height:100%;
+    background-color: #fff;
 }
 body{font-family: 'Roboto', sans-serif;}
 
@@ -2081,18 +2083,23 @@ span.chat__subtext {
   text-overflow: ellipsis;
 }
 /* Participants */
-section.participants-chats {
+section.participants-chats,.chatsMessageContainer {
   grid-column: 2/3;
   width: 640px;
 }
-.participants-chats .header-top {
+.chatsMessageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.participants-chats .header-top,.chatsMessageContainer .header-top {
   display: flex;
   align-items: center;
   padding: var(--spacing);
   border-bottom: .1rem solid var(--grey);
   height:74px;
 }
-.participants-chats .header-top h2{
+.participants-chats .header-top h2,.chatsMessageContainer .header-top h2{
     font-size: 19px;
     font-weight: 800;
     color: rgb(15, 20, 25);
@@ -2114,4 +2121,75 @@ section.participants-chats {
 }
 .chatActive{
   border-right:2px solid rgb(29, 161, 242);
+}
+/* Chat Page */
+.chatsMessageContainer .chatPageContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.mainChatContentContainer {
+  display: flex;
+  flex: 1;
+}
+.chatContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+.chatContainer .chatFooter{
+  display: flex;
+  padding:var(--spacing);
+  flex-shrink:0px;
+}
+.chatContainer .chatFooter textarea{
+  flex:1;
+  resize: none;
+  background-color: rgb(235, 238, 240);
+  border-radius: 16px;
+  border:1px solid rgba(0, 0, 0, 0);
+  padding-top:5px;
+  padding-bottom:5px;
+  outline: none;
+  padding: 10px;
+  height:38px;
+  color: rgb(15, 20, 25);
+  font-weight:400;
+  font-size:15px;
+  margin-right:5px;
+  transition: all 0.3s;
+}
+.chatContainer .chatFooter textarea::placeholder{
+  color: #5B7083;
+}
+.chatContainer .chatFooter textarea:focus{
+  border-color:rgb(29, 161, 242);
+}
+.chatContainer .chatFooter button{
+  background-color:transparent;
+  min-width: 39px;
+  min-height:39px;
+  border:1px solid rgba(0, 0, 0, 0);
+  
+}
+.chatContainer .chatFooter button:enabled{
+  cursor: pointer;
+}
+.chatContainer .chatFooter button:enabled:hover{
+  background-color: rgba(29,161,242,0.1);
+  border-radius:9999px;
+}
+/* .chatContainer .chatFooter button{
+ 
+} */
+.chatMessages__chatContainer{
+  flex:1;
+  display: flex;
+  overflow-y: auto;
+  flex-direction:column;
+  padding:var(--spacing);
+}
+.chatContainer .chatFooter button svg{
+  fill:var(--blue);
 }

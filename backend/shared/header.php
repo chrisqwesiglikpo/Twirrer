@@ -21,6 +21,7 @@ if(!isset($page_title)){
     <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/twitter.ico'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/font-awesome/css/font-awesome.css'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/master.css'); ?>">
+    <link rel="stylesheet" href="<?php echo url_for('frontend/assets/dist/emojionearea.min.css'); ?>">
 
 </head>
 <body>
