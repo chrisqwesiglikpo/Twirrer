@@ -6,6 +6,14 @@ $followCount=$loadFromFollow->displayFollowerCount($profileId);
 $page_title="Direct Messages / Twitter";
 if(isset($_GET['chatId']) && !empty($_GET['chatId'])){
     $chatId=h($_GET['chatId']);
+    $chatData=$loadFromPost->getChatData($chatId,$user_id);
+    if(!empty($chatData)){
+       $chatTitle=$chatData->chatTitle;
+    }else{
+        redirect_to(url_for("messages"));
+    }
+}else{
+    redirect_to(url_for("messages"));
 }
 
 ?>

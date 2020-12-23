@@ -7,12 +7,12 @@ if(isset($_GET['chatId']) && !empty($_GET['chatId'])){
     if(!empty($chatData)){
        $chatTitle=$chatData->chatTitle;
     }else{
-        redirect_to('messages');
+        redirect_to(url_for("messages"));
     }
     
     
 }else{
-    redirect_to('messages');
+    redirect_to(url_for("messages"));
 }
 $profileData = $loadFromUser->userData($profileId);
 $followCount=$loadFromFollow->displayFollowerCount($profileId);

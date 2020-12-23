@@ -24,9 +24,10 @@ function h($string=""){
 }
 
 function redirect_to($location){
-    header("Location:http://localhost/twirrer/".$location);
+    header("Location:".$location);
     exit;
 }
+
 function lyn_copyright($startYear){
    $currentYear=date('Y');
    if($startYear < $currentYear){
