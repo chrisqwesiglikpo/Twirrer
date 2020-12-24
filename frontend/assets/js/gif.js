@@ -13,31 +13,37 @@ $(function(){
      
       var xhr=new XMLHttpRequest();
 
-      xhr.open('GET','http://api.giphy.com/v1/gifs/trending?api_key=6a4UvbUVwxUs6JsqRksmtOcUdUV9tP7V&limit=16');
+      xhr.open('GET','http://api.giphy.com/v1/gifs/trending?api_key=6a4UvbUVwxUs6JsqRksmtOcUdUV9tP7V&limit=10');
       
       xhr.onload=function(){
           var response=xhr.response;
           var parsedData=JSON.parse(response);
         //   console.log(parsedData);
           var responseData=parsedData.data;
+          console.log(responseData);
           for(item in responseData){
               var gifBody=document.createElement('div');
+              var imageHeader=document.createElement('h3');
+              var imageHeaderContainer=document.createElement('div');
               gifBody.setAttribute('class','gif__body-wrapper');
+              imageHeader.setAttribute('class','gif__image-title');
+              imageHeaderContainer.setAttribute('class','gif__image-title-wrapper');
               var image=document.createElement('img');
               var imageURL=parsedData.data[item].images.original.url;
+              var imageTitle=parsedData.data[item].title;
            
               image.setAttribute('src',imageURL);
               image.setAttribute('class','gif__img');
-             
+              imageHeader.innerHTML=imageTitle;
               gifBody.appendChild(image);
+              imageHeaderContainer.appendChild(imageHeader);
+              gifBody.appendChild(imageHeaderContainer);
               gifWrapper.appendChild(gifBody);
             
           }
+        
        
       
-          // var gif=document.createElement('img');
-          // gif.setAttribute('src',originalUrl);
-          // document.body.appendChild(gif);
       }
       
       xhr.send();
