@@ -58,33 +58,7 @@ $userId=$user->user_id;
                                 </div>
                             </div>
                             <div class="gif__body">
-                                <!-- <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/0.jpg'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/avatar.png'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/defaultProfilePic.png'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/profilePic.jpeg'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/0.jpg'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/avatar-image.png'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/profilePic.jpeg'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/0.jpg'); ?>" alt="" class="gif__img">
-                                </div>
-                                <div class="gif__body-wrapper">
-                                    <img src="<?php echo url_for('frontend/assets/images/avatar-image.png'); ?>" alt="" class="gif__img">
-                                </div>-->
+                             
                             </div> 
                             
                         
