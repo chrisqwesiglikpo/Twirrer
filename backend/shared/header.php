@@ -20,6 +20,7 @@ if(!isset($page_title)){
     <script src="<?php echo url_for('frontend/assets/js/jquery.min.js'); ?>"></script>
     <script src="<?php echo url_for('frontend/assets/js/jquery.js'); ?>"></script>
     <link rel="icon" type="image" href="<?php echo url_for('frontend/assets/images/twitter.ico'); ?>">
+    <!-- <link rel="icon" type="image" href="<?php //echo url_for('frontend/assets/favicon/favicon.png'); ?>"> -->
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/font-awesome/css/font-awesome.css'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/css/master.css'); ?>">
     <link rel="stylesheet" href="<?php echo url_for('frontend/assets/dist/emojionearea.min.css'); ?>">
